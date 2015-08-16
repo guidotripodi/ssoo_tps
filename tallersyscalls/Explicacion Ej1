@@ -1,0 +1,10 @@
+Ej 1
+
+Para observar como trabaja el ejecutable "hai" utilizamos el comando "strace" que nos permite
+ver las syscall que realiza. Además observamos que el ejecutable "hai" necesita un parámetro el cual debería ser un comando que después de determinado tiempo se ejecutará.
+
+Para ejecutar este comando pasado por parámetro, el "hai" crea un proceso child con un clone donde se ejecutará dicho parámetro. Pero antes de ejecutarse hay una "conversación" entre proceso padre e hijo.
+El padre escribe "sup!" y le envía una señal al hijo, y el mismo responde "Ya va!". Esto se reproduce 5 veces hasta que finalmente el proceso hijo ejecuta el comando pasado por parámetro. Por consiguiente, el hijo finaliza y luego el padre.
+
+
+
