@@ -82,5 +82,5 @@ void tasks_init(void) {
 	register_task(TaskAlterno, -1);
 	register_task(TaskConBloqueo,3);
 	register_task(TaskConsola, 3);
-	register_task(TaskBatch, 5);
+	register_task(TaskBatch, 2);
 }

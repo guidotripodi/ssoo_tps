@@ -1,0 +1,1 @@
+Los argumentos son una cola de quantum, la primera vez las tareas corren con quantum 1. De ahi en mas las tareas corren 1 vez con cada quantum de la cola hasta el ultimo elemento que va a ser el quantum a utilizar por el sched de ahi en mas.
