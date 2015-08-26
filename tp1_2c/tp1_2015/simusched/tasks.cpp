@@ -1,6 +1,7 @@
 #include "tasks.h"
 #include <stdlib.h>
 #include <iostream>
+#include <time.h>
 using namespace std;
 
 void TaskCPU(int pid, vector<int> params) { // params: n
@@ -37,6 +38,7 @@ void TaskConsola(int pid, vector<int> params) {
 	int i, ciclos;
 
 	for (i = 0; i < params[0]; i++) {
+		srand(time(NULL)); // Usa la hora para generar una semilla aleatoria para la funcion rand
 		ciclos = rand() % (params[2] - params[1] + 1) + params[1];
 		uso_IO(pid, ciclos);
 	}
