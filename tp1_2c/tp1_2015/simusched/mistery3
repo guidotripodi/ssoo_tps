@@ -1,4 +1,5 @@
 TaskCPU 20
 TaskCPU 10
-TaskBatch 20 5
+@20:
+TaskCPU 15
 

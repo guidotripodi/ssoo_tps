@@ -6,9 +6,11 @@
 using namespace std;
 
 SchedNoMistery::SchedNoMistery(vector<int> argn) {  
+	for(int i = 0; i < size(argn); i++)
 }
 
 void SchedNoMistery::load(int pid) {  
+	q.push(pid); // llegó una tarea nueva
 }
 
 void SchedNoMistery::unblock(int pid) {  
