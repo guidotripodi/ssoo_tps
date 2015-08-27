@@ -11,6 +11,14 @@ class SchedNoMistery : public SchedBase {
     virtual void load(int pid);
     virtual void unblock(int pid);
     virtual int tick(int cpu, const enum Motivo m);  
+
+  private:
+  	std::queue<int> q;
+  	std::list<int> bloqueados;
+  	std::list<int> quantumsAUsar;
+  	std::list<int> quantumsUsados;
+	std::int quantum;
+	std::int quantumActual;
 };
 
 #endif
