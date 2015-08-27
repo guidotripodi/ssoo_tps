@@ -56,26 +56,26 @@ el pid correspondiente y un entero ciclos que es el valor random obtenido entre 
 
 \subsubsection[Resolución Ejercicio 2]{Ejercicio 2}
 
-ESTO NO VA PERO PUEDE SERVIR COMO CONCLUSION!
-ESTO NO VA PERO PUEDE SERVIR COMO CONCLUSION!
+CALCULAR LATENCIA!
 
 \indent Para este punto, utilizamos el siguiente lote de tareas:
 \begin{verbatim}
  
-                                     TaskConsola 1 4 8
-                                     TaskCPU 4
-                                     TaskConsola 5 3 6
+                                     TaskCPU 100
+                                     TaskConsola 20 2 4
+                                     TaskConsola 25 2 4
+
 
 \end{verbatim}
 
-\indent El mismo, presenta una tarea de uso intensivo $TaskCPU$ que dura unos 4 ticks, y otras dos interactivas, las cuales se
-bloquean 1 y 5 ticks respectivamente con una duración de entre 4 y 8 para la primera y 3 y 6 para la segunda.\\
+\indent El mismo, presenta una tarea de uso intensivo $TaskCPU$ que dura 100 ticks, y otras dos interactivas, las cuales se
+bloquean 20 y 25 ticks respectivamente con una duración de entre 2 y 4 tanto para la primera como la segunda.\\
 A continuación, los respectivos gráficos de mediciones.
 
 
 \vspace*{0.3cm} \vspace*{0.3cm}
   \begin{center}
- \includegraphics[scale=0.5]{ejercicio2-1nucleo.png}
+ \includegraphics[scale=0.5]{./Test/ej2_1.png}
  { $Lote 1$ Scheduler FCFS - 1 core }
  \end{center}
   \vspace*{0.3cm}
@@ -83,23 +83,17 @@ A continuación, los respectivos gráficos de mediciones.
 
 \vspace*{0.3cm} \vspace*{0.3cm}
   \begin{center}
- \includegraphics[scale=0.5]{ejercicio2-2nucleo.png}
+ \includegraphics[scale=0.5]{./Test/ej2_2.png}
  { $Lote 1$ Scheduler FCFS - 2 core }
  \end{center}
   \vspace*{0.3cm}
 
-\vspace*{0.3cm} \vspace*{0.3cm}
-  \begin{center}
- \includegraphics[scale=0.5]{ejercicio2-3nucleo.png}
-  {$Lote 1$ Scheduler FCFS - 3 core }
- \end{center}
-  \vspace*{0.3cm}
 
-\indent Debido a las tareas de tipo TaskConsola, se observa que en los tres casos la duración 
+\indent Debido a las tareas de tipo TaskConsola, se observa que en los dos casos la duración 
 de cada bloqueo es distinta.\\
 \indent A modo de análisis, se puede observar por medio de los gráficos como aumenta el paralelismo a mayor cantidad de núcleos. 
 En este scheduler en particular, esto ayuda de gran manera al rendimiento del sistema, puesto que un núcleo podrá ejecutar otra tarea 
-recién cuando haya terminado la anterior. Las consecuencias de este comportamiento son visibles en los 3 graficos. Agregando un core más, 
+recién cuando haya terminado la anterior. Las consecuencias de este comportamiento son visibles en los 2 graficos. Agregando un core más, 
 el tiempo que se tarda en ejecutar por completo todas las tareas de reduce casi a la mitad.\\
 
 \subsubsection[Resolución Ejercicio 3]{Ejercicio 3}

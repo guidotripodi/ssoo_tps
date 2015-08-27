@@ -7,24 +7,28 @@ metodos de la clase SchedRR en los archivos sched rr.cpp y sched rr.h. La implem
 recibe como primer parametro la cantidad de nucleos y a continuacion los valores de sus
 respectivos quantums. Debe utilizar una unica cola global, permitiendo ası la migracion de
 procesos entre nucleos.
-\item \textbf{Ejercicio 5} Diseñar uno o mas lotes de tareas para ejecutar con el algoritmo del ejercicio
-anterior. Graficar las simulaciones y comentarlas, justificando brevemente por que el comportamiento 
-observado es efectivamente el esperable de un algoritmo Round-Robin.
-\item \textbf{Ejercicio 5} A partir del articulo:\\
-\begin{itemize}
- \item Liu, Chung Laung, and James W. Layland. Scheduling algorithms for multiprogramming
-in a hard-real-time environment. Journal of the ACM (JACM) 20.1 (1973): 46-61.
-\end{itemize}
-1. Responda:
-\begin{enumerate}
- \item ¿Que problema estan intentando resolver los autores?
- \item ¿Por que introducen el algoritmo de la seccion 7? ¿Que problema buscan resolver
-con esto?
-\item Explicar coloquialmente el significado del teorema 7.
-\end{enumerate}
-2. Diseñar e implementar un scheduler basado en prioridades fijas y otro en prioridades
-dinamicas. Para eso complete las clases $SchedFixed$ y $SchedDynamic$ que se encuentran
-en los archivos $sched$\_$fixed.[h|cpp]$ y $sched$\_$dynamic.[h|cpp]$ respectivamente.
+\item \textbf{Ejercicio 5}Disene un lote con 3 tareas de tipo TaskCPU de 50 ciclos y 2 de tipo TaskConsola
+con 5 llamadas bloqueantes de 3 ciclos de duracion cada una. Ejecutar y graficar la simulacion
+utilizando el scheduler Round-Robin con quantum 2, 10 y 50.\\
+Con un cambio de contexto de 2 ciclos y un solo nucleo calcular la latencia, el waiting
+time y el tiempo total de ejecucion de las cinco tareas para cada quantum. 
+¿En cual es mejor cada uno? ¿Por que ocurre esto?
+\item \textbf{Ejercicio 6} Grafique el mismo lote de tareas del ejercicio anterior para el scheduler FCFS.
+Haciendo referencia a lo que se observa en los graficos de este ejercicio y el anterior, explique
+las diferencias entre un scheduler Round-Robin y un FCFS.
+\item \textbf{Ejercicio 7} Grafique el mismo lote de tareas del ejercicio anterior para el scheduler FCFS.
+Haciendo referencia a lo que se observa en los graficos de este ejercicio y el anterior, explique
+las diferencias entre un scheduler Round-Robin y un FCFS.
+\item \textbf{Ejercicio 8} Implemente un scheduler Round-Robin que no permita la migracion de procesos
+entre nucleos (SchedRR2). La asignación de CPU se debe realizar en el momento en que se produce la carga 
+de un proceso (load). El nucleo correspondiente a un nuevo proceso sera aquel
+con menor cantidad de procesos activos totales (RUNNING + BLOCKED + READY).Explique un escenario real 
+donde la migracion de nucleos sea beneficiosa y uno donde no (mencione
+especificamente que metricas de comparacion vistas en la materia mejorarıan en cada caso).
+Disene un lote de tareas en nuestro simulador que represente a cada uno de esos escenarios
+y grafique su resultado para cada implementacion. Calcule y compare en cada grafico las
+metrica que menciono.
+
 \end{itemize}
 
 
@@ -164,148 +168,205 @@ los mismos valores de $quantum$ obteniendo los siguientes gráficos:
 estén en condiciones de correr serán ejecutadas y ninguna será negada de tiempo de procesamiento.\\
 
 
-\subsubsection[Resolución Ejercicio 5]{Ejercicio 5}
-\begin{center}
-\textbf{PARTE 1}\\ 
-\end{center}
+\subsubsection[Resolución Ejercicio 5]{Ejercicio 6}
 
-\begin{center}
- \textbf{¿Qué problema están intentando resolver los autores?}
-\end{center}
+\subsubsection[Resolución Ejercicio 5]{Ejercicio 7}
 
-En el paper "Scheduling algorithms for multiprogramming
-in a hard-real-time environment" los autores están intentando mostrar y resolver un problema que estaba surgiendo en esa época (1973). El uso de computadoras que controlaban y monitoreaban procesos industriales había empezado a incrementarse notablemente. Con esto aparecen los sistemas que tienen un "tiempo crítico" para procesar. Es decir, sistemas en donde el procesamiento estaba sujeto a un tiempo máximo al cual ejecutarse.\\
-Por lo tanto necesitaban maximizar la eficiencia del uso del procesamiento, y para eso afirman que eso es posible mediante un algoritmo de schedulling que asegure procesar antes de ese tiempo crítico.\\
-Por eso en el paper proponen dos algoritmos que manejan prioridades: prioridades fijas y dinámicas.\\
+\subsubsection[Resolución Ejercicio 8]{Ejercicio 8}
 
-\begin{center}
- \textbf{¿Por qué introducen el algoritmo de la sección 7?\\¿Qué problema buscan resolver
- con esto?}
-\end{center}
+EN ESTE SOLO FALTARIA DECIR EL CASO REAL TRATANDO DE USAR NUESTRO LOTE YA HECHO
 
-En la sección 7 introducen el algoritmo de prioridades dinamicas tratando de resolver un problema que muestra el algoritmo de prioridades fijas descripto en las secciones anteriores.\\
-Al tener prioridades fijas, puede ocurrir inanición. Es decir, puede pasar que siempre lleguen tareas con prioridades más altas de las que se están por corriendo o por correr, dejándolas en espera y nunca atendiéndolas.\\
-El algoritmo que presenta en esta sección tiene el nombre de "The deadline driven scheduling algorithm", explicando que se trata de un algoritmo que da más prioridad a las tareas en las que su deadline esté mas cercano. \\
-
-\begin{center}
- \textbf{Explicar coloquialmente el significado del teorema 7}
-\end{center}
-
-El teorema 7 enuncia lo siguiente:\\
-
-\textbf{For a given set of m task, the deadline driven scheduling algorithm is feasible if
-and only if}
-\begin{center}
- \[(C_{1}/T_{1})+(C_{2}/T_{2})+......+(C_{m}/T_{m}) \leq 1\]
-
-\end{center}
-
-Dicho teorema habla sobre la factibilidad y uso de las tareas en el algoritmo que 
-se utilice como solución a la particular dificultad del algoritmo del scheduler fixed. \\
-Puntualmente el lote de tareas m deberá cumplir una precondición en donde la 
-suma de cada una de las relaciones entre el run time o tiempo de ejecución de la tarea, sobre el período de 
-la misma de todas las tareas sea igual o menor a 1.\\
-
-Esto quiere decir que el tiempo de ejecución de una tarea deberá ser considerablemente
-menor al período de la misma para que el desarrollo y comportamiento del scheduler sea el deseado
-y pudiese resolver la dificultad que se había generado por el anterior.\\
-
-\begin{center}
- 
-\textbf{PARTE 2}\\
-
-\end{center}
-\hspace{3pt}
-\begin{center}
-\textbf{Algoritmo Scheduler Fixed - Explicación de Implementación}\\ 
-\end{center}
-
-
-
-
-
-Luego del estudio del Paper solicitado se realizo la implementación del dicho algoritmo,
-utilizando una serie de estructuras para que este funcione acorde a lo pedido:
-
+La idea principal de esta nueva versión de $Round-Robin$ se centraliza en que no permita migración entre
+cores, esto se basa principalmente en utilizar una cola para cada núcleo por separado, y en cada
+cola respectiva se encolaran las tareas que fueron asignadas inicialmente a cada nucleo.\\
+Para desarrollar este tipo de algoritmo, el cual denominaremos $RR2$, utilizamos estructuras
+puntuales, enunciadas a continuación:\\
 \begin{itemize}
- \item Un struct denominado  \textbf{tarea} el cual contiene el pid, el run\_time\_actual, periodo dandonos
- informacion de la tarea cargada.
- \item Una lista de $tarea$ nombrada \textbf{tareas}, esta es ordenada segun el periodo de las tareas
- de menor a mayor, obteniendo la prioridad del algoritmo.
-  \item Una variable global \textbf{primera\_pasada} con la cual podemos realizar nuestra primer 
- comparacion de periodos entre tareas.
+ \item Un vector $quantum$ y otro $quantumActual$, los cuales siguen cumpliendo la misma funcion que
+ en Round-Robin 1.
+ \item Un vector de colas denominado $colas$, en el cual, en la posición $i$ encontraremos la cola correspondiente
+ a ese núcleo de procesamiento.
+ \item Un diccionario de $Bloqueados$, donde la clave contendra el número de core, y en definición
+ la tareas bloqueadas de ese core. Esto nos beneficiara cuando haya que reubicarla en la cola de procesos ready.
+ \item Un vector de enteros $cantidad$, que como la palabra lo define, tendrá en cada posición $i$ 
+ la totalidad de las tareas, ya sea bloqueadas, activas o en estado ready que tiene asignado ese core, beneficiandonos
+ la determinación del núcleo al que se le asignará la tarea al momento de cargarla.
 \end{itemize}
-
-Ademas de estas estructuras utilizamos una funcion privada \textbf{insertarOrdenado} la cual como el
-nombre lo dice va guardando en nuestra lista de tareas, las tareas a corde se van cargando en su
-respectivo lugar comparando los periodos de las mismas.\\
-De esta forma, la secuencia del algoritmo fue la siguiente:
+Cuando se carga una tarea, previamente, se chequeará que core tiene menor cantidad de procesos totales asignados (
+aqui es donde el vector $cantidad$ entra en juego). Una vez que se obtiene este nucleo, se agrega 
+la tarea a la cola correspondiente y se actualiza la cantidad sumando una unidad.\\
+\indent Al bloquearse un proceso, se define una nueva entrada en el diccionario $bloqueados$ con el
+pid y el nucleo correspondiente. De esta forma, al desbloquearse, colocamos la tarea en la cola del core
+correspondiente y eliminamos la entrada del diccionario. Así logramos resolver el inconveniente de la nula
+migración entre nucleos.\\
+\indent Finalmente, cuando una tarea finaliza, la quitamos y descontamos una unidad a la posición $i$ del vector
+$cantidad$. Esta es la única vez, en la cual se descuenta. Aunque una tarea se bloquee, la misma
+seguirá contando en el vector. De esta forma se cumplirá, que las tareas son asignadas a los cores
+con menor cantidad de tareas.\\
+Luego de realizar dicha implementación, en comparación al Round-Robin original, hemos conjeturado 
+las siguientes hipótesis:
 
 \begin{enumerate}
- \item Llega una nueva tarea se la carga e inserta ordenadamente en la lista.
- \item La tarea corre hasta finalizar.
- \item Una vez que finaliza se chequea en la lista cual es la primera en orden de prioridad queda
- esta ready para correr.
- \end{enumerate}
-
-De esta forma, con las estructuras y funciones logramos que nuestro scheduler trabaje de la forma
-deseada.\\
-
-Vale aclarar que, para que el scheduler funcione correctamente, es recomendable que los lotes de tareas
-cumplan la factibilidad enunciada en el paper estudiado.\\
-
-
-\hspace{3pt}
-\begin{center}
-\textbf{Algoritmo Scheduler Dynamic - Explicación de Implementación}\\ 
-\end{center}
-
-Una vez finalizado el estudio del paper, y habiendo notado las dificultades puntuales que enuncia el mismo
-sobre el anterior Scheduler, se solicito desarrollar uno nuevo que solucione dichos problemas.\\
-
-Para el desarrollo del mismo trabajamos con ciertas estructuras puntuales, las cuales enunciamos
-a continuación:\\
-
-\begin{itemize}
- \item Un struct denominado\textbf{tarea}  el cual contiene el pid, el run\_time\_actual, periodo y el deadline para tener
- informacion de la tarea cargada.
- \item Una lista de $tarea$ nombrada \textbf{tareas}, esta es ordenada segun el deadline de las tareas
- de menor a mayor, obteniendo la prioridad del algoritmo.
-  \item Una variable global \textbf{primera\_pasada} con la cual podemos realizar nuestra primer 
- comparacion de periodos entre tareas.
-\end{itemize}
-
-Además de estas estructuras puntuales, definimos unas funciones de forma privada para poder
-desarrollar el Scheduler en cuestión:
-
-\begin{itemize}
- \item Función \textbf{insertarOrdenado}  
- \item Función  \textbf{chequearPeriodos}
-  \end{itemize}
-  
-La función \textbf{insertarOrdenado}  como el nombre lo dice va guardando en nuestra lista $tareas$ las tareas
-acorde van siendo cargadas respetando un orden, dicho orden se basa en la prioridad dada por los
-deadline de las tareas. A menor deadline la tarea quedara en los primeros lugares de la lista.\\
-
-La función \textbf{chequearPeriodos}, la cual revisa si la tarea que se encuentra al principio de la lista
-tiene su deadline menor o igual a cero.\\
-
-A partir de estas estructuras y funciones procedemos a explicar la secuencia de nuestro algoritmo:
-
-\begin{enumerate}
- \item Llega una nueva tarea, se chequea si es la primera en llegar y en caso de no serlo se la inserta ordenadamente.
- \item Empieza a correr una tarea, y en cada Tick de reloj del cpu se va disminuyendo en uno el periodo y deadline
- de todas las demas tareas que no estan corriendo, mientras que la que se encuentra ejecutando
- se le disminuye en uno su run\_time y su periodo.
- \item En caso de que nuestra función booleana $chequearPeriodos$ de True en un tick de reloj
- y la tarea que este corriendo no haya finalizado esta sera desalojada guardando su run\_time actual y su deadline
- insertandola ordenadamente en la lista para que luego pueda finalizar su ejecución.
- \item Si $chequearPeriodos$ no dio nunca True durante la ejecución de la tarea, esta podra finalizar sin
- inconvenientes y posteriormente se cargará la primer tarea de la lista en orden de prioridad.
+ \item Dados un mismo lote de tareas y una misma configuración del scheduler (mismos costo en cambio
+de contexto y quantum) un único núcleo de procesamiento, ambos algoritmos deben comportarse
+de la misma manera.
+\item Comportamiento menos eficiente en el RR2 con respecto al paralelismo, ya que al no permitir
+migración de nucleos este se pierde.
+\item Comportamiento más eficiente en el RR2 con lotes de tareas que se bloquean un gran numero
+de veces. Esto surge ya que el Round-Robin original, es mas proclive a realizar cambios de contexto con la posibilidad
+de darse un cambio de core.
 \end{enumerate}
 
-De esta forma, nuestro Scheduler continua hasta finalizar todas las tareas manteniendo esta secuencia.\\
+Por consiguiente, procederemos a demostrar lo conjeturado.\\
 
-Vale aclarar, como en el anterior algoritmo, que para un correcto funcionamiento de nuestro
-Scheduler es recomendable que el lote de tareas a utilizar cumpla la factibilidad enunciada
-en el paper.\\
+Iniciando con nuestra primer conjetura:\\
+
+\textbf{Dados un mismo lote de tareas y una misma configuración del scheduler 
+ (mismos costo en cambio de contexto y quantum)
+un único núcleo de procesamiento, ambos algoritmos deben comportarse
+de la misma manera.}\\
+
+Trabajando con el lote que mencionamos a continuación:
+    
+    \begin{verbatim}
+                                     TaskCPU 70
+                                     TaskConsola 2 4 5
+                                     TaskCPU 40
+                                     TaskConsola 3 2 3
+                                     TaskCPU 30
+    \end{verbatim}
+
+Utilizando un $quantum$ igual a 5 y un cambio de contexto igual a 1 obtuvimos 
+resultados muy marcados, viendose notoriamente lo que queremos demostrar.\\
+
+\begin{center}
+    	\includegraphics[width=450pt]{./EJ8_RR2/dif1corerr.png}
+	{$Lote 1$ - Round Robin - 1 core - Quantum = 5 - cambio de contexto = 1}	
+ \end{center}
+ 
+ \begin{center}
+    	\includegraphics[width=450pt]{./EJ8_RR2/dif1corerr2.png}
+	{$Lote 1$ - Round Robin 2 - 1 core - Quantum = 5 - cambio de contexto = 1}	
+ \end{center}
+
+Continuando con un lote distinto para ser mas precisos:
+
+ \begin{verbatim}
+                                     TaskCPU 70
+                                     TaskConsola 5 6 7
+                                     TaskCPU 40
+                                     TaskConsola 10 9 8
+                                     TaskCPU 30
+ \end{verbatim}
+ 
+Llegamos a lo siguiente:\\
+
+ \begin{center}
+    	\includegraphics[width=450pt]{./EJ8_RR2/dif2corerr.png}
+	{$Lote 2$ - Round Robin - 1 core - Quantum = 10 - cambio de contexto = 5}	
+ \end{center}
+ 
+ \begin{center}
+    	\includegraphics[width=450pt]{./EJ8_RR2/dif2corerr2.png}
+	{$Lote 2$ - Round Robin 2 - 1 core - Quantum = 10 - cambio de contexto = 5}	
+ \end{center}
+ 
+ Viendose nuevamente, la igualdad que mencionamos. Hemos podido ver a su vez, que la única
+ forma en la que los resultados sean distintos con el mismo lote seria modificando o la
+ cantidad de $quantum$ o la unidad de cambio de contexto entre uno y otro.\\
+ 
+ Aqui, un ejémplo para mayor precisión:\\
+ 
+  \begin{center}
+    	\includegraphics[width=450pt]{./EJ8_RR2/dif3corerr.png}
+	{$Lote 2$ - Round Robin - 1 core - Quantum = 10 - cambio de contexto = 5}	
+ \end{center}
+ 
+ \begin{center}
+    	\includegraphics[width=450pt]{./EJ8_RR2/dif3corerr2.png}
+	{$Lote 2$ - Round Robin 2 - 1 core - Quantum = 10 - cambio de contexto = 10}	
+ \end{center}
+ 
+ Concluimos entonces que, al trabajar con colas globales o no, utilizando un único núcleo y
+ mismo lote quantum y cambio de contexto, ambos schedulers se comportan de la misma
+ manera.\\
+ 
+ Procedemos a demostrar la segunda conjetura:\\
+ 
+ \textbf{Comportamiento menos eficiente en el RR2 con respecto al paralelismo, ya que al no permitir
+migración de núcleos este lo pierde}\\
+
+Para demostrar esta conjetura trabajamos con procesos que demanden mas uso del cpu como 
+lo son las $taskCPU$\\
+
+Un ejemplo de los lotes utilizados fue el siguiente:\\
+
+\begin{verbatim}
+                                     TaskCPU 40
+                                     TaskCPU 15
+                                     TaskCPU 50
+                                     TaskCPU 30
+                                     TaskCPU 50
+\end{verbatim}
+
+Obteniendo los siguientes datos relevantes:\\
+
+\begin{center}
+    	\includegraphics[width=450pt]{./EJ8_RR2/dif10corerr.png}
+	{$Lote 3$ - Round Robin - 2 core - Quantum = 5 - cambio de contexto = 1}	
+ \end{center}
+ 
+ \begin{center}
+    	\includegraphics[width=450pt]{./EJ8_RR2/dif10corerr2.png}
+	{$Lote 3$ - Round Robin 2 - 2 core - Quantum = 5 - cambio de contexto = 1}	
+ \end{center}
+ 
+ Se puede ver en estos diagramas como la implementación del Round Robin original trabaja
+ mejor finalizando la ejecución de las tareas hasta 50 milisegundos antes.\\
+ Esto se da por la falta de paralelismo de el RR2 ya que al ser asignados los procesos
+ a cada core, cuando uno de los dos finaliza, este queda ocioso ya que no existe la
+ posibilidad de migrar  procesos.\\
+ 
+ Por ultimo, nuestra tercer y ultima conjetura:\\
+ 
+ \textbf{Comportamiento mas eficiente en el RR2 con lotes de tareas que se bloquean un gran numero
+de veces}
+
+Para esta conjetura, trabajamos con lotes de tareas que utilicen el CPU y se bloqueen muchas
+veces para poder demostrar la mejor performance del RR2.\\
+
+A continuación un ejemplo, con el siguiente lote:
+
+\begin{verbatim}
+                                     TaskCPU 40
+                                     TaskBatch 10  5
+                                     TaskCPU 50
+                                     TaskBatch 15 8
+                                     TaskCPU 10
+
+\end{verbatim}
+
+
+   \begin{center}
+    	\includegraphics[width=450pt]{./EJ8_RR2/dif5corerr.png}
+	{$Lote 3$ - Round Robin - 2 core - Quantum = 3 - cambio de contexto = 1}	
+ \end{center}
+ 
+ \begin{center}
+    	\includegraphics[width=450pt]{./EJ8_RR2/dif5corerr2.png}
+	{$Lote 3$ - Round Robin 2 - 2 core - Quantum = 3 - cambio de contexto = 1}	
+ \end{center}
+
+ Se puede observar por los diagramas como el RR2 tiene una mejor performance en este estilo
+ de lotes llegando a finalizar las ejecuciones hasta 50 milisegundos antes que el Round-Robin
+ original.\\
+ Como el Round-Robin original tiene pérdida de tiempo con el cambio de contexto y
+ migración de tareas este empeora su performance en comparación al RR2 que no admite
+ este tipo de migración es notorio la superioridad en relación a nuestra conjetura.\\
+ 
+ Podemos concluir luego de estas demostraciones que, el Round-Robin original es ampliamente
+ superior desde el punto de vista de la performance que se obtiene al trabajar con tareas
+ que demanden mucho uso del CPU, mientras que el RR2 es ampliamente mejor cuando se utilicen
+ tareas que se bloqueen por un tiempo considerable.\\
+ 
+

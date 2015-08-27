@@ -86,16 +86,13 @@ perdiendo el quantum que le quedaba si hubiere.
 Autom\'aticamente, seguir\'a corriendo la pr\'oxima tarea que se encuentre en la cola global. 
 Cuando el proceso se desbloquee, ser\'a encolada nuevamente al final de dicha cola.   \\
 
-\indent Para corroborar que el comportamiento era el deseado, desarrollamos 3 disversos lotes de tareas compuestos por tareas
-del tipo $taskConsola$ y $taskCpu$, trabajando con 1, 2 y 3 cores y utilizando el mismo $quantum$ para cada uno de los mismos.\\
+\indent Para corroborar que el comportamiento era el deseado, nos solicitaron 1 lotes de tareas compuestos por tareas
+del tipo $taskConsola$ y $taskCpu$, trabajando con 1 cores y utilizando distintos $quantum$ para cada uno de los mismos.\\
 
-Nuestro primer lote de tareas fue el siguiente:
+El lote de tareas fue el siguiente:
 \begin{verbatim}
-                                     TaskCPU 70
-                                     TaskConsola 2 4 5
-                                     TaskCPU 40
-                                     TaskConsola 3 2 3
-                                     TaskCPU 30
+                                   *3 TaskCPU 50
+                                   *2 TaskConsola 5 3 3
 \end{verbatim}
 
 Obteniendo los siguientes resultados:
@@ -103,59 +100,24 @@ Obteniendo los siguientes resultados:
 \begin{center}
 
     
-	\includegraphics[width=450pt]{./EJ4_RR/ejercicio4-1nucleo.png}
-	{$Lote 1$ - Scheduler RR - 1 core}	
+	\includegraphics[width=450pt]{./Test/ej5_2.png}
+	{$Lote 1$ - Scheduler RR - 1 core - 2 quantum}	
  
 \end{center}
 
+\begin{center}
+  	\includegraphics[width=450pt]{./Test/ej5_10.png}
+	  {$Lote 1$ - Scheduler RR - 1 core - 10 quantum}	
+\end{center}
 
-\indent Con esta simulación, trabajamos con 2 ticks de cambio de contexto.\\
-\\
+\begin{center}
+  	\includegraphics[width=450pt]{./Test/ej5_50.png}
+	  {$Lote 1$ - Scheduler RR - 1 core - 50 quantum}	
+\end{center}
+
 \indent Se puede observar el cambio de tareas cíclico tanto porque terminaron su quantum o porque se bloquearon.\\
 
-\begin{center}
-  	\includegraphics[width=450pt]{./EJ4_RR/ejercicio4-2nucleo.png}
-	  {$Lote 1$ - Scheduler RR - 2 core}	
-\end{center}
 
-\begin{center}
-  	\includegraphics[width=450pt]{./EJ4_RR/ejercicio4-3nucleo.png}
-	  {$Lote 1$ - Scheduler RR - 3 core}	
-\end{center}
-
-\indent Es notorio, ademas del la ejecuciòn circular de las tareas, un cierto paralelismo al estar trabajando con
-2 o 3 cores.\\
-
-\indent Luego, de esta simulación probamos con un lote con tareas que se bloqueen por más tiempo:
- \begin{verbatim}
-                                     TaskCPU 70
-                                     TaskConsola 5 6 7
-                                     TaskCPU 40
-                                     TaskConsola 10 9 8
-                                     TaskCPU 30
- \end{verbatim}
-
-\indent Manteniendo la misma cantidad de tick para cambio de contexto y core. También, nos parecio prudente, mantener
-los mismos valores de $quantum$ obteniendo los siguientes gráficos:
-
-\begin{center}
-    	\includegraphics[width=450pt]{./EJ4_RR/ejercicio4-2lote1nucleo.png}
-	{$Lote 2$ - Scheduler RR - 1 core}	
- \end{center}
-
- \begin{center}
-    	\includegraphics[width=450pt]{./EJ4_RR/ejercicio4-2lote2nucleo.png}
-	{$Lote 2$ - Scheduler RR - 2 core}	
- \end{center}
- 
- \begin{center}
-    	\includegraphics[width=450pt]{./EJ4_RR/ejercicio4-2lote3nucleo.png}
-	{$Lote 2$ - Scheduler RR - 3 core}	
- \end{center}
-
- \indent Con este lote, además de lo observado anteriormente pudimos ver que, al tener una tarea bloqueada
- por un largo tiempo, el scheduler directamente la ignora.\\
- 
 \indent Luego de estos experimentos pudimos observar ciertos puntos del comportamiento del Round-Robin:\\
 \begin{itemize}
 \item  Carácter circular del algoritmo.
