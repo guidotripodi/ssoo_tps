@@ -2,19 +2,116 @@
 #include <queue>
 #include "sched_no_mistery.h"
 #include "basesched.h"
+#include <iostream>
+#include <stdio.h>
 
 using namespace std;
 
-SchedNoMistery::SchedNoMistery(vector<int> argn) {  
-	for(int i = 0; i < size(argn); i++)
+
+SchedNoMistery::SchedNoMistery(vector<int> argn) {
+	printf("hola %s\n");
+	// Mistery recibe la cantidad de quantum por parámetro
+	contQuantumPasados = 0;
+	quantum.push_back(1);
+	for (int i = 0; i < argn.size()-1 ; i++){
+		quantum.push_back(argn[i]);
+	}
 }
 
-void SchedNoMistery::load(int pid) {  
+
+SchedNoMistery::~SchedNoMistery() {
+}
+
+
+void SchedNoMistery::load(int pid) {
+	printf("hola %s\n");
+	
+	if (contQuantumPasados != 0){
+		int primerQuantum = 0; // Si ya corrio algun quantum se lo contabiliza para ser sumado a la nueva tarea ingresada
+		for (int i = 0; i < contQuantumPasados; ++i){
+			if (i > quantum.size()){
+				primerQuantum = primerQuantum + quantum.back(); // Si el contador es mayor a la lista de quantum sumo siempre el ultimo
+			}else{
+				primerQuantum = primerQuantum + quantum[i];
+			}
+		}
+		pid_quantum.insert(pair<int, int> (pid,primerQuantum));
+		
+	}else{
+		pid_quantum.insert(pair<int, int> (pid, quantum[0]));
+	}	
 	q.push(pid); // llegó una tarea nueva
 }
 
-void SchedNoMistery::unblock(int pid) {  
+void SchedNoMistery::unblock(int pid) {
+	//bloqueados.remove(pid);
+	desbloqueados.push(pid);
 }
 
-int SchedNoMistery::tick(int cpu, const enum Motivo m) {  
+int SchedNoMistery::tick(int cpu, const enum Motivo m) {
+	int sig;
+
+	switch (m) {
+		case EXIT:
+			return next(cpu);
+			break;
+		case BLOCK:
+		//	bloqueados.push(current_pid(cpu));
+			return next(cpu);
+			break;
+		case TICK:
+			if (current_pid(cpu) == IDLE_TASK) {
+				if (!q.empty()) {
+					sig = q.front(); q.pop();
+					pidInicial = sig;
+					quantumActual = (pid_quantum.find(current_pid(cpu)))->second;
+					return sig;
+				} else {
+					return IDLE_TASK;
+				}
+			} else {
+				quantumActual--;
+				if (quantumActual == 0) {
+					q.push(current_pid(cpu));
+					//if (quantumDeTareas[current_pid(cpu)].size() > 1)	{
+				//		quantumDeTareas[current_pid(cpu)].pop();
+				//	}
+				//	quantumActual = quantumDeTareas[q.front()].front();
+					if (q.front() == pidInicial) {
+						contQuantumPasados++;
+						if (contQuantumPasados < quantum.size()-1){
+							quantumActual = quantum[contQuantumPasados];
+						}else{
+							quantumActual = quantum.back();
+						}
+					}else{
+						quantumActual = quantum[contQuantumPasados];
+					}
+					sig = q.front(); q.pop();
+					return sig;
+				} else {
+					return current_pid(cpu);
+
+				}
+			}
+			break;
+	}
+
+	
+}
+
+int SchedNoMistery::next(int cpu){
+	int pid ;
+	if (q.empty()){ 
+		pid= IDLE_TASK;  //no hay mas tareas -.-> idle_task
+	}else {
+		//quantumActual = quantumDeTareas[q.front()].front();
+		if (current_pid(cpu) == pidInicial)	{
+		 pidInicial = q.front();
+		}
+		pid = q.front();	//saco la tarea de la cola
+		q.pop();
+	} 
+	
+	return pid;
 }
