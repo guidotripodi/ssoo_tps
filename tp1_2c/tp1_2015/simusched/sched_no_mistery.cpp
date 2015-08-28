@@ -9,13 +9,14 @@ using namespace std;
 
 
 SchedNoMistery::SchedNoMistery(vector<int> argn) {
-	printf("hola %s\n");
+	//printf("hola %s\n");
 	// Mistery recibe la cantidad de quantum por parámetro
 	contQuantumPasados = 0;
 	quantum.push_back(1);
-	for (int i = 0; i < argn.size()-1 ; i++){
+	for (int i = 0; i < argn.size() ; i++){
 		quantum.push_back(argn[i]);
 	}
+	quantumActual = 1;
 }
 
 
@@ -24,7 +25,7 @@ SchedNoMistery::~SchedNoMistery() {
 
 
 void SchedNoMistery::load(int pid) {
-	printf("hola %s\n");
+//	printf("hola %s\n");
 	
 	if (contQuantumPasados != 0){
 		int primerQuantum = 0; // Si ya corrio algun quantum se lo contabiliza para ser sumado a la nueva tarea ingresada
@@ -38,6 +39,7 @@ void SchedNoMistery::load(int pid) {
 		pid_quantum.insert(pair<int, int> (pid,primerQuantum));
 		
 	}else{
+	//	printf("quantum %d\n", quantum);
 		pid_quantum.insert(pair<int, int> (pid, quantum[0]));
 	}	
 	q.push(pid); // llegó una tarea nueva
@@ -72,6 +74,7 @@ int SchedNoMistery::tick(int cpu, const enum Motivo m) {
 			} else {
 				quantumActual--;
 				if (quantumActual == 0) {
+					printf("Valor pid %d\n",current_pid(cpu));
 					q.push(current_pid(cpu));
 					//if (quantumDeTareas[current_pid(cpu)].size() > 1)	{
 				//		quantumDeTareas[current_pid(cpu)].pop();
