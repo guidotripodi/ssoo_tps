@@ -9,14 +9,15 @@ using namespace std;
 
 
 SchedNoMistery::SchedNoMistery(vector<int> argn) {
-	//printf("hola %s\n");
+
 	// Mistery recibe la cantidad de quantum por parámetro
 	contQuantumPasados = 0;
 	quantum.push_back(1);
 	for (int i = 0; i < argn.size() ; i++){
-		quantum.push_back(argn[i]);
+		quantum.push_back(argn[i+1]);
+
 	}
-	quantumActual = 1;
+
 }
 
 
@@ -25,24 +26,38 @@ SchedNoMistery::~SchedNoMistery() {
 
 
 void SchedNoMistery::load(int pid) {
-//	printf("hola %s\n");
+
 	
 	if (contQuantumPasados != 0){
+		
 		int primerQuantum = 0; // Si ya corrio algun quantum se lo contabiliza para ser sumado a la nueva tarea ingresada
 		for (int i = 0; i < contQuantumPasados; ++i){
 			if (i > quantum.size()){
 				primerQuantum = primerQuantum + quantum.back(); // Si el contador es mayor a la lista de quantum sumo siempre el ultimo
+		
 			}else{
 				primerQuantum = primerQuantum + quantum[i];
+		
 			}
 		}
 		pid_quantum.insert(pair<int, int> (pid,primerQuantum));
+
+		int valorCola = q.size();
+		std::queue<int> colaAux;
+		colaAux.push(pid);
+		for (int i = 0; i < valorCola; ++i)	{
+			colaAux.push(q.front());
+			q.pop();
+		}
+		for (int i = 0; i < valorCola+1; ++i)	{
+			q.push(colaAux.front());
+			colaAux.pop();
+		}
 		
 	}else{
-	//	printf("quantum %d\n", quantum);
 		pid_quantum.insert(pair<int, int> (pid, quantum[0]));
+		q.push(pid); // llegó una tarea nueva
 	}	
-	q.push(pid); // llegó una tarea nueva
 }
 
 void SchedNoMistery::unblock(int pid) {
@@ -58,7 +73,6 @@ int SchedNoMistery::tick(int cpu, const enum Motivo m) {
 			return next(cpu);
 			break;
 		case BLOCK:
-		//	bloqueados.push(current_pid(cpu));
 			return next(cpu);
 			break;
 		case TICK:
@@ -66,7 +80,7 @@ int SchedNoMistery::tick(int cpu, const enum Motivo m) {
 				if (!q.empty()) {
 					sig = q.front(); q.pop();
 					pidInicial = sig;
-					quantumActual = (pid_quantum.find(current_pid(cpu)))->second;
+					quantumActual = (pid_quantum.find(sig))->second;
 					return sig;
 				} else {
 					return IDLE_TASK;
@@ -74,21 +88,27 @@ int SchedNoMistery::tick(int cpu, const enum Motivo m) {
 			} else {
 				quantumActual--;
 				if (quantumActual == 0) {
-					printf("Valor pid %d\n",current_pid(cpu));
 					q.push(current_pid(cpu));
-					//if (quantumDeTareas[current_pid(cpu)].size() > 1)	{
-				//		quantumDeTareas[current_pid(cpu)].pop();
-				//	}
-				//	quantumActual = quantumDeTareas[q.front()].front();
 					if (q.front() == pidInicial) {
-						contQuantumPasados++;
+						if (contQuantumPasados < quantum.size()-1)	{
+							contQuantumPasados++;
+						}
 						if (contQuantumPasados < quantum.size()-1){
 							quantumActual = quantum[contQuantumPasados];
 						}else{
 							quantumActual = quantum.back();
 						}
 					}else{
-						quantumActual = quantum[contQuantumPasados];
+
+						//ACA ME FIJO SI EL Q VA A VENIR ES UNO Q INGRESO DSP, SI YA INGRESO UNA VES VA CON EL QUANTUM COMUN
+						//POR ESO DSP LO ELIMINO Y LE MANDO QUANTUM SUB CERO GENERAL
+						if ((pid_quantum.find(q.front()))->second == quantum[0]) {
+							quantumActual = quantum[contQuantumPasados];
+						}else{
+							quantumActual = (pid_quantum.find(q.front()))->second;
+							pid_quantum.erase(q.front());
+							pid_quantum.insert(pair<int, int> (q.front(), quantum[0]));
+						}
 					}
 					sig = q.front(); q.pop();
 					return sig;
@@ -110,9 +130,19 @@ int SchedNoMistery::next(int cpu){
 	}else {
 		//quantumActual = quantumDeTareas[q.front()].front();
 		if (current_pid(cpu) == pidInicial)	{
-		 pidInicial = q.front();
+			if (contQuantumPasados < quantum.size()-1)	{
+					contQuantumPasados++;
+			}
+		 	pidInicial = q.front();
 		}
 		pid = q.front();	//saco la tarea de la cola
+		if ((pid_quantum.find(pid))->second == quantum[0]) {
+							quantumActual = quantum[contQuantumPasados];
+						}else{
+							quantumActual = (pid_quantum.find(pid))->second;
+							pid_quantum.erase(pid);
+							pid_quantum.insert(pair<int, int> (pid, quantum[0]));
+						}
 		q.pop();
 	} 
 	
