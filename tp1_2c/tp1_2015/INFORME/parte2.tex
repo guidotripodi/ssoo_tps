@@ -16,9 +16,16 @@ time y el tiempo total de ejecucion de las cinco tareas para cada quantum.
 \item \textbf{Ejercicio 6} Grafique el mismo lote de tareas del ejercicio anterior para el scheduler FCFS.
 Haciendo referencia a lo que se observa en los graficos de este ejercicio y el anterior, explique
 las diferencias entre un scheduler Round-Robin y un FCFS.
-\item \textbf{Ejercicio 7} Grafique el mismo lote de tareas del ejercicio anterior para el scheduler FCFS.
-Haciendo referencia a lo que se observa en los graficos de este ejercicio y el anterior, explique
-las diferencias entre un scheduler Round-Robin y un FCFS.
+\item \textbf{Ejercicio 7}El scheduler SchedMistery fue creado por docentes investigadores de nuestra
+materia y ha sido destacado en la ultima publicacion de ACM - SIGOPS, Operating Systems
+Review. Desde entonces, numerosos investigadores de todo el mundo nos han contactado para
+pedirnos su codigo fuente. Sin embargo, su codigo no aparece en ninguno de los repositorios
+de la materia y nadie parece recordar quienes habıan estado detras de su implementacion.
+Se les pide experimentar con dicho scheduler (aprovechando que hemos conseguido el codi-
+go objeto) y replicar su funcionamiento en SchedNoMistery. Graficar como maximo tres lotes
+de tareas utilizados en los experiementos y explicar en cada uno por separado que caracterısti-
+cas de SchedMistery identificaron con ese lote. Nota: El scheduler funciona para un solo
+core y toma uno o mas argumentos numericos.
 \item \textbf{Ejercicio 8} Implemente un scheduler Round-Robin que no permita la migracion de procesos
 entre nucleos (SchedRR2). La asignación de CPU se debe realizar en el momento en que se produce la carga 
 de un proceso (load). El nucleo correspondiente a un nuevo proceso sera aquel
@@ -66,8 +73,6 @@ señal de unblock, la tarea desalojada regresará al final de la cola global.
 
 
 \subsubsection[Resolución Ejercicio 5]{Ejercicio 5}
-
-EN ESTE PUNTO SIRVE TODO LO ESCRITO SOLO HAY Q CAMBIAR GRAFICOS!
 
 \indent El algoritmo de scheduler \textbf{Round-Robin} tiene como caracter\'istica asignar a todas las tareas 
 un determinado tiempo m\'aximo de procesamiento, a esto se lo llama $quantum$. \\
@@ -154,9 +159,67 @@ Obteniendo los siguientes resultados:
 
 \subsubsection[Resolución Ejercicio 5]{Ejercicio 7}
 
-\subsubsection[Resolución Ejercicio 8]{Ejercicio 8}
+\indent En este punto se nos solicito experimentar con el codigo objeto de un SchedMistery y a partir de los mismos, realizar
+una replica del mismo.\\
 
-EN ESTE SOLO FALTARIA DECIR EL CASO REAL TRATANDO DE USAR NUESTRO LOTE YA HECHO
+A continuacion, expondremos tres experimentos de los cuales sacamos ciertas particularidades que presenta este Scheduler.\\
+
+Con un lote de tareas compuesto por:\\
+
+\begin{verbatim}
+ @5:
+TaskCPU 20
+@0:
+TaskCPU 7
+TaskConsola 5 2 2
+@:8
+TaskConsola 4 2 3
+\end{verbatim}
+
+Obteniendo lo siguiente:
+\begin{center}
+    	\includegraphics[width=450pt]{./Test/ej7_1.png}
+	{$Lote 1$ - Sched Mistery - 1 core - Quantum = 6}	
+ \end{center}
+ 
+De aqui, pudimos abstraer que, una tarea al bloquearse es desalojada y cuando la misma se desbloquea, el scheduler, le da
+una prioridad otorgandole quantum = 1 para que vuelva a correr y luego volver a encolarla en un orden ciclico similar al de Round-Robin.\\
+
+Con el siguiente lote:\\
+
+\begin{verbatim}
+              TaskCPU 20
+              TaskCPU 10
+              @20:
+              TaskCPU 15
+\end{verbatim}
+
+Obteniendo lo siguiente:\\
+\begin{center}
+    	\includegraphics[width=450pt]{./Test/ej7_3.png}
+	{$Lote 2$ - Sched Mistery - 1 core - Quantum = 5 3 2}	
+ \end{center}
+ 
+De aqui, pudimos observar, la existencia de una prioridad a tareas $mas$ $nuevas$, ya que al llegar la misma y estar ready, es
+la proxima a correr por el scheduler, y con un quantum igual a la sumatoria de los quantum ya pasados hasta el momento de ser cargada.\\
+Se puede apreciar tambien un orden ciclico del mismo, y luego de dar esta prioridad mencionada por unica vez, dicha tarea es encolada con un orden ciclico
+respetando el mismo quantum que el resto de las tareas.\\
+Ademas, se puede observar distintos valores de quantums, inicialmente todos con 1, y luego, por cada vuelta ciclica los mismos van cambiando dependiendo del valor recibido
+como parametro.(En nuestro experimento, por ej, los valores fueron 5 4 y 1)\\
+
+\indent En conclusion:\\
+
+\begin{itemize}
+ \item Se puede observar un caracter ciclico con posibilidad de varios quantums distintos, los cuales van cambiando
+ acorde a las vueltas ciclicas que da el scheduler.
+ \item Prioridad para tareas bloqueantes (al ser desbloqueada es la primera en cargar otorgandole quantum = 1)
+ \item Prioridad para tareas mas recientes (al llegar la misma y estar ready esta pasa a ser la proxima en correr con un quantum igual
+ a la sumatoria de los quantums ya transcurridos hasta el momento)
+\end{itemize}
+
+ 
+
+\subsubsection[Resolución Ejercicio 8]{Ejercicio 8}
 
 La idea principal de esta nueva versión de $Round-Robin$ se centraliza en que no permita migración entre
 cores, esto se basa principalmente en utilizar una cola para cada núcleo por separado, y en cada
@@ -189,99 +252,22 @@ Luego de realizar dicha implementación, en comparación al Round-Robin original
 las siguientes hipótesis:
 
 \begin{enumerate}
- \item Dados un mismo lote de tareas y una misma configuración del scheduler (mismos costo en cambio
-de contexto y quantum) un único núcleo de procesamiento, ambos algoritmos deben comportarse
-de la misma manera.
 \item Comportamiento menos eficiente en el RR2 con respecto al paralelismo, ya que al no permitir
 migración de nucleos este se pierde.
 \item Comportamiento más eficiente en el RR2 con lotes de tareas que se bloquean un gran numero
 de veces. Esto surge ya que el Round-Robin original, es mas proclive a realizar cambios de contexto con la posibilidad
 de darse un cambio de core.
 \end{enumerate}
-
-Por consiguiente, procederemos a demostrar lo conjeturado.\\
-
-Iniciando con nuestra primer conjetura:\\
-
-\textbf{Dados un mismo lote de tareas y una misma configuración del scheduler 
- (mismos costo en cambio de contexto y quantum)
-un único núcleo de procesamiento, ambos algoritmos deben comportarse
-de la misma manera.}\\
-
-Trabajando con el lote que mencionamos a continuación:
-    
-    \begin{verbatim}
-                                     TaskCPU 70
-                                     TaskConsola 2 4 5
-                                     TaskCPU 40
-                                     TaskConsola 3 2 3
-                                     TaskCPU 30
-    \end{verbatim}
-
-Utilizando un $quantum$ igual a 5 y un cambio de contexto igual a 1 obtuvimos 
-resultados muy marcados, viendose notoriamente lo que queremos demostrar.\\
-
-\begin{center}
-    	\includegraphics[width=450pt]{./EJ8_RR2/dif1corerr.png}
-	{$Lote 1$ - Round Robin - 1 core - Quantum = 5 - cambio de contexto = 1}	
- \end{center}
  
- \begin{center}
-    	\includegraphics[width=450pt]{./EJ8_RR2/dif1corerr2.png}
-	{$Lote 1$ - Round Robin 2 - 1 core - Quantum = 5 - cambio de contexto = 1}	
- \end{center}
-
-Continuando con un lote distinto para ser mas precisos:
-
- \begin{verbatim}
-                                     TaskCPU 70
-                                     TaskConsola 5 6 7
-                                     TaskCPU 40
-                                     TaskConsola 10 9 8
-                                     TaskCPU 30
- \end{verbatim}
- 
-Llegamos a lo siguiente:\\
-
- \begin{center}
-    	\includegraphics[width=450pt]{./EJ8_RR2/dif2corerr.png}
-	{$Lote 2$ - Round Robin - 1 core - Quantum = 10 - cambio de contexto = 5}	
- \end{center}
- 
- \begin{center}
-    	\includegraphics[width=450pt]{./EJ8_RR2/dif2corerr2.png}
-	{$Lote 2$ - Round Robin 2 - 1 core - Quantum = 10 - cambio de contexto = 5}	
- \end{center}
- 
- Viendose nuevamente, la igualdad que mencionamos. Hemos podido ver a su vez, que la única
- forma en la que los resultados sean distintos con el mismo lote seria modificando o la
- cantidad de $quantum$ o la unidad de cambio de contexto entre uno y otro.\\
- 
- Aqui, un ejémplo para mayor precisión:\\
- 
-  \begin{center}
-    	\includegraphics[width=450pt]{./EJ8_RR2/dif3corerr.png}
-	{$Lote 2$ - Round Robin - 1 core - Quantum = 10 - cambio de contexto = 5}	
- \end{center}
- 
- \begin{center}
-    	\includegraphics[width=450pt]{./EJ8_RR2/dif3corerr2.png}
-	{$Lote 2$ - Round Robin 2 - 1 core - Quantum = 10 - cambio de contexto = 10}	
- \end{center}
- 
- Concluimos entonces que, al trabajar con colas globales o no, utilizando un único núcleo y
- mismo lote quantum y cambio de contexto, ambos schedulers se comportan de la misma
- manera.\\
- 
- Procedemos a demostrar la segunda conjetura:\\
+ Procedemos a demostrar la primer conjetura:\\
  
  \textbf{Comportamiento menos eficiente en el RR2 con respecto al paralelismo, ya que al no permitir
 migración de núcleos este lo pierde}\\
 
-Para demostrar esta conjetura trabajamos con procesos que demanden mas uso del cpu como 
-lo son las $taskCPU$\\
+Un ejemplo de esto, en la vida real seria, estar corriendo testeos de software y al mismo tiempo analizando
+algoritmos de alta complejidad para demostraciones matematicas.\\
 
-Un ejemplo de los lotes utilizados fue el siguiente:\\
+Un ejemplo de los lotes utilizados que demuestra esto fue el siguiente:\\
 
 \begin{verbatim}
                                      TaskCPU 40
@@ -309,15 +295,15 @@ Obteniendo los siguientes datos relevantes:\\
  a cada core, cuando uno de los dos finaliza, este queda ocioso ya que no existe la
  posibilidad de migrar  procesos.\\
  
- Por ultimo, nuestra tercer y ultima conjetura:\\
+ Luego, el RR2 resulta beneficioso:
  
  \textbf{Comportamiento mas eficiente en el RR2 con lotes de tareas que se bloquean un gran numero
 de veces}
 
-Para esta conjetura, trabajamos con lotes de tareas que utilicen el CPU y se bloqueen muchas
-veces para poder demostrar la mejor performance del RR2.\\
+\indent Un ejemplo de esto, puede ser al estar corriendo un juego (en el cual siempre se esta interactuando con el teclado) y
+ademas estar corriendo algun software.\\
 
-A continuación un ejemplo, con el siguiente lote:
+Para esto,un lotes de tareas que ejemplifica lo dicho puede ser el siguiente:\\
 
 \begin{verbatim}
                                      TaskCPU 40

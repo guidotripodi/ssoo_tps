@@ -56,8 +56,6 @@ el pid correspondiente y un entero ciclos que es el valor random obtenido entre 
 
 \subsubsection[Resolución Ejercicio 2]{Ejercicio 2}
 
-CALCULAR LATENCIA!
-
 \indent Para este punto, utilizamos el siguiente lote de tareas:
 \begin{verbatim}
  
@@ -76,22 +74,40 @@ A continuación, los respectivos gráficos de mediciones.
 \vspace*{0.3cm} \vspace*{0.3cm}
   \begin{center}
  \includegraphics[scale=0.5]{./Test/ej2_1.png}
- { $Lote 1$ Scheduler FCFS - 1 core }
+ { $Grafico 1$ Scheduler FCFS - 1 core }
  \end{center}
   \vspace*{0.3cm}
-
-
+ 
+  
 \vspace*{0.3cm} \vspace*{0.3cm}
   \begin{center}
  \includegraphics[scale=0.5]{./Test/ej2_2.png}
- { $Lote 1$ Scheduler FCFS - 2 core }
+ { $Grafico 2$ Scheduler FCFS - 2 core }
  \end{center}
   \vspace*{0.3cm}
 
+A su vez, se nos solicito el calculo de la Latencia para cada una de las tareas basandonos en la 
+experimentacion con uno y dos cores.\\
 
-\indent Debido a las tareas de tipo TaskConsola, se observa que en los dos casos la duración 
-de cada bloqueo es distinta.\\
-\indent A modo de análisis, se puede observar por medio de los gráficos como aumenta el paralelismo a mayor cantidad de núcleos. 
+\textbf{Latencia:} Tiempo que demora una tarea en ejecutarse desde que la misma esta en estado $Ready$.\\
+
+\indent Para el grafico uno, los valores obtenidos para cada tarea fueron los siguientes:\\
+
+\begin{itemize}
+ \item Tarea 1: 5
+ \item Tarea 2: 109
+ \item Tarea 3: 193
+\end{itemize}
+
+\indent Para el grafico dos, los valores obtenidos para cada tarea fueron los siguientes:\\
+
+\begin{itemize}
+ \item Tarea 1: 4
+ \item Tarea 2: 4
+ \item Tarea 3: 88
+\end{itemize}
+
+\indent Se puede observar como aumenta el paralelismo a mayor cantidad de núcleos. 
 En este scheduler en particular, esto ayuda de gran manera al rendimiento del sistema, puesto que un núcleo podrá ejecutar otra tarea 
 recién cuando haya terminado la anterior. Las consecuencias de este comportamiento son visibles en los 2 graficos. Agregando un core más, 
 el tiempo que se tarda en ejecutar por completo todas las tareas de reduce casi a la mitad.\\
