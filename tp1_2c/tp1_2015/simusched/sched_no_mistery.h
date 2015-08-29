@@ -17,16 +17,19 @@ class SchedNoMistery : public SchedBase {
 
   private:
     int next(int cpu);
-    int contQuantumPasados;
-    std::queue<int> q;
-    int quantumActual;
-   // std::queue<int> bloqueados;
-    //std::vector< std::queue< int > > quantumDeTareas; //lista con los quantums de cada PID
-    std::queue<int> desbloqueados;
-    std::vector<int> quantum;
-   // std::vector<int> quantumRestantes;
-    std::map<int,int> pid_quantum;
-    int pidInicial;
+    bool sinTareas();
+   // int contQuantumPasados;
+    std::vector< std::queue<int> > quantumDeTareas; // las tareas que tienen que correr cada quantum
+    std::vector<int> quantum; // quantums por parametro
+    std::queue<int> tareaEntroTarde; // tarea que entro despues del tiempo 0
+    
+    int quantumActual; // que quantum hay que correr ahora
+
+    int quantumRestante; // quantum restante de la tarea actual
+    int quantumTarea; // quantum total de la tarea actual
+
+    std::queue<int> bloqueados;
+   
 
 
 };
