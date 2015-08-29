@@ -99,25 +99,7 @@ int SchedNoMistery::tick(int cpu, const enum Motivo m) {
 					}else{
 						q.push(current_pid(cpu));
 					}
-					
-					if (q.front() == pidInicial) {
-						if (contQuantumPasados < quantum.size()-1)	{
-							contQuantumPasados++;
-							quantumActual = quantum[contQuantumPasados];
-						}else{
-							quantumActual = quantum.back();
-						}
-					}else{
 
-						//ACA ME FIJO SI EL Q VA A VENIR ES UNO Q INGRESO DSP, SI YA INGRESO UNA VES VA CON EL QUANTUM COMUN
-						//POR ESO DSP LO ELIMINO Y LE MANDO QUANTUM SUB CERO GENERAL
-						if ((pid_quantum.find(q.front()))->second == quantum[0]) {
-							quantumActual = quantum[contQuantumPasados];
-						}else{
-							quantumActual = (pid_quantum.find(q.front()))->second;
-							pid_quantum.erase(q.front());
-							pid_quantum.insert(pair<int, int> (q.front(), quantum[0]));
-						}
 						if (!desbloqueados.empty())	{
 							quantumActual = 1;
 							sig = desbloqueados.front();
@@ -125,18 +107,31 @@ int SchedNoMistery::tick(int cpu, const enum Motivo m) {
 							return sig;
 						}
 
-					}
+					if (q.front() == pidInicial) {
+						if (contQuantumPasados < quantum.size()-1)	{
+							contQuantumPasados++;
+							quantumActual = quantum[contQuantumPasados];
+						}else{
+							quantumActual = quantum.back();
+						}
+					} 
+						if ((pid_quantum.find(q.front()))->second == quantum[0]) {
+							quantumActual = quantum[contQuantumPasados];
+						}else{
+							quantumActual = (pid_quantum.find(q.front()))->second;
+							pid_quantum.erase(q.front());
+							pid_quantum.insert(pair<int, int> (q.front(), quantum[0]));
+						}
+
 					sig = q.front(); q.pop();
 					return sig;
+
 				} else {
 					return current_pid(cpu);
-
 				}
 			}
 			break;
 	}
-
-	
 }
 
 int SchedNoMistery::next(int cpu){
@@ -144,16 +139,23 @@ int SchedNoMistery::next(int cpu){
 	if (q.empty()){ 
 		pid= IDLE_TASK;  //no hay mas tareas -.-> idle_task
 	}else {
-		//quantumActual = quantumDeTareas[q.front()].front();
 		if (current_pid(cpu) == pidInicial)	{
-			if (contQuantumPasados < quantum.size()-1)	{
+			/*if (contQuantumPasados < quantum.size()-1)	{
 					contQuantumPasados++;
 			}else{
 				quantumActual = quantum.back();
-			}
+			}*/
 		 	pidInicial = q.front();
 		}
+		if (!desbloqueados.empty())	{
+							quantumActual = 1;
+							pid = desbloqueados.front();
+							desbloqueados.pop();
+							return pid;
+						}
+		
 		pid = q.front();	//saco la tarea de la cola
+		
 		if ((pid_quantum.find(pid))->second == quantum[0]) {
 							quantumActual = quantum[contQuantumPasados];
 						}else{
@@ -161,8 +163,15 @@ int SchedNoMistery::next(int cpu){
 							pid_quantum.erase(pid);
 							pid_quantum.insert(pair<int, int> (pid, quantum[0]));
 						}
+		if (pid == pidInicial) {
+						if (contQuantumPasados < quantum.size()-1)	{
+							contQuantumPasados++;
+							quantumActual = quantum[contQuantumPasados];
+						}else{
+							quantumActual = quantum.back();
+						}
+					}
 		q.pop();
 	} 
-	
 	return pid;
 }
