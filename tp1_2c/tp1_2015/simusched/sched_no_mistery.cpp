@@ -85,6 +85,12 @@ int SchedNoMistery::tick(int cpu, const enum Motivo m) {
 					quantumActual = (pid_quantum.find(sig))->second;
 					return sig;
 				} else {
+					if (!desbloqueados.empty())	{
+						quantumActual = 1;
+						sig = desbloqueados.front();
+						desbloqueados.pop();
+						return sig;
+					}
 					return IDLE_TASK;
 				}
 			} else {
@@ -106,6 +112,13 @@ int SchedNoMistery::tick(int cpu, const enum Motivo m) {
 							desbloqueados.pop();
 							return sig;
 						}
+						if ((pid_quantum.find(q.front()))->second == quantum[0]) {
+							quantumActual = quantum[contQuantumPasados];
+						}else{
+							quantumActual = (pid_quantum.find(q.front()))->second;
+							pid_quantum.erase(q.front());
+							pid_quantum.insert(pair<int, int> (q.front(), quantum[0]));
+						}
 
 					if (q.front() == pidInicial) {
 						if (contQuantumPasados < quantum.size()-1)	{
@@ -115,13 +128,6 @@ int SchedNoMistery::tick(int cpu, const enum Motivo m) {
 							quantumActual = quantum.back();
 						}
 					} 
-						if ((pid_quantum.find(q.front()))->second == quantum[0]) {
-							quantumActual = quantum[contQuantumPasados];
-						}else{
-							quantumActual = (pid_quantum.find(q.front()))->second;
-							pid_quantum.erase(q.front());
-							pid_quantum.insert(pair<int, int> (q.front(), quantum[0]));
-						}
 
 					sig = q.front(); q.pop();
 					return sig;
@@ -136,16 +142,11 @@ int SchedNoMistery::tick(int cpu, const enum Motivo m) {
 
 int SchedNoMistery::next(int cpu){
 	int pid ;
-	if (q.empty()){ 
+	if (q.empty() && desbloqueados.empty()){ 
 		pid= IDLE_TASK;  //no hay mas tareas -.-> idle_task
 	}else {
 		if (current_pid(cpu) == pidInicial)	{
-			/*if (contQuantumPasados < quantum.size()-1)	{
-					contQuantumPasados++;
-			}else{
-				quantumActual = quantum.back();
-			}*/
-		 	pidInicial = q.front();
+			pidInicial = q.front();
 		}
 		if (!desbloqueados.empty())	{
 							quantumActual = 1;
