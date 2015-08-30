@@ -110,6 +110,32 @@ Obteniendo los siguientes resultados:
  
 \end{center}
 
+\indent Latencia:\
+\begin{itemize}
+ \item Tarea 1: 2
+ \item Tarea 2: 6
+ \item Tarea 3: 10
+ \item Tarea 4: 14
+ \item Tarea 5: 18
+ \item PROMEDIO: 10
+\end{itemize}
+\indent Waiting time:\
+\begin{itemize}
+ \item Tarea 1: 2
+ \item Tarea 2: 6
+ \item Tarea 3: 10
+ \item Tarea 4: 14
+ \item Tarea 5: 18
+\end{itemize}
+\indent Tiempo total de ejecuci\'{o}n:\
+\begin{itemize}
+ \item Tarea 1: 2
+ \item Tarea 2: 6
+ \item Tarea 3: 10
+ \item Tarea 4: 14
+ \item Tarea 5: 18
+\end{itemize}
+
 \begin{center}
   	\includegraphics[width=450pt]{./Test/ej5_10.png}
 	  {$Lote 1$ - Scheduler RR - 1 core - 10 quantum}	
@@ -152,17 +178,24 @@ Obteniendo los siguientes resultados:
 
 \indent A modo de analisis, hemos obtenido las siguientes conclusiones:\\
 
+
 \begin{itemize}
- \item 
+ \item Un scheduler FCFS corre una tarea hasta que esta termina a diferencia de uno Round-Robin 
+que las va intercambiando otorg\'{a}ndole un tiempo equitativo a cada tarea.
+\item Para que Round-Robin sea considerablemente mas eficiente que FCFS el quantum debe ser 
+lo suficientemente alto para no tenes altos valores de waiting-time durante los cambios de 
+contexto pero no demasiado alto sino se comporta igual que un scheduler FCFS.
+\item Si se da el caso anterior el scheduler Round-Robin es eficiente en t\'{e}rminos 
+de latencia en comparaci\'{o}n con FCFS.
 \end{itemize}
 
 
 \subsubsection[Resolución Ejercicio 5]{Ejercicio 7}
 
-\indent En este punto se nos solicito experimentar con el codigo objeto de un SchedMistery y a partir de los mismos, realizar
-una replica del mismo.\\
+\indent En este punto se nos solicit\'{o} experimentar con el c\'{o}digo objeto de un 
+SchedMistery y a partir de los mismos, realizar una r\'{e}plica del mismo.\\
 
-A continuacion, expondremos tres experimentos de los cuales sacamos ciertas particularidades que presenta este Scheduler.\\
+A continuacio\'{o}n, expondremos tres experimentos de los cuales sacamos ciertas particularidades que presenta este Scheduler.\\
 
 Con un lote de tareas compuesto por:\\
 
@@ -182,8 +215,8 @@ Obteniendo lo siguiente:
 	{$Lote 1$ - Sched Mistery - 1 core - Quantum = 6}	
  \end{center}
  
-De aqui, pudimos abstraer que, una tarea al bloquearse es desalojada y cuando la misma se desbloquea, el scheduler, le da
-una prioridad otorgandole quantum = 1 para que vuelva a correr y luego volver a encolarla en un orden ciclico similar al de Round-Robin.\\
+De aqu\'{\i}, pudimos abstraer que, una tarea al bloquearse es desalojada y cuando la misma se desbloquea, el scheduler, le da
+una prioridad otorg\'{a}ndole quantum = 1 para que vuelva a correr y luego volver a encolarla en un orden cclico similar al de Round-Robin.\\
 
 Con el siguiente lote:\\
 
@@ -200,20 +233,21 @@ Obteniendo lo siguiente:\\
 	{$Lote 2$ - Sched Mistery - 1 core - Quantum = 5 3 2}	
  \end{center}
  
-De aqui, pudimos observar, la existencia de una prioridad a tareas $mas$ $nuevas$, ya que al llegar la misma y estar ready, es
+De aqu\'{\i}, pudimos observar, la existencia de una prioridad a tareas $mas$ $nuevas$, ya que al llegar la misma y estar ready, es
 la proxima a correr por el scheduler, y con un quantum igual a la sumatoria de los quantum ya pasados hasta el momento de ser cargada.\\
-Se puede apreciar tambien un orden ciclico del mismo, y luego de dar esta prioridad mencionada por unica vez, dicha tarea es encolada con un orden ciclico
+Se puede apreciar tambie\'{e}n un orden ciclico del mismo, y luego de dar esta prioridad mencionada por \'{u}nica vez, dicha tarea es encolada con un orden c\'{\i}clico
 respetando el mismo quantum que el resto de las tareas.\\
-Ademas, se puede observar distintos valores de quantums, inicialmente todos con 1, y luego, por cada vuelta ciclica los mismos van cambiando dependiendo del valor recibido
-como parametro.(En nuestro experimento, por ej, los valores fueron 5 4 y 1)\\
+Adem\'{a}s, se puede observar distintos valores de quantums, inicialmente todos con 1, y luego, por cada vuelta c\'{\i}clica los mismos van cambiando dependiendo del valor recibido
+como par\'{a}metro.(En nuestro experimento, por ej, los valores fueron 5 3 y 2)\\
 
 \indent En conclusion:\\
 
+
 \begin{itemize}
- \item Se puede observar un caracter ciclico con posibilidad de varios quantums distintos, los cuales van cambiando
- acorde a las vueltas ciclicas que da el scheduler.
- \item Prioridad para tareas bloqueantes (al ser desbloqueada es la primera en cargar otorgandole quantum = 1)
- \item Prioridad para tareas mas recientes (al llegar la misma y estar ready esta pasa a ser la proxima en correr con un quantum igual
+ \item Se puede observar un caracter c\'{\i}clico con posibilidad de varios quantums distintos, los cuales van cambiando
+ acorde a las vueltas c\'{\i}clicas que da el scheduler.
+ \item Prioridad para tareas bloqueantes (al ser desbloqueada es la primera en cargar otorg\'{a}ndole quantum = 1)
+ \item Prioridad para tareas mas recientes (al llegar la misma y estar ready esta pasa a ser la pr\'{o}xima en correr con un quantum igual
  a la sumatoria de los quantums ya transcurridos hasta el momento)
 \end{itemize}
 
@@ -221,29 +255,29 @@ como parametro.(En nuestro experimento, por ej, los valores fueron 5 4 y 1)\\
 
 \subsubsection[Resolución Ejercicio 8]{Ejercicio 8}
 
-La idea principal de esta nueva versión de $Round-Robin$ se centraliza en que no permita migración entre
+La idea principal de esta nueva versi\'{o}n de $Round-Robin$ se centraliza en que no permita migraci\'{o}n entre
 cores, esto se basa principalmente en utilizar una cola para cada núcleo por separado, y en cada
-cola respectiva se encolaran las tareas que fueron asignadas inicialmente a cada nucleo.\\
+cola respectiva se encolar\'{a}n las tareas que fueron asignadas inicialmente a cada nucleo.\\
 Para desarrollar este tipo de algoritmo, el cual denominaremos $RR2$, utilizamos estructuras
 puntuales, enunciadas a continuación:\\
 \begin{itemize}
- \item Un vector $quantum$ y otro $quantumActual$, los cuales siguen cumpliendo la misma funcion que
+ \item Un vector $quantum$ y otro $quantumActual$, los cuales siguen cumpliendo la misma funci\'{o}n que
  en Round-Robin 1.
  \item Un vector de colas denominado $colas$, en el cual, en la posición $i$ encontraremos la cola correspondiente
  a ese núcleo de procesamiento.
- \item Un diccionario de $Bloqueados$, donde la clave contendra el número de core, y en definición
- la tareas bloqueadas de ese core. Esto nos beneficiara cuando haya que reubicarla en la cola de procesos ready.
+ \item Un diccionario de $Bloqueados$, donde la clave contendr\'{a} el número de core, y en definición
+ la tareas bloqueadas de ese core. Esto nos beneficiar\'{a} cuando haya que reubicarla en la cola de procesos ready.
  \item Un vector de enteros $cantidad$, que como la palabra lo define, tendrá en cada posición $i$ 
- la totalidad de las tareas, ya sea bloqueadas, activas o en estado ready que tiene asignado ese core, beneficiandonos
+ la totalidad de las tareas, ya sea bloqueadas, activas o en estado ready que tiene asignado ese core, benefici\'{a}ndonos
  la determinación del núcleo al que se le asignará la tarea al momento de cargarla.
 \end{itemize}
 Cuando se carga una tarea, previamente, se chequeará que core tiene menor cantidad de procesos totales asignados (
-aqui es donde el vector $cantidad$ entra en juego). Una vez que se obtiene este nucleo, se agrega 
+aqu\'{\i} es donde el vector $cantidad$ entra en juego). Una vez que se obtiene este n\'{u}cleo, se agrega 
 la tarea a la cola correspondiente y se actualiza la cantidad sumando una unidad.\\
 \indent Al bloquearse un proceso, se define una nueva entrada en el diccionario $bloqueados$ con el
-pid y el nucleo correspondiente. De esta forma, al desbloquearse, colocamos la tarea en la cola del core
+pid y el n\'{u}cleo correspondiente. De esta forma, al desbloquearse, colocamos la tarea en la cola del core
 correspondiente y eliminamos la entrada del diccionario. Así logramos resolver el inconveniente de la nula
-migración entre nucleos.\\
+migración entre n\'{u}cleos.\\
 \indent Finalmente, cuando una tarea finaliza, la quitamos y descontamos una unidad a la posición $i$ del vector
 $cantidad$. Esta es la única vez, en la cual se descuenta. Aunque una tarea se bloquee, la misma
 seguirá contando en el vector. De esta forma se cumplirá, que las tareas son asignadas a los cores
@@ -254,7 +288,7 @@ las siguientes hipótesis:
 \begin{enumerate}
 \item Comportamiento menos eficiente en el RR2 con respecto al paralelismo, ya que al no permitir
 migración de nucleos este se pierde.
-\item Comportamiento más eficiente en el RR2 con lotes de tareas que se bloquean un gran numero
+\item Comportamiento más eficiente en el RR2 con lotes de tareas que se bloquean un gran n\'{u}mero
 de veces. Esto surge ya que el Round-Robin original, es mas proclive a realizar cambios de contexto con la posibilidad
 de darse un cambio de core.
 \end{enumerate}
@@ -265,7 +299,7 @@ de darse un cambio de core.
 migración de núcleos este lo pierde}\\
 
 Un ejemplo de esto, en la vida real seria, estar corriendo testeos de software y al mismo tiempo analizando
-algoritmos de alta complejidad para demostraciones matematicas.\\
+algoritmos de alta complejidad para demostraciones matem\'{a}ticas.\\
 
 Un ejemplo de los lotes utilizados que demuestra esto fue el siguiente:\\
 
@@ -301,7 +335,7 @@ Obteniendo los siguientes datos relevantes:\\
 de veces}
 
 \indent Un ejemplo de esto, puede ser al estar corriendo un juego (en el cual siempre se esta interactuando con el teclado) y
-ademas estar corriendo algun software.\\
+adem\'{a}s estar corriendo algun software.\\
 
 Para esto,un lotes de tareas que ejemplifica lo dicho puede ser el siguiente:\\
 
@@ -332,9 +366,9 @@ Para esto,un lotes de tareas que ejemplifica lo dicho puede ser el siguiente:\\
  migración de tareas este empeora su performance en comparación al RR2 que no admite
  este tipo de migración es notorio la superioridad en relación a nuestra conjetura.\\
  
- Podemos concluir luego de estas demostraciones que, el Round-Robin original es ampliamente
+ Podemos concluir luego de estas demostraciones que, el Round-Robin original es \'{a}mpliamente
  superior desde el punto de vista de la performance que se obtiene al trabajar con tareas
- que demanden mucho uso del CPU, mientras que el RR2 es ampliamente mejor cuando se utilicen
+ que demanden mucho uso del CPU, mientras que el RR2 es \'{a}mpliamente mejor cuando se utilicen
  tareas que se bloqueen por un tiempo considerable.\\
  
 

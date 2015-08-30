@@ -3,8 +3,9 @@
 \begin{itemize}
  \item \textbf{Ejercicio 1 } Programar un tipo de tarea TaskConsola, que simulara una tarea interactiva.
 La tarea debe realizar n llamadas bloqueantes, cada una de una duracion al azar 1 entre bmin
-y bmax (inclusive). La tarea debe recibir tres parametros: n, bmin y bmax (en ese orden) que
-seran interpretados como los tres elementos del vector de enteros que recibe la funcion.
+y bmax (inclusive). La tarea debe recibir tres parametros: n, bmin y bmax (en ese orden)
+que seran interpretados como los tres elementos del vector de enteros que recibe la funcion.
+Explique la implementacion realizada y grafique un lote que utilice el nuevo tipo de tarea.
 \item \textbf{Ejercicio 2} Rolando, uno de los investigadores del departamento, utiliza su computadora
 para correr un algoritmo muy complejo que hace un uso intensivo de la CPU por 100 ciclos
 y no utiliza ninguna llamada bloqueante. Mientras corre su algoritmo suele poner su cancion
@@ -30,8 +31,8 @@ parametros diferentes y que corra con el scheduler FCFS.
 
 \subsubsection[Resolución Ejercicio 1]{Ejercicio 1}
 
-\indent Dada la simpleza del código, optamos por mostrar nuestra ximplementación, en vez de comentarlo detalladamente.\\
-\indent Realizamos un ciclo de i < params[0], donde utilizamos la función dada por la catedra, uso\_IO a la cual le pasamos
+\indent Dada la simpleza del código, optamos por mostrar nuestra implementación, en vez de comentarlo detalladamente.\\
+\indent Realizamos un ciclo de i \textless \ params[0], donde utilizamos la función dada por la catedra, uso\_IO a la cual le pasamos
 el pid correspondiente y un entero ciclos que es el valor random obtenido entre $bmin$ y $bmax$. Esa función uso\_IO simula una llamada bloqueante.
 \begin{center}
  \begin{verbatim}
@@ -53,6 +54,25 @@ el pid correspondiente y un entero ciclos que es el valor random obtenido entre 
                   } 
 
 \end{verbatim}
+
+\indent Como experimentacion utilizamos trabajamos con el siguiente lote:\\
+
+\begin{verbatim}
+                              TaskConsola 5 3 7
+                              TaskConsola 2 3 3
+                              TaskConsola 15 2 7
+\end{verbatim}
+
+De aqui, obtuvimos los siguientes resultados:\\
+
+\vspace*{0.3cm} \vspace*{0.3cm}
+  \begin{center}
+ \includegraphics[scale=0.5]{./Test/ej1.png}
+ { $Grafico 1$ Scheduler FCFS - 1 core }
+ \end{center}
+  \vspace*{0.3cm}
+
+
 
 \subsubsection[Resolución Ejercicio 2]{Ejercicio 2}
 
@@ -145,8 +165,25 @@ explicaremos ciertos puntos de la misma.\\
  Luego, utilizaremos un ciclo que irá desde 0 hasta el tamaño del vector y dependiendo el valor booleano, usará la funciones
  dadas por la catedra uso\_IO o uso\_CPU.\\
  
+ \indent El experimento realizado para este nuevo tipo de tarea fue el siguiente:\\
  
- ACA FALTARIA PROBAR UN LOTE DE TAREAS
+ Con un lote de tareas:\\
+ 
+ \begin{verbatim}
+                           TaskBatch 10 3
+                           TaskBatch 5 4
+                           TaskBatch 8 1
+ \end{verbatim}
+
+ Obtuvimos el siguiente diagrama:\\
+ 
+ \vspace*{0.3cm} \vspace*{0.3cm}
+  \begin{center}
+ \includegraphics[scale=0.5]{./Test/ej3.png}
+ { $Grafico 1$ Scheduler FCFS - 1 core }
+ \end{center}
+  \vspace*{0.3cm}
+ 
  
   \begin{center}
   \textbf{Conclusiones}

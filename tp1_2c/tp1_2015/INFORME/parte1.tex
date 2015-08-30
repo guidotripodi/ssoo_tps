@@ -32,7 +32,7 @@ parametros diferentes y que corra con el scheduler FCFS.
 \subsubsection[Resolución Ejercicio 1]{Ejercicio 1}
 
 \indent Dada la simpleza del código, optamos por mostrar nuestra implementación, en vez de comentarlo detalladamente.\\
-\indent Realizamos un ciclo de i < params[0], donde utilizamos la función dada por la catedra, uso\_IO a la cual le pasamos
+\indent Realizamos un ciclo de i \textless \ params[0], donde utilizamos la función dada por la catedra, uso\_IO a la cual le pasamos
 el pid correspondiente y un entero ciclos que es el valor random obtenido entre $bmin$ y $bmax$. Esa función uso\_IO simula una llamada bloqueante.
 \begin{center}
  \begin{verbatim}
@@ -114,7 +114,7 @@ experimentacion con uno y dos cores.\\
 \indent Para el grafico uno, los valores obtenidos para cada tarea fueron los siguientes:\\
 
 \begin{itemize}
- \item Tarea 1: 5
+ \item Tarea 1: 4
  \item Tarea 2: 109
  \item Tarea 3: 193
 \end{itemize}
@@ -129,8 +129,8 @@ experimentacion con uno y dos cores.\\
 
 \indent Se puede observar como aumenta el paralelismo a mayor cantidad de núcleos. 
 En este scheduler en particular, esto ayuda de gran manera al rendimiento del sistema, puesto que un núcleo podrá ejecutar otra tarea 
-recién cuando haya terminado la anterior. Las consecuencias de este comportamiento son visibles en los 2 graficos. Agregando un core más, 
-el tiempo que se tarda en ejecutar por completo todas las tareas de reduce casi a la mitad.\\
+recién cuando haya terminado la anterior. Las consecuencias de este comportamiento son visibles en los 2 graficos. Con un \'{u}nico core, 
+solo se puede correr una tarea por vez, en este experimento comparado con usar 2 cores el tiempo se duplica.\\
 
 \subsubsection[Resolución Ejercicio 3]{Ejercicio 3}
 
@@ -140,7 +140,6 @@ explicaremos ciertos puntos de la misma.\\
                        void TaskBatch(int pid, vector<int> params) {
                             int total_cpu = params[0];
                             int cant_bloqueos = params[1];
-                            srand(time(NULL));
                             vector<bool> uso = vector<bool>(total_cpu);
                             for(int i=0;i<(int)uso.size();i++) 
                                uso[i] = false;
@@ -160,7 +159,7 @@ explicaremos ciertos puntos de la misma.\\
                             }
  \end{verbatim}
 
- \indent Para este tipo de tarea, creamos un vector de tamaño igual a $total_cpu$ el cual tendrá bool, ya sea true o false
+ \indent Para este tipo de tarea, creamos un vector de tamaño igual a $total\_cpu$ el cual tendrá bool, ya sea true o false
  dependiendo del uso que se le de dentro de la tarea, ya sea uso\_IO o uso\_CPU. En caso de ser uso\_IO sera true, y sino false.\\
  Luego, utilizaremos un ciclo que irá desde 0 hasta el tamaño del vector y dependiendo el valor booleano, usará la funciones
  dadas por la catedra uso\_IO o uso\_CPU.\\

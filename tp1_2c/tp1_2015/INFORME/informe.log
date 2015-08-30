@@ -1,15 +1,13 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.23)  29 AUG 2015 17:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=latex 2015.8.30)  30 AUG 2015 14:26
 entering extended mode
- restricted \write18 enabled.
- %&-line parsing enabled.
 **informe.tex
-(./informe.tex
-LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 4 languages loaded.
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+(informe.tex
+LaTeX2e <2015/01/01> patch level 2
+Babel <3.9m> and hyphenation patterns for 69 languages loaded.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls"
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size10.clo"
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
 \c@section=\count80
@@ -23,22 +21,22 @@ File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in PDF mode is detected.
+Package ifpdf Info: pdfTeX in PDF mode is not detected.
 )
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
 Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \Gm@cnth=\count87
@@ -53,21 +51,22 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layouthoffset=\dimen109
 \Gm@layoutvoffset=\dimen110
 \Gm@dimlist=\toks15
-)
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-Package: inputenc 2008/03/30 v1.1d Input encoding file
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+Package: inputenc 2015/03/17 v1.2c Input encoding file
 \inpenc@prehook=\toks16
 \inpenc@posthook=\toks17
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
+File: utf8.def 2015/06/27 v1.1n UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu
-File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1enc.dfu"
+File: t1enc.dfu 2015/06/27 v1.1n UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
    defining Unicode char U+00AB (decimal 171)
@@ -216,8 +215,8 @@ File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu
-File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ot1enc.dfu"
+File: ot1enc.dfu 2015/06/27 v1.1n UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
    defining Unicode char U+00B8 (decimal 184)
@@ -247,8 +246,8 @@ File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu
-File: omsenc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omsenc.dfu"
+File: omsenc.dfu 2015/06/27 v1.1n UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
    defining Unicode char U+00B7 (decimal 183)
@@ -271,7 +270,7 @@ Now handling font encoding U ...
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
 ))
-(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\fancyhdr\fancyhdr.sty"
 \fancy@headwidth=\skip43
 \f@ncyO@elh=\skip44
 \f@ncyO@erh=\skip45
@@ -281,40 +280,32 @@ Now handling font encoding U ...
 \f@ncyO@erf=\skip49
 \f@ncyO@olf=\skip50
 \f@ncyO@orf=\skip51
-) (./lastpage.sty
+)
+(lastpage.sty
 Package: lastpage 1994/06/25 v0.1b LaTeX2e package for refs to last page number
  (JPG)
-) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2014/10/28 v1.0p Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
-File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
-Package graphics Info: Driver file: pdftex.def on input line 91.
+Package graphics Info: Driver file: dvips.def on input line 94.
 
-(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
-Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
-Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
-)
-\Gread@gobject=\count90
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\dvips.def"
+File: dvips.def 2014/10/14 v3.0j Driver-dependent file (DPC,SPQR)
 ))
 \Gin@req@height=\dimen111
 \Gin@req@width=\dimen112
 )
-(./informe.aux)
-\openout1 = `informe.aux'.
-
+(informe.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
 LaTeX Font Info:    ... okay on input line 29.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
@@ -329,9 +320,9 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
 LaTeX Font Info:    ... okay on input line 29.
 
 *geometry* driver: auto-detecting
-*geometry* detected driver: pdftex
+*geometry* detected driver: dvips
 *geometry* verbose mode - [ preamble ] result:
-* driver: pdftex
+* driver: dvips
 * paper: a4paper
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
@@ -362,97 +353,61 @@ LaTeX Font Info:    ... okay on input line 29.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count91
-\scratchdimen=\dimen113
-\scratchbox=\box26
-\nofMPsegments=\count92
-\nofMParguments=\count93
-\everyMPshowfont=\toks18
-\MPscratchCnt=\count94
-\MPscratchDim=\dimen114
-\MPnumerator=\count95
-\makeMPintoPDFobject=\count96
-\everyMPtoPDFconversion=\toks19
-) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
-)
 
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
-Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
-)
-Package pdftexcmds Info: LuaTeX not detected.
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
-)
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+! LaTeX Error: Cannot determine size of graphic in DC.png (no BoundingBox).
 
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.41 \includegraphics[height=2cm]{DC.png}
+                                         
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
-Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
-))
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+File: DC.png Graphic file (type eps)
+<DC.png>
 
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+! LaTeX Error: Cannot determine size of graphic in UBA.jpg (no BoundingBox).
 
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-)))
-Package grfext Info: Graphics extension search list:
-(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 452.
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.43 \includegraphics[height=2cm]{UBA.jpg}
+                                          
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
-e
-))
-<DC.png, id=1, 802.9197pt x 287.6346pt>
-File: DC.png Graphic file (type png)
- <use DC.png>
-Package pdftex.def Info: DC.png used on input line 41.
-(pdftex.def)             Requested size: 158.84137pt x 56.9055pt.
-
-<UBA.jpg, id=3, 233.4321pt x 233.9139pt>
-File: UBA.jpg Graphic file (type jpg)
- <use UBA.jpg>
-Package pdftex.def Info: UBA.jpg used on input line 43.
-(pdftex.def)             Requested size: 56.78708pt x 56.9055pt.
+File: UBA.jpg Graphic file (type eps)
+<UBA.jpg>
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 71.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 71.
  [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./DC.png> <./UBA.jpg>] (./
-informe.toc)
+] (informe.toc)
 \tf@toc=\write3
-\openout3 = `informe.toc'.
-
  [2]
 Underfull \hbox (badness 10000) in paragraph at lines 102--106
 
  []
 
-[3] (./parte1.tex
+[3] (parte1.tex
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 4.
- (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 4.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 35.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omlcmr.fd"
+File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 35.
 
 Overfull \hbox (9.02808pt too wide) in paragraph at lines 56--56
 []                              \OT1/cmtt/m/n/10 ciclos = rand() % (params[2] -
@@ -469,43 +424,57 @@ Underfull \hbox (badness 10000) in paragraph at lines 66--67
 
  []
 
-[4] <./Test/ej1.png, id=28, 1030.85126pt x 157.58875pt>
-File: ./Test/ej1.png Graphic file (type png)
- <use ./Test/ej1.png>
-Package pdftex.def Info: ./Test/ej1.png used on input line 70.
-(pdftex.def)             Requested size: 515.42436pt x 78.79417pt.
+[4]
 
-Overfull \hbox (62.45647pt too wide) in paragraph at lines 70--72
- [] 
- []
+! LaTeX Error: Cannot determine size of graphic in ./Test/ej1.png (no BoundingB
+ox).
 
-<./Test/ej2_1.png, id=29, 1030.85126pt x 157.58875pt>
-File: ./Test/ej2_1.png Graphic file (type png)
- <use ./Test/ej2_1.png>
-Package pdftex.def Info: ./Test/ej2_1.png used on input line 96.
-(pdftex.def)             Requested size: 515.42436pt x 78.79417pt.
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.70  \includegraphics[scale=0.5]{./Test/ej1.png}
+                                                 
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
-Overfull \hbox (62.45647pt too wide) in paragraph at lines 96--98
- [] 
- []
+File: ./Test/ej1.png Graphic file (type eps)
+<./Test/ej1.png>
 
-<./Test/ej2_2.png, id=30, 1030.85126pt x 187.70125pt>
-File: ./Test/ej2_2.png Graphic file (type png)
- <use ./Test/ej2_2.png>
-Package pdftex.def Info: ./Test/ej2_2.png used on input line 104.
-(pdftex.def)             Requested size: 515.42436pt x 93.85039pt.
+! LaTeX Error: Cannot determine size of graphic in ./Test/ej2_1.png (no Boundin
+gBox).
 
-Overfull \hbox (62.45647pt too wide) in paragraph at lines 104--106
- [] 
- []
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.96 ...cludegraphics[scale=0.5]{./Test/ej2_1.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
+File: ./Test/ej2_1.png Graphic file (type eps)
+<./Test/ej2_1.png>
 
+! LaTeX Error: Cannot determine size of graphic in ./Test/ej2_2.png (no Boundin
+gBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.104 ...ludegraphics[scale=0.5]{./Test/ej2_2.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+File: ./Test/ej2_2.png Graphic file (type eps)
+<./Test/ej2_2.png>
 Underfull \hbox (badness 10000) in paragraph at lines 109--111
 
  []
 
-[5 <./Test/ej1.png (PNG copy)> <./Test/ej2_1.png (PNG copy)> <./Test/ej2_2.png 
-(PNG copy)>]
+
 Underfull \hbox (badness 10000) in paragraph at lines 112--113
 
  []
@@ -525,42 +494,46 @@ Underfull \hbox (badness 10000) in paragraph at lines 130--134
 
  []
 
-
+[5]
 Underfull \hbox (badness 10000) in paragraph at lines 137--139
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 163--167
-
- []
-
-[6]
-Underfull \hbox (badness 10000) in paragraph at lines 168--169
+Underfull \hbox (badness 10000) in paragraph at lines 162--166
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 170--171
+Underfull \hbox (badness 10000) in paragraph at lines 167--168
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 178--179
+Underfull \hbox (badness 10000) in paragraph at lines 169--170
 
  []
 
-<./Test/ej3.png, id=37, 1030.85126pt x 157.58875pt>
-File: ./Test/ej3.png Graphic file (type png)
- <use ./Test/ej3.png>
-Package pdftex.def Info: ./Test/ej3.png used on input line 182.
-(pdftex.def)             Requested size: 515.42436pt x 78.79417pt.
 
-Overfull \hbox (62.45647pt too wide) in paragraph at lines 182--184
- [] 
+Underfull \hbox (badness 10000) in paragraph at lines 177--178
+
  []
 
-) [7 <./Test/ej3.png (PNG copy)>] (./parte2.tex
+
+! LaTeX Error: Cannot determine size of graphic in ./Test/ej3.png (no BoundingB
+ox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.181  \includegraphics[scale=0.5]{./Test/ej3.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+File: ./Test/ej3.png Graphic file (type eps)
+<./Test/ej3.png> [6]) [7] (parte2.tex
 Underfull \hbox (badness 10000) in paragraph at lines 45--48
 
  []
@@ -580,218 +553,297 @@ Underfull \hbox (badness 10000) in paragraph at lines 94--96
 
  []
 
-<./Test/ej5_2.png, id=46, 1030.85126pt x 217.81375pt>
-File: ./Test/ej5_2.png Graphic file (type png)
- <use ./Test/ej5_2.png>
-Package pdftex.def Info: ./Test/ej5_2.png used on input line 108.
-(pdftex.def)             Requested size: 450.0pt x 95.08057pt.
 
-<./Test/ej5_10.png, id=47, 1030.85126pt x 217.81375pt>
-File: ./Test/ej5_10.png Graphic file (type png)
- <use ./Test/ej5_10.png>
-Package pdftex.def Info: ./Test/ej5_10.png used on input line 114.
-(pdftex.def)             Requested size: 450.0pt x 95.08057pt.
+! LaTeX Error: Cannot determine size of graphic in ./Test/ej5_2.png (no Boundin
+gBox).
 
-<./Test/ej5_50.png, id=48, 1030.85126pt x 217.81375pt>
-File: ./Test/ej5_50.png Graphic file (type png)
- <use ./Test/ej5_50.png>
-Package pdftex.def Info: ./Test/ej5_50.png used on input line 119.
-(pdftex.def)             Requested size: 450.0pt x 95.08057pt.
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.108 ...degraphics[width=450pt]{./Test/ej5_2.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
-[9 <./Test/ej5_2.png (PNG copy)> <./Test/ej5_10.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 123--124
+File: ./Test/ej5_2.png Graphic file (type eps)
+<./Test/ej5_2.png>
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
- []
+ [9]
+[10]
 
+! LaTeX Error: Cannot determine size of graphic in ./Test/ej5_10.png (no Boundi
+ngBox).
 
-Underfull \hbox (badness 10000) in paragraph at lines 126--127
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.140 ...egraphics[width=450pt]{./Test/ej5_10.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
- []
+File: ./Test/ej5_10.png Graphic file (type eps)
+<./Test/ej5_10.png>
 
+! LaTeX Error: Cannot determine size of graphic in ./Test/ej5_50.png (no Boundi
+ngBox).
 
-Underfull \hbox (badness 10000) in paragraph at lines 134--136
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.145 ...egraphics[width=450pt]{./Test/ej5_50.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
- []
+File: ./Test/ej5_50.png Graphic file (type eps)
+<./Test/ej5_50.png>
+Underfull \vbox (badness 4686) has occurred while \output is active []
 
-<./Test/ej6.png, id=52, 1030.85126pt x 217.81375pt>
-File: ./Test/ej6.png Graphic file (type png)
- <use ./Test/ej6.png>
-Package pdftex.def Info: ./Test/ej6.png used on input line 149.
-(pdftex.def)             Requested size: 450.0pt x 95.08057pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 153--154
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 162--164
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 165--166
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 167--168
-
- []
-
-[10 <./Test/ej5_50.png (PNG copy)> <./Test/ej6.png (PNG copy)>]
-<./Test/ej7_1.png, id=56, 1030.85126pt x 187.70125pt>
-File: ./Test/ej7_1.png Graphic file (type png)
- <use ./Test/ej7_1.png>
-Package pdftex.def Info: ./Test/ej7_1.png used on input line 181.
-(pdftex.def)             Requested size: 450.0pt x 81.93579pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 185--187
+ [11]
+Underfull \hbox (badness 10000) in paragraph at lines 149--150
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 188--189
+Underfull \hbox (badness 10000) in paragraph at lines 152--153
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 197--198
+Underfull \hbox (badness 10000) in paragraph at lines 160--162
 
  []
 
-<./Test/ej7_3.png, id=57, 1030.85126pt x 157.58875pt>
-File: ./Test/ej7_3.png Graphic file (type png)
- <use ./Test/ej7_3.png>
-Package pdftex.def Info: ./Test/ej7_3.png used on input line 199.
-(pdftex.def)             Requested size: 450.0pt x 68.791pt.
+[12]
 
-Underfull \hbox (badness 10000) in paragraph at lines 203--209
+! LaTeX Error: Cannot determine size of graphic in ./Test/ej6.png (no BoundingB
+ox).
 
- []
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.175 ...ludegraphics[width=450pt]{./Test/ej6.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 210--211
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 224--229
-
- []
-
-[11 <./Test/ej7_1.png (PNG copy)> <./Test/ej7_3.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 262--263
+File: ./Test/ej6.png Graphic file (type eps)
+<./Test/ej6.png>
+Underfull \hbox (badness 10000) in paragraph at lines 179--180
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 265--266
+Underfull \hbox (badness 10000) in paragraph at lines 195--197
+
+ []
+
+[13]
+Underfull \hbox (badness 10000) in paragraph at lines 198--199
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 267--269
+Underfull \hbox (badness 10000) in paragraph at lines 200--201
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 270--271
+! LaTeX Error: Cannot determine size of graphic in ./Test/ej7_1.png (no Boundin
+gBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.214 ...degraphics[width=450pt]{./Test/ej7_1.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+File: ./Test/ej7_1.png Graphic file (type eps)
+<./Test/ej7_1.png>
+Underfull \hbox (badness 10000) in paragraph at lines 218--220
+
+ []
+
+[14]
+Underfull \hbox (badness 10000) in paragraph at lines 221--222
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 280--281
-
- []
-
-<./EJ8_RR2/dif10corerr.png, id=61, 1030.85126pt x 247.92625pt>
-File: ./EJ8_RR2/dif10corerr.png Graphic file (type png)
-
-<use ./EJ8_RR2/dif10corerr.png>
-Package pdftex.def Info: ./EJ8_RR2/dif10corerr.png used on input line 283.
-(pdftex.def)             Requested size: 450.0pt x 108.22534pt.
- [12]
-<./EJ8_RR2/dif10corerr2.png, id=65, 1030.85126pt x 247.92625pt>
-File: ./EJ8_RR2/dif10corerr2.png Graphic file (type png)
-
-<use ./EJ8_RR2/dif10corerr2.png>
-Package pdftex.def Info: ./EJ8_RR2/dif10corerr2.png used on input line 288.
-(pdftex.def)             Requested size: 450.0pt x 108.22534pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 292--297
+Underfull \hbox (badness 10000) in paragraph at lines 230--231
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 303--305
+! LaTeX Error: Cannot determine size of graphic in ./Test/ej7_3.png (no Boundin
+gBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.232 ...degraphics[width=450pt]{./Test/ej7_3.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+File: ./Test/ej7_3.png Graphic file (type eps)
+<./Test/ej7_3.png>
+Underfull \hbox (badness 10000) in paragraph at lines 236--242
+
+ []
+
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 243--244
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 306--307
-
- []
-
-<./EJ8_RR2/dif5corerr.png, id=66, 1030.85126pt x 247.92625pt>
-File: ./EJ8_RR2/dif5corerr.png Graphic file (type png)
-
-<use ./EJ8_RR2/dif5corerr.png>
-Package pdftex.def Info: ./EJ8_RR2/dif5corerr.png used on input line 319.
-(pdftex.def)             Requested size: 450.0pt x 108.22534pt.
-
-<./EJ8_RR2/dif5corerr2.png, id=67, 1030.85126pt x 247.92625pt>
-File: ./EJ8_RR2/dif5corerr2.png Graphic file (type png)
-
-<use ./EJ8_RR2/dif5corerr2.png>
-Package pdftex.def Info: ./EJ8_RR2/dif5corerr2.png used on input line 324.
-(pdftex.def)             Requested size: 450.0pt x 108.22534pt.
-
-Underfull \vbox (badness 3088) has occurred while \output is active []
-
- [13 <./EJ8_RR2/dif10corerr.png (PNG copy)> <./EJ8_RR2/dif10corerr2.png (PNG co
-py)> <./EJ8_RR2/dif5corerr.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 328--334
+Underfull \hbox (badness 10000) in paragraph at lines 258--263
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 335--339
+Underfull \hbox (badness 10000) in paragraph at lines 296--297
 
  []
 
-) [14 <./EJ8_RR2/dif5corerr2.png (PNG copy)>]
+
+Underfull \hbox (badness 10000) in paragraph at lines 299--300
+
+ []
+
+[16]
+Underfull \hbox (badness 10000) in paragraph at lines 301--303
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 304--305
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 314--315
+
+ []
+
+
+! LaTeX Error: Cannot determine size of graphic in ./EJ8_RR2/dif10corerr.png (n
+o BoundingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.317 ...s[width=450pt]{./EJ8_RR2/dif10corerr.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+File: ./EJ8_RR2/dif10corerr.png Graphic file (type eps)
+<./EJ8_RR2/dif10corerr.png>
+
+! LaTeX Error: Cannot determine size of graphic in ./EJ8_RR2/dif10corerr2.png (
+no BoundingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.322 ...[width=450pt]{./EJ8_RR2/dif10corerr2.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+File: ./EJ8_RR2/dif10corerr2.png Graphic file (type eps)
+<./EJ8_RR2/dif10corerr2.png> [17]
+Underfull \hbox (badness 10000) in paragraph at lines 326--331
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 337--339
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 340--341
+
+ []
+
+
+! LaTeX Error: Cannot determine size of graphic in ./EJ8_RR2/dif5corerr.png (no
+ BoundingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.353 ...cs[width=450pt]{./EJ8_RR2/dif5corerr.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+File: ./EJ8_RR2/dif5corerr.png Graphic file (type eps)
+<./EJ8_RR2/dif5corerr.png> [18]
+
+! LaTeX Error: Cannot determine size of graphic in ./EJ8_RR2/dif5corerr2.png (n
+o BoundingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.358 ...s[width=450pt]{./EJ8_RR2/dif5corerr2.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+File: ./EJ8_RR2/dif5corerr2.png Graphic file (type eps)
+<./EJ8_RR2/dif5corerr2.png>
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [19]
+Underfull \hbox (badness 10000) in paragraph at lines 362--368
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 369--373
+
+ []
+
+) [20]
 Overfull \hbox (50.16331pt too wide) in paragraph at lines 136--138
 \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 https \OT1/cmr/m/n/10 : \OML/cmm/m/it/10 ==ev
 a:fing:edu:uy=pluginfile:php=\OT1/cmr/m/n/10 75120\OML/cmm/m/it/10 =mod[]resour
 ce=content=\OT1/cmr/m/n/10 1\OML/cmm/m/it/10 =\OT1/cmr/m/n/10 6 \OMS/cmsy/m/n/1
-0 ^^@ \OML/cmm/m/it/10 SO \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 Teo \OMS/cmsy/m
-/n/10 ^^@ \OML/cmm/m/it/10 Planificacion:pdf\OT1/cmr/m/n/10 )$ 
+0   \OML/cmm/m/it/10 SO \OMS/cmsy/m/n/10   \OML/cmm/m/it/10 Teo \OMS/cmsy/m/n/1
+0   \OML/cmm/m/it/10 Planificacion:pdf\OT1/cmr/m/n/10 )$ 
  []
 
-AED: lastpage setting LastPage [15] (./informe.aux) ) 
-Here is how much of TeX's memory you used:
- 2415 strings out of 494985
- 33435 string characters out of 6180356
- 102071 words of memory out of 5000000
- 5584 multiletter control sequences out of 15000+600000
- 5978 words of font info for 22 fonts, out of 8000000 for 9000
- 36 hyphenation exceptions out of 8191
- 37i,11n,43p,233b,364s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
-17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on informe.pdf (15 pages, 1066071 bytes).
-PDF statistics:
- 115 PDF objects out of 1000 (max. 8388607)
- 69 compressed objects within 1 object stream
- 0 named destinations out of 1000 (max. 500000)
- 81 words of extra memory for PDF output out of 10000 (max. 10000000)
+AED: lastpage setting LastPage [21] (informe.aux)
 
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 1464 strings out of 493674
+ 18546 string characters out of 3141556
+ 87823 words of memory out of 3000000
+ 4800 multiletter control sequences out of 15000+200000
+ 5978 words of font info for 22 fonts, out of 3000000 for 9000
+ 1025 hyphenation exceptions out of 8191
+ 27i,11n,43p,1622b,366s stack positions out of 5000i,500n,10000p,200000b,50000s
+
+Output written on informe.dvi (21 pages, 44044 bytes).

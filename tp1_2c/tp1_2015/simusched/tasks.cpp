@@ -46,7 +46,6 @@ void TaskConsola(int pid, vector<int> params) {
 void TaskBatch(int pid, vector<int> params) {
 	int total_cpu = params[0];
 	int cant_bloqueos = params[1];
-	srand(time(NULL));
 	
 	vector<bool> acciones = vector<bool>(total_cpu);
 	 // Me creo un vector que va a representar los momentos en los que se use el uso_CPU o uso_IO.

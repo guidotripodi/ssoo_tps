@@ -110,6 +110,32 @@ Obteniendo los siguientes resultados:
  
 \end{center}
 
+\indent Latencia:\
+\begin{itemize}
+ \item Tarea 1: 2
+ \item Tarea 2: 6
+ \item Tarea 3: 10
+ \item Tarea 4: 14
+ \item Tarea 5: 18
+ \item PROMEDIO: 10
+\end{itemize}
+\indent Waiting time:\
+\begin{itemize}
+ \item Tarea 1: 2
+ \item Tarea 2: 6
+ \item Tarea 3: 10
+ \item Tarea 4: 14
+ \item Tarea 5: 18
+\end{itemize}
+\indent Tiempo total de ejecuci\'{o}n:\
+\begin{itemize}
+ \item Tarea 1: 2
+ \item Tarea 2: 6
+ \item Tarea 3: 10
+ \item Tarea 4: 14
+ \item Tarea 5: 18
+\end{itemize}
+
 \begin{center}
   	\includegraphics[width=450pt]{./Test/ej5_10.png}
 	  {$Lote 1$ - Scheduler RR - 1 core - 10 quantum}	
@@ -152,14 +178,77 @@ Obteniendo los siguientes resultados:
 
 \indent A modo de analisis, hemos obtenido las siguientes conclusiones:\\
 
+
 \begin{itemize}
- \item 
+ \item Un scheduler FCFS corre una tarea hasta que esta termina a diferencia de uno Round-Robin 
+que las va intercambiando otorg\'{a}ndole un tiempo equitativo a cada tarea.
+\item Para que Round-Robin sea considerablemente mas eficiente que FCFS el quantum debe ser 
+lo suficientemente alto para no tenes altos valores de 
 \end{itemize}
 
 
 \subsubsection[Resolución Ejercicio 5]{Ejercicio 7}
 
-\indent En este punto se nos solicito investigar y experimentar con el codigo 
+\indent En este punto se nos solicito experimentar con el codigo objeto de un SchedMistery y a partir de los mismos, realizar
+una replica del mismo.\\
+
+A continuacion, expondremos tres experimentos de los cuales sacamos ciertas particularidades que presenta este Scheduler.\\
+
+Con un lote de tareas compuesto por:\\
+
+\begin{verbatim}
+ @5:
+TaskCPU 20
+@0:
+TaskCPU 7
+TaskConsola 5 2 2
+@:8
+TaskConsola 4 2 3
+\end{verbatim}
+
+Obteniendo lo siguiente:
+\begin{center}
+    	\includegraphics[width=450pt]{./Test/ej7_1.png}
+	{$Lote 1$ - Sched Mistery - 1 core - Quantum = 6}	
+ \end{center}
+ 
+De aqui, pudimos abstraer que, una tarea al bloquearse es desalojada y cuando la misma se desbloquea, el scheduler, le da
+una prioridad otorgandole quantum = 1 para que vuelva a correr y luego volver a encolarla en un orden ciclico similar al de Round-Robin.\\
+
+Con el siguiente lote:\\
+
+\begin{verbatim}
+              TaskCPU 20
+              TaskCPU 10
+              @20:
+              TaskCPU 15
+\end{verbatim}
+
+Obteniendo lo siguiente:\\
+\begin{center}
+    	\includegraphics[width=450pt]{./Test/ej7_3.png}
+	{$Lote 2$ - Sched Mistery - 1 core - Quantum = 5 3 2}	
+ \end{center}
+ 
+De aqui, pudimos observar, la existencia de una prioridad a tareas $mas$ $nuevas$, ya que al llegar la misma y estar ready, es
+la proxima a correr por el scheduler, y con un quantum igual a la sumatoria de los quantum ya pasados hasta el momento de ser cargada.\\
+Se puede apreciar tambien un orden ciclico del mismo, y luego de dar esta prioridad mencionada por unica vez, dicha tarea es encolada con un orden ciclico
+respetando el mismo quantum que el resto de las tareas.\\
+Ademas, se puede observar distintos valores de quantums, inicialmente todos con 1, y luego, por cada vuelta ciclica los mismos van cambiando dependiendo del valor recibido
+como parametro.(En nuestro experimento, por ej, los valores fueron 5 4 y 1)\\
+
+\indent En conclusion:\\
+
+
+\begin{itemize}
+ \item Se puede observar un caracter ciclico con posibilidad de varios quantums distintos, los cuales van cambiando
+ acorde a las vueltas ciclicas que da el scheduler.
+ \item Prioridad para tareas bloqueantes (al ser desbloqueada es la primera en cargar otorgandole quantum = 1)
+ \item Prioridad para tareas mas recientes (al llegar la misma y estar ready esta pasa a ser la proxima en correr con un quantum igual
+ a la sumatoria de los quantums ya transcurridos hasta el momento)
+\end{itemize}
+
+ 
 
 \subsubsection[Resolución Ejercicio 8]{Ejercicio 8}
 
