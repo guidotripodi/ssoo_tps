@@ -112,28 +112,30 @@ Obteniendo los siguientes resultados:
 
 \indent Latencia:\
 \begin{itemize}
- \item Tarea 1: 2
- \item Tarea 2: 6
- \item Tarea 3: 10
- \item Tarea 4: 14
- \item Tarea 5: 18
+ \item Tarea 0: 2
+ \item Tarea 1: 6
+ \item Tarea 2: 10
+ \item Tarea 3: 14
+ \item Tarea 4: 18
  \item PROMEDIO: 10
 \end{itemize}
 \indent Waiting time:\
 \begin{itemize}
- \item Tarea 1: 2
- \item Tarea 2: 6
- \item Tarea 3: 10
- \item Tarea 4: 14
- \item Tarea 5: 18
+ \item Tarea 0: 289
+ \item Tarea 1: 292
+ \item Tarea 2: 295
+ \item Tarea 3: 84
+ \item Tarea 4: 87
+ \item PROMEDIO: 209,4
 \end{itemize}
 \indent Tiempo total de ejecuci\'{o}n:\
 \begin{itemize}
- \item Tarea 1: 2
- \item Tarea 2: 6
- \item Tarea 3: 10
- \item Tarea 4: 14
- \item Tarea 5: 18
+ \item Tarea 0: 339
+ \item Tarea 1: 342
+ \item Tarea 2: 345
+ \item Tarea 3: 105
+ \item Tarea 4: 108
+ \item PROMEDIO: 247,8
 \end{itemize}
 
 \begin{center}
@@ -141,10 +143,77 @@ Obteniendo los siguientes resultados:
 	  {$Lote 1$ - Scheduler RR - 1 core - 10 quantum}	
 \end{center}
 
+\indent Latencia:\
+\begin{itemize}
+ \item Tarea 0: 2
+ \item Tarea 1: 14
+ \item Tarea 2: 26
+ \item Tarea 3: 38
+ \item Tarea 4: 41
+ \item PROMEDIO: 24,2
+\end{itemize}
+\indent Waiting time:\
+\begin{itemize}
+ \item Tarea 0: 162
+ \item Tarea 1: 165
+ \item Tarea 2: 198
+ \item Tarea 3: 201
+ \item Tarea 4: 204
+ \item PROMEDIO: 186
+\end{itemize}
+\indent Tiempo total de ejecuci\'{o}n:\
+\begin{itemize}
+ \item Tarea 0: 213
+ \item Tarea 1: 216
+ \item Tarea 2: 219
+ \item Tarea 3: 222
+ \item Tarea 4: 225
+ \item PROMEDIO: 219
+\end{itemize}
+
 \begin{center}
   	\includegraphics[width=450pt]{./Test/ej5_50.png}
 	  {$Lote 1$ - Scheduler RR - 1 core - 50 quantum}	
 \end{center}
+
+\indent Latencia:\
+\begin{itemize}
+ \item Tarea 0: 2
+ \item Tarea 1: 54
+ \item Tarea 2: 106
+ \item Tarea 3: 158
+ \item Tarea 4: 161
+ \item PROMEDIO: 96,2
+\end{itemize}
+\indent Waiting time:\
+\begin{itemize}
+ \item Tarea 0: 114
+ \item Tarea 1: 117
+ \item Tarea 2: 120
+ \item Tarea 3: 177
+ \item Tarea 4: 180
+ \item PROMEDIO: 141,6
+\end{itemize}
+\indent Tiempo total de ejecuci\'{o}n:\
+\begin{itemize}
+ \item Tarea 0: 165
+ \item Tarea 1: 168
+ \item Tarea 2: 171
+ \item Tarea 3: 198
+ \item Tarea 4: 201
+ \item PROMEDIO: 180,6
+\end{itemize}
+
+\indent
+\begin{itemize}
+ \item El caso con mejor latencia es el primer experimento, esto se debe al escaso quantum que se le otorga a cada tarea
+ permitiendoles ejecutar por primera vez r\'{a}pidamente.
+ \item El 3er experimento tiene el mejor waiting time, esto se debe a su alto quantum. Debido a que el quantum es muy elevado 
+ se desperdicia la menor cantidad de ticks de reloj en cambio de contexto.
+ \item Igual que en el caso anterior como el 3er experimento es el que menos ticks pierde por cambio de contexto debido al 
+ alto quantum, esta es la que menos tiempo de ejecuci\'{o}n tiene.
+\end{itemize}
+
 
 \indent Se puede observar el cambio de tareas cíclico tanto porque terminaron su quantum o porque se bloquearon.\\
 
