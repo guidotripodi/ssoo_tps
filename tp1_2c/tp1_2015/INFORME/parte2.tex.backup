@@ -7,7 +7,7 @@ metodos de la clase SchedRR en los archivos sched rr.cpp y sched rr.h. La implem
 recibe como primer parametro la cantidad de nucleos y a continuacion los valores de sus
 respectivos quantums. Debe utilizar una unica cola global, permitiendo ası la migracion de
 procesos entre nucleos.
-\item \textbf{Ejercicio 5}Disene un lote con 3 tareas de tipo TaskCPU de 50 ciclos y 2 de tipo TaskConsola
+\item \textbf{Ejercicio 5} Disene un lote con 3 tareas de tipo TaskCPU de 50 ciclos y 2 de tipo TaskConsola
 con 5 llamadas bloqueantes de 3 ciclos de duracion cada una. Ejecutar y graficar la simulacion
 utilizando el scheduler Round-Robin con quantum 2, 10 y 50.\\
 Con un cambio de contexto de 2 ciclos y un solo nucleo calcular la latencia, el waiting
@@ -16,7 +16,7 @@ time y el tiempo total de ejecucion de las cinco tareas para cada quantum.
 \item \textbf{Ejercicio 6} Grafique el mismo lote de tareas del ejercicio anterior para el scheduler FCFS.
 Haciendo referencia a lo que se observa en los graficos de este ejercicio y el anterior, explique
 las diferencias entre un scheduler Round-Robin y un FCFS.
-\item \textbf{Ejercicio 7}El scheduler SchedMistery fue creado por docentes investigadores de nuestra
+\item \textbf{Ejercicio 7} El scheduler SchedMistery fue creado por docentes investigadores de nuestra
 materia y ha sido destacado en la ultima publicacion de ACM - SIGOPS, Operating Systems
 Review. Desde entonces, numerosos investigadores de todo el mundo nos han contactado para
 pedirnos su codigo fuente. Sin embargo, su codigo no aparece en ninguno de los repositorios
@@ -203,6 +203,17 @@ Obteniendo los siguientes resultados:
  \item Tarea 4: 201
  \item PROMEDIO: 180,6
 \end{itemize}
+
+\indent
+\begin{itemize}
+ \item El caso con mejor latencia es el primer experimento, esto se debe al escaso quantum que se le otorga a cada tarea
+ permitiendoles ejecutar por primera vez r\'{a}pidamente.
+ \item El 3er experimento tiene el mejor waiting time, esto se debe a su alto quantum. Debido a que el quantum es muy elevado 
+ se desperdicia la menor cantidad de ticks de reloj en cambio de contexto.
+ \item Igual que en el caso anterior como el 3er experimento es el que menos ticks pierde por cambio de contexto debido al 
+ alto quantum, esta es la que menos tiempo de ejecuci\'{o}n tiene.
+\end{itemize}
+
 
 \indent Se puede observar el cambio de tareas cíclico tanto porque terminaron su quantum o porque se bloquearon.\\
 

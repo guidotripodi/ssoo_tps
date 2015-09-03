@@ -7,7 +7,7 @@ metodos de la clase SchedRR en los archivos sched rr.cpp y sched rr.h. La implem
 recibe como primer parametro la cantidad de nucleos y a continuacion los valores de sus
 respectivos quantums. Debe utilizar una unica cola global, permitiendo ası la migracion de
 procesos entre nucleos.
-\item \textbf{Ejercicio 5}Disene un lote con 3 tareas de tipo TaskCPU de 50 ciclos y 2 de tipo TaskConsola
+\item \textbf{Ejercicio 5} Disene un lote con 3 tareas de tipo TaskCPU de 50 ciclos y 2 de tipo TaskConsola
 con 5 llamadas bloqueantes de 3 ciclos de duracion cada una. Ejecutar y graficar la simulacion
 utilizando el scheduler Round-Robin con quantum 2, 10 y 50.\\
 Con un cambio de contexto de 2 ciclos y un solo nucleo calcular la latencia, el waiting
@@ -16,7 +16,7 @@ time y el tiempo total de ejecucion de las cinco tareas para cada quantum.
 \item \textbf{Ejercicio 6} Grafique el mismo lote de tareas del ejercicio anterior para el scheduler FCFS.
 Haciendo referencia a lo que se observa en los graficos de este ejercicio y el anterior, explique
 las diferencias entre un scheduler Round-Robin y un FCFS.
-\item \textbf{Ejercicio 7}El scheduler SchedMistery fue creado por docentes investigadores de nuestra
+\item \textbf{Ejercicio 7} El scheduler SchedMistery fue creado por docentes investigadores de nuestra
 materia y ha sido destacado en la ultima publicacion de ACM - SIGOPS, Operating Systems
 Review. Desde entonces, numerosos investigadores de todo el mundo nos han contactado para
 pedirnos su codigo fuente. Sin embargo, su codigo no aparece en ninguno de los repositorios
@@ -320,7 +320,39 @@ como par\'{a}metro.(En nuestro experimento, por ej, los valores fueron 5 3 y 2)\
  a la sumatoria de los quantums ya transcurridos hasta el momento)
 \end{itemize}
 
- 
+
+Para desarrollar la implementación del scheduler $No$ $Mistery$ y que este funcione de una forma correcta
+utilizamos una serie de estructuras puntuales. \\
+Las mismas son las siguientes:\\
+\begin{enumerate}
+ \item Una cola, la cual nombramos $q$, esta contiene los $PID$ de los procesos activos que no estan
+ bloqueados y en el tope de la misma se encuentra el próximo proceso a correr. Esta cola,
+ fue desarrollada para que cuando se desaloje un proceso por finalizar su $quantum$ la misma pase al final de
+ la cola y generando el ciclo acorde al comportamiento de este scheduler.
+ \item Un vector denominado $quantum$, este tiene en su elemento $i$ el quantum correspondiente a
+a la ronda ciclica que se esta corriendo en el momento. Inicializamos todos los elementos con los valores que recibimos
+como par\'ametro.
+\item Un cola nombrada como $desbloqueados$ y como el nombre lo indica, tendr\'a las tareas que se desbloquearon y estan
+listas para correr.
+\item Un map de pair<int, int> $pid_quantum$ aqui guardaremos en el primer elemento el pid y en el segundo el quantum con el que 
+iniciar\'a a correr, ya sea 1 o la sumatoria de quantums ya corridos hasta el momento que la tarea es cargada.
+desde que fue cargado en el core.
+\item Un map de pair<int, int> $pid_Tarde$ este nos indicara dependiendo el pid si la tarea fue cargada al iniciar el lote o si llego mas 
+tarde
+\item Un map de pair<int, int> $pid_Bloqueado$ este map nos dir\'a si la tarea estuvo bloqueada o no.
+\item Un entero $pidInicial$ en esta variable guardaremos el pid de la primer tarea de nuestro orden ciclico, esto
+nos servira para que en cada rueda al finalizar y le vuelva a tocar a el pid inicial aumentemos el contador $contQuantumPasados$
+y actualizemos el indice del vector $quantum$
+\item Un entero $contQuantumPasados$ que como mencionamos anteriormente nos da la cantidad de vueltas completas que se dieron
+\item Un entero $quantumActual$ en el cual almacenaremos el valor de quantum que tiene en el momento la tarea que esta corriendo
+\end{enumerate}
+
+ De esta manera, con estas estructuras nos permiten determinar para cada tarea, cuándo, y cuánto 
+de su quantum consumieron de forma que podamos desalojarla correctamente.\\
+
+Obteniendo las prioridades caracteristicas de dicho scheduler tanto para la tarea bloqueadas como para las que llegan "tarde".\\
+Con nuestro map de $pid_Tarde$ y $pid_Bloqueado$ podremos reordenar nuestra cola $q$ con la cual realizamos la ejecuci\'on ciclica de nuestro
+sched logrando el orden deseado y particular.\\
 
 \subsubsection[Resolución Ejercicio 8]{Ejercicio 8}
 

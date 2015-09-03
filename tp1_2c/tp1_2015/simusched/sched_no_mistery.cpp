@@ -10,9 +10,8 @@ using namespace std;
 
 SchedNoMistery::SchedNoMistery(vector<int> argn) {
 
-	// Mistery recibe la cantidad de quantum por parámetro
+	// Mistery recibe la cantidad de quantum por parámetro, inicializamos los quantum
 	contQuantumPasados = 0;
-	//quantum.push_back(1);
 	for (int i = 0; i < argn.size() ; i++){
 		quantum.push_back(argn[i]);
 
@@ -27,7 +26,7 @@ SchedNoMistery::~SchedNoMistery() {
 
 void SchedNoMistery::load(int pid) {
 
-	
+	//LLega una nueva tarea, dependiendo si llego tarde o no se le asigna el valor de quantum correspondiente
 	if (contQuantumPasados != 0){
 		
 		int primerQuantum = 0; // Si ya corrio algun quantum se lo contabiliza para ser sumado a la nueva tarea ingresada
@@ -41,7 +40,7 @@ void SchedNoMistery::load(int pid) {
 			}
 		}
 		pid_quantum.insert(pair<int, int> (pid,primerQuantum));
-
+		//lo inserto ordenado acorde a la prioridad 
 		int valorCola = q.size();
 		std::queue<int> colaAux;
 		colaAux.push(pid);
@@ -58,12 +57,12 @@ void SchedNoMistery::load(int pid) {
 	}else{
 		pid_quantum.insert(pair<int, int> (pid, quantum[0]));
 		pid_Tarde.insert(pair<int, int> (pid, 0));
-		q.push(pid); // llegó una tarea nueva
+		q.push(pid); 
 	}	
 }
 
 void SchedNoMistery::unblock(int pid) {
-	//bloqueados.remove(pid);
+	//la tarea se desbloqueo, la pusheo a la cola para q vuelva a correr
 	desbloqueados.push(pid);
 }
 
@@ -78,6 +77,9 @@ int SchedNoMistery::tick(int cpu, const enum Motivo m) {
 			return next(cpu);
 			break;
 		case TICK:
+/*		llega un tick de reloj, chequeamos que esta corriendo en el cpu,
+		si es la idle vemos en nuestras colas si hay alguien listo para correr
+*/
 			if (current_pid(cpu) == IDLE_TASK) {
 				if (!q.empty()) {
 					sig = q.front(); q.pop();
@@ -94,6 +96,18 @@ int SchedNoMistery::tick(int cpu, const enum Motivo m) {
 					return IDLE_TASK;
 				}
 			} else {
+
+		/*Si no es la idle restamos quantum y chequeamos si se le termino el mismo
+		en caso de terminar, chequeamos si la tarea que acaba de correr era una q habia 
+		llegado tarde, si esto es correcto la reordenamos para q vuelva el orden ciclico correcto
+		(1º 2º 3º 4º....) luego, chequeeamos si hay alguien desbloqueado para correr primero (asignandole
+		el quantum correspondiente igual a 1) y luego
+		si hay alguien que llego tarde (asignandole el quantum correspondiente igual a la suma
+		de los quantum que ya corrieron) . Si no hay ninguna tarea en ninguna de estas dos situaciones
+		mandamos a correr la que esta primera en la cola q
+		A su vez, revisamos si la proxima tarea a correr es la primera de nuestro orden ciclico
+		sumamos uno a nuestro contador para mover el vector de quantum
+		*/		
 				quantumActual--;
 
 
@@ -141,6 +155,10 @@ int SchedNoMistery::tick(int cpu, const enum Motivo m) {
 }
 
 int SchedNoMistery::next(int cpu){
+	/*Aqui chequeamos si al finalizar la tarea o bloquearse si queda alguien para corerr 
+	o si va la idle, y ademas chequeamos si la tarea q se bloqueo o finalizo es la primera 
+	de nuestro orden ciclico, si es, guardamos en nuestro entero pidinicial el pid de la 
+	siguiente tarea*/
 	int pid ;
 	if (q.empty() && desbloqueados.empty()){ 
 		pid= IDLE_TASK;  //no hay mas tareas -.-> idle_task
