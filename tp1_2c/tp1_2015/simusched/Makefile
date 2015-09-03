@@ -30,54 +30,105 @@ main_solo: main.cpp simu.h
 ej= main_solo simu.o basesched.o basetask.o tasks.o sched_fcfs.o simusched
 
 ej1: $(ej)
-	./simusched mistery3 1 1 1 SchedFCFS | ./graphsched.py >> fcfs1.png
+	mkdir Ejercicio1
+	./simusched ./Lotes/Ej1 1 1 1 SchedFCFS | ./graphsched.py >> ./Ejercicio1/TaskConsola.png
 
 cleanej1:
-	rm -f $(OBJS) $(MAIN) fcfs1.png
+	rm -f $(OBJS) $(MAIN) ./Ejercicio1/TaskConsola.png
+	rm -d -f ./Ejercicio1
 
 ej2: $(ej)
-	./simusched mistery3 1 1 1 SchedFCFS | ./graphsched.py >> fcfs1.png
+	mkdir Ejercicio2
+	./simusched ./Lotes/Ej2 1 4 1 SchedFCFS | ./graphsched.py >> ./Ejercicio2/fcfs1.png
+	./simusched ./Lotes/Ej2 2 4 1 SchedFCFS | ./graphsched.py >> ./Ejercicio2/fcfs2.png
+
 
 cleanej2:
-	rm -f $(OBJS) $(MAIN) fcfs1.png
+	rm -f $(OBJS) $(MAIN) ./Ejercicio2/fcfs1.png
+	rm -f ./Ejercicio2/fcfs2.png
+	rm -d -f ./Ejercicio2
 
 ej3: $(ej)
-	./simusched mistery3 1 1 1 SchedFCFS | ./graphsched.py >> fcfs1.png
+	mkdir Ejercicio3
+	./simusched ./Lotes/Ej3 1 1 1 SchedFCFS | ./graphsched.py >> ./Ejercicio3/TaskBatch.png
 
 cleanej3:
-	rm -f $(OBJS) $(MAIN) fcfs1.png
+	rm -f $(OBJS) $(MAIN) ./Ejercicio3/TaskBatch.png
+	rm -d -f ./Ejercicio3
 
-ej4: $(ej)
-	./simusched mistery3 1 1 1 SchedFCFS | ./graphsched.py >> fcfs1.png
+#ej4: $(ej)
+#	mkdir Ejercicio4
+#	./simusched ./Lotes/Ej4 1 1 1 SchedFCFS | ./graphsched.py >> ./Ejercicio4/fcfs1.png
 
-cleanej4:
-	rm -f $(OBJS) $(MAIN) fcfs1.png
+#cleanej4:
+#	rm -f $(OBJS) $(MAIN) ./Ejercicio4/fcfs1.png
 
 ej5: $(ej)
-	./simusched mistery3 1 1 1 SchedFCFS | ./graphsched.py >> fcfs1.png
+	mkdir Ejercicio5
+	./simusched ./Lotes/Ej5 1 2 1 SchedRR 2 | ./graphsched.py >> ./Ejercicio5/RR_Q2.png
+	./simusched ./Lotes/Ej5 1 2 1 SchedRR 10 | ./graphsched.py >> ./Ejercicio5/RR_Q10.png
+	./simusched ./Lotes/Ej5 1 2 1 SchedRR 50 | ./graphsched.py >> ./Ejercicio5/RR_Q50.png
 
 cleanej5:
-	rm -f $(OBJS) $(MAIN) fcfs1.png
+	rm -f $(OBJS) $(MAIN) ./Ejercicio5/RR_Q2.png
+	rm -f ./Ejercicio5/RR_Q10.png
+	rm -f ./Ejercicio5/RR_Q50.png
+	rm -d -f ./Ejercicio5
 
 ej6: $(ej)
-	./simusched mistery3 1 1 1 SchedFCFS | ./graphsched.py >> fcfs1.png
+	mkdir Ejercicio6
+	./simusched ./Lotes/Ej6 1 2 1 SchedFCFS | ./graphsched.py >> ./Ejercicio6/FCFS.png
 
 cleanej6:
-	rm -f $(OBJS) $(MAIN) fcfs1.png
+	rm -f $(OBJS) $(MAIN) ./Ejercicio6/FCFS.png
+	rm -d -f ./Ejercicio6
 
 ej7: $(ej)
-	./simusched mistery3 1 1 1 SchedNoMistery 5 4 2 | ./graphsched.py >> pruebamakemistery.png
+	mkdir Ejercicio7
+	./simusched ./Lotes/mistery1 1 1 1 SchedMistery 6 | ./graphsched.py >> ./Ejercicio7/mistery1.png
+	./simusched ./Lotes/mistery3 1 1 1 SchedMistery 5 3 2 | ./graphsched.py >> ./Ejercicio7/mistery2.png
 
 cleanej7:
-	rm -f $(OBJS) $(MAIN) fcfs1.png
-
+	rm -f $(OBJS) $(MAIN) ./Ejercicio7/mistery1.png
+	rm -f ./Ejercicio7/mistery2.png
+	rm -d -f ./Ejercicio7
 
 ej8: $(ej)
-	./simusched mistery3 1 1 1 SchedFCFS | ./graphsched.py >> fcfs1.png
+	mkdir Ejercicio8
+	./simusched ./Lotes/ej8lote2 2 1 1 SchedRR 5 5 | ./graphsched.py >> ./Ejercicio8/SchedRR1_1.png
+	./simusched ./Lotes/ej8lote2 2 1 1 SchedRR2 5 5 | ./graphsched.py >> ./Ejercicio8/SchedRR2_1.png
+	./simusched ./Lotes/ej8lote3 2 1 5 SchedRR 3 3 | ./graphsched.py >> ./Ejercicio8/SchedRR1_2.png
+	./simusched ./Lotes/ej8lote3 2 1 5 SchedRR2 3 3 | ./graphsched.py >> ./Ejercicio8/SchedRR2_2.png
 
 cleanej8:
-	rm -f $(OBJS) $(MAIN) fcfs1.png
-
+	rm -f $(OBJS) $(MAIN) ./Ejercicio8/SchedRR1_1.png
+	rm -f ./Ejercicio8/SchedRR2_1.png
+	rm -f ./Ejercicio8/SchedRR1_2.png
+	rm -f ./Ejercicio8/SchedRR2_2.png
+	rm -d -f ./Ejercicio8
 
 cleanTodosLosEjercicios:
-	rm -f $(OBJS) $(MAIN) fcfs1.png
+	rm -f $(OBJS) $(MAIN) ./Ejercicio1/TaskConsola.png
+	rm -f ./Ejercicio2/fcfs1.png
+	rm -f ./Ejercicio2/fcfs2.png
+	rm -f ./Ejercicio3/TaskBatch.png
+#	rm -f ./Ejercicio4/fcfs1.png
+	rm -f ./Ejercicio5/RR_Q2.png
+	rm -f ./Ejercicio5/RR_Q10.png
+	rm -f ./Ejercicio5/RR_Q50.png
+	rm -f ./Ejercicio6/FCFS.png
+	rm -f ./Ejercicio7/mistery1.png
+	rm -f ./Ejercicio7/mistery2.png
+	rm -f ./Ejercicio8/SchedRR1_1.png
+	rm -f ./Ejercicio8/SchedRR2_1.png
+	rm -f ./Ejercicio8/SchedRR1_2.png
+	rm -f ./Ejercicio8/SchedRR2_2.png
+
+	rm -d -f ./Ejercicio1
+	rm -d -f ./Ejercicio2
+	rm -d -f ./Ejercicio3
+#	rm -d -f ./Ejercicio4
+	rm -d -f ./Ejercicio5
+	rm -d -f ./Ejercicio6
+	rm -d -f ./Ejercicio7
+	rm -d -f ./Ejercicio8
