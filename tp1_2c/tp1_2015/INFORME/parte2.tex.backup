@@ -71,6 +71,17 @@ señal de unblock, la tarea desalojada regresará al final de la cola global.
 
 \end{itemize}
 
+\begin{center}
+
+    
+	\includegraphics[width=450pt]{./Test/Ej4.png}
+	{$Lote 1$ - Scheduler RR - 1 core - 5 quantum}	
+ 
+\end{center}
+
+Se puede ver en el gr\'{a}fico que cada 5 Ticks de reloj se cambia de tareas de manera c\'{\i}clica para mantener 
+el fairness lo mas posible con todas las tareas. Salvo cuando una tarea se bloquea que esta es desalojada inmediatamente 
+para no desperdiciar tiempo de computo esperando a que esta de desocupe.
 
 \subsubsection[Resolución Ejercicio 5]{Ejercicio 5}
 
@@ -230,7 +241,7 @@ Obteniendo los siguientes resultados:
 estén en condiciones de correr serán ejecutadas y ninguna será negada de tiempo de procesamiento.\\
 
 
-\subsubsection[Resolución Ejercicio 5]{Ejercicio 6}
+\subsubsection[Resolución Ejercicio 6]{Ejercicio 6}
 
 El lote de tareas solicitado fue el siguiente:
 \begin{verbatim}
@@ -259,7 +270,7 @@ de latencia en comparaci\'{o}n con FCFS.
 \end{itemize}
 
 
-\subsubsection[Resolución Ejercicio 5]{Ejercicio 7}
+\subsubsection[Resolución Ejercicio 7]{Ejercicio 7}
 
 \indent En este punto se nos solicit\'{o} experimentar con el c\'{o}digo objeto de un 
 SchedMistery y a partir de los mismos, realizar una r\'{e}plica del mismo.\\
@@ -320,7 +331,39 @@ como par\'{a}metro.(En nuestro experimento, por ej, los valores fueron 5 3 y 2)\
  a la sumatoria de los quantums ya transcurridos hasta el momento)
 \end{itemize}
 
- 
+
+Para desarrollar la implementación del scheduler $No$ $Mistery$ y que este funcione de una forma correcta
+utilizamos una serie de estructuras puntuales. \\
+Las mismas son las siguientes:\\
+\begin{enumerate}
+ \item Una cola, la cual nombramos $q$, esta contiene los $PID$ de los procesos activos que no estan
+ bloqueados y en el tope de la misma se encuentra el próximo proceso a correr. Esta cola,
+ fue desarrollada para que cuando se desaloje un proceso por finalizar su $quantum$ la misma pase al final de
+ la cola y generando el ciclo acorde al comportamiento de este scheduler.
+ \item Un vector denominado $quantum$, este tiene en su elemento $i$ el quantum correspondiente a
+a la ronda ciclica que se esta corriendo en el momento. Inicializamos todos los elementos con los valores que recibimos
+como par\'ametro.
+\item Un cola nombrada como $desbloqueados$ y como el nombre lo indica, tendr\'a las tareas que se desbloquearon y estan
+listas para correr.
+\item Un map de pair<int, int> $pid_quantum$ aqui guardaremos en el primer elemento el pid y en el segundo el quantum con el que 
+iniciar\'a a correr, ya sea 1 o la sumatoria de quantums ya corridos hasta el momento que la tarea es cargada.
+desde que fue cargado en el core.
+\item Un map de pair<int, int> $pid_Tarde$ este nos indicara dependiendo el pid si la tarea fue cargada al iniciar el lote o si llego mas 
+tarde
+\item Un map de pair<int, int> $pid_Bloqueado$ este map nos dir\'a si la tarea estuvo bloqueada o no.
+\item Un entero $pidInicial$ en esta variable guardaremos el pid de la primer tarea de nuestro orden ciclico, esto
+nos servira para que en cada rueda al finalizar y le vuelva a tocar a el pid inicial aumentemos el contador $contQuantumPasados$
+y actualizemos el indice del vector $quantum$
+\item Un entero $contQuantumPasados$ que como mencionamos anteriormente nos da la cantidad de vueltas completas que se dieron
+\item Un entero $quantumActual$ en el cual almacenaremos el valor de quantum que tiene en el momento la tarea que esta corriendo
+\end{enumerate}
+
+ De esta manera, con estas estructuras nos permiten determinar para cada tarea, cuándo, y cuánto 
+de su quantum consumieron de forma que podamos desalojarla correctamente.\\
+
+Obteniendo las prioridades caracteristicas de dicho scheduler tanto para la tarea bloqueadas como para las que llegan "tarde".\\
+Con nuestro map de $pid_Tarde$ y $pid_Bloqueado$ podremos reordenar nuestra cola $q$ con la cual realizamos la ejecuci\'on ciclica de nuestro
+sched logrando el orden deseado y particular.\\
 
 \subsubsection[Resolución Ejercicio 8]{Ejercicio 8}
 

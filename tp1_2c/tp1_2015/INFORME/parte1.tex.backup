@@ -1,30 +1,30 @@
 
 \subsection{Ejercicios}
 \begin{itemize}
- \item \textbf{Ejercicio 1 } Programar un tipo de tarea TaskConsola, que simulara una tarea interactiva.
-La tarea debe realizar n llamadas bloqueantes, cada una de una duracion al azar 1 entre bmin
-y bmax (inclusive). La tarea debe recibir tres parametros: n, bmin y bmax (en ese orden)
-que seran interpretados como los tres elementos del vector de enteros que recibe la funcion.
-Explique la implementacion realizada y grafique un lote que utilice el nuevo tipo de tarea.
+ \item \textbf{Ejercicio 1 } Programar un tipo de tarea TaskConsola, que simular\'{a} una tarea interactiva.
+La tarea debe realizar n llamadas bloqueantes, cada una de una duraci\'{o}n al azar 1 entre bmin
+y bmax (inclusive). La tarea debe recibir tres par\'{a}metros: n, bmin y bmax (en ese orden)
+que ser\'{a}n interpretados como los tres elementos del vector de enteros que recibe la funci\'{o}n.
+Explique la implementaci\'{o}n realizada y grafique un lote que utilice el nuevo tipo de tarea.
 \item \textbf{Ejercicio 2} Rolando, uno de los investigadores del departamento, utiliza su computadora
 para correr un algoritmo muy complejo que hace un uso intensivo de la CPU por 100 ciclos
-y no utiliza ninguna llamada bloqueante. Mientras corre su algoritmo suele poner su cancion
+y no utiliza ninguna llamada bloqueante. Mientras corre su algoritmo suele poner su canci\'{o}n
 preferida y luego navegar por internet (estas tareas realizan 20 y 25 llamadas bloqueantes
-respectivamente con una duracion variable entre 2 y 4 ciclos).\\
-Escribir el lote de tareas que simule la situacion de Rolando. Ejecutar y graficar la simulacion
-usando el algoritmo FCFS para 1 y 2 nucleos con un cambio de contexto de 4 ciclos.\\
-Calcular la latencia de cada tarea en los dos graficos. Explicar que desventaja tendrıa Rolando
+respect\'{i}vamente con una duraci\'{o}n variable entre 2 y 4 ciclos).\\
+Escribir el lote de tareas que simule la situaci\'{o}n de Rolando. Ejecutar y graficar la simulaci\'{o}n
+usando el algoritmo FCFS para 1 y 2 n\'{u}cleos con un cambio de contexto de 4 ciclos.\\
+Calcular la latencia de cada tarea en los dos gr\'{a}ficos. Explicar que desventaja tendrıa Rolando
 si debe mantener este algoritmo de scheduling y solo tiene disponible una computadora con un
-nucleo (haga referencia a los graficos y a los calculos anteriores para justificar su explicacion).
-\item \textbf{Ejercicio 3}Programar un tipo de tarea TaskBatch que reciba dos parametros: total cpu y
+n\'{u}cleo (haga referencia a los gr\'{a}ficos y a los c\'{a}lculos anteriores para justificar su explicaci\'{o}n).
+\item \textbf{Ejercicio 3}Programar un tipo de tarea TaskBatch que reciba dos par\'{a}metros: total cpu y
 cant bloqueos. Una tarea de este tipo debera realizar cant bloqueos llamadas bloqueantes, en
-momentos elegidos pseudoaleatoriamente. En cada tal ocasion, la tarea debera permanecer
+momentos elegidos pseudoaleatoriamente. En cada tal ocasi\'{o}n, la tarea deber\'{a} permanecer
 bloqueada durante exactamente un (1) ciclo de reloj. \\
 El tiempo de CPU total que utilice una
-tarea TaskBatch debera ser de total cpu ciclos de reloj (incluyendo el tiempo utilizado para
-lanzar las llamadas bloqueantes; no ası el tiempo en que la tarea permanezca bloqueada).
-Explique la implementacion realizada y grafique un lote que utilice 3 tareas TaskBatch con
-parametros diferentes y que corra con el scheduler FCFS.
+tarea TaskBatch deber\'{a} ser de total cpu ciclos de reloj (incluyendo el tiempo utilizado para
+lanzar las llamadas bloqueantes; no as\'{i} el tiempo en que la tarea permanezca bloqueada).
+Explique la implementaci\'{o}n realizada y grafique un lote que utilice 3 tareas TaskBatch con
+par\'{a}metros diferentes y que corra con el scheduler FCFS.
 \end{itemize}
 
 \subsection{Resultados y Conclusiones}
@@ -41,7 +41,7 @@ el pid correspondiente y un entero ciclos que es el valor random obtenido entre 
 
 \end{center}
 
-\indent A continuacion, el codigo mencionado:
+\indent A continuaci\'{o}n, el c\'{o}digo mencionado:
 
 \begin{verbatim}
 
@@ -55,7 +55,7 @@ el pid correspondiente y un entero ciclos que es el valor random obtenido entre 
 
 \end{verbatim}
 
-\indent Como experimentacion utilizamos trabajamos con el siguiente lote:\\
+\indent Como experimentaci\'{o}n trabajamos con el siguiente lote:\\
 
 \begin{verbatim}
                               TaskConsola 5 3 7
@@ -114,7 +114,7 @@ experimentacion con uno y dos cores.\\
 \indent Para el grafico uno, los valores obtenidos para cada tarea fueron los siguientes:\\
 
 \begin{itemize}
- \item Tarea 1: 5
+ \item Tarea 1: 4
  \item Tarea 2: 109
  \item Tarea 3: 193
 \end{itemize}
@@ -129,8 +129,8 @@ experimentacion con uno y dos cores.\\
 
 \indent Se puede observar como aumenta el paralelismo a mayor cantidad de núcleos. 
 En este scheduler en particular, esto ayuda de gran manera al rendimiento del sistema, puesto que un núcleo podrá ejecutar otra tarea 
-recién cuando haya terminado la anterior. Las consecuencias de este comportamiento son visibles en los 2 graficos. Agregando un core más, 
-el tiempo que se tarda en ejecutar por completo todas las tareas de reduce casi a la mitad.\\
+recién cuando haya terminado la anterior. Las consecuencias de este comportamiento son visibles en los 2 graficos. Con un \'{u}nico core, 
+solo se puede correr una tarea por vez, en este experimento comparado con usar 2 cores el tiempo se duplica.\\
 
 \subsubsection[Resolución Ejercicio 3]{Ejercicio 3}
 
@@ -140,7 +140,6 @@ explicaremos ciertos puntos de la misma.\\
                        void TaskBatch(int pid, vector<int> params) {
                             int total_cpu = params[0];
                             int cant_bloqueos = params[1];
-                            srand(time(NULL));
                             vector<bool> uso = vector<bool>(total_cpu);
                             for(int i=0;i<(int)uso.size();i++) 
                                uso[i] = false;
@@ -160,7 +159,7 @@ explicaremos ciertos puntos de la misma.\\
                             }
  \end{verbatim}
 
- \indent Para este tipo de tarea, creamos un vector de tamaño igual a $total_cpu$ el cual tendrá bool, ya sea true o false
+ \indent Para este tipo de tarea, creamos un vector de tamaño igual a $total\_cpu$ el cual tendrá bool, ya sea true o false
  dependiendo del uso que se le de dentro de la tarea, ya sea uso\_IO o uso\_CPU. En caso de ser uso\_IO sera true, y sino false.\\
  Luego, utilizaremos un ciclo que irá desde 0 hasta el tamaño del vector y dependiendo el valor booleano, usará la funciones
  dadas por la catedra uso\_IO o uso\_CPU.\\
@@ -184,24 +183,3 @@ explicaremos ciertos puntos de la misma.\\
  \end{center}
   \vspace*{0.3cm}
  
- 
-  \begin{center}
-  \textbf{Conclusiones}
- \end{center}
-
-
-\indent \indent La diferencia entre los valores de quantum entre los casos 
-se puede presumir a que cada vez que agregamos un núcleo aumentamos 
-la posibilidad de una migración de la tareas.\\
-\indent \indent En todos lo casos se observa la influencia negativa que proviene 
-de elegir un quantum con valores pequeños.\\
-\indent \indent Agregar núcleos de procesamiento mejora significativamente 
-la performance de acuerdo a la métricas con las que
-trabajamos, al permitir más procesamiento en pararelo y disminuyendo 
-los waiting time de las tareas.\\
-\indent \indent  Fijada una cantidad de núcleos puntual, aumentar el valor del
-quantum también mejora la performance, igualmente, como vimos, a partir de cierto valor 
-de quantum, las mejoras en la performance tienden a estabilizarse y dejan de ser 
-muy significativas. 
-Esto se produce a que las tareas con mas cantidad de bloqueos en 
-algun momento dejan de consumir todo el quantum otorgado si este es aumentado en su valor.

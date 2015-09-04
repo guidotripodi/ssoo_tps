@@ -1,30 +1,30 @@
 
 \subsection{Ejercicios}
 \begin{itemize}
- \item \textbf{Ejercicio 1 } Programar un tipo de tarea TaskConsola, que simulara una tarea interactiva.
-La tarea debe realizar n llamadas bloqueantes, cada una de una duracion al azar 1 entre bmin
-y bmax (inclusive). La tarea debe recibir tres parametros: n, bmin y bmax (en ese orden)
-que seran interpretados como los tres elementos del vector de enteros que recibe la funcion.
-Explique la implementacion realizada y grafique un lote que utilice el nuevo tipo de tarea.
+ \item \textbf{Ejercicio 1 } Programar un tipo de tarea TaskConsola, que simular\'{a} una tarea interactiva.
+La tarea debe realizar n llamadas bloqueantes, cada una de una duraci\'{o}n al azar 1 entre bmin
+y bmax (inclusive). La tarea debe recibir tres par\'{a}metros: n, bmin y bmax (en ese orden)
+que ser\'{a}n interpretados como los tres elementos del vector de enteros que recibe la funci\'{o}n.
+Explique la implementaci\'{o}n realizada y grafique un lote que utilice el nuevo tipo de tarea.
 \item \textbf{Ejercicio 2} Rolando, uno de los investigadores del departamento, utiliza su computadora
 para correr un algoritmo muy complejo que hace un uso intensivo de la CPU por 100 ciclos
-y no utiliza ninguna llamada bloqueante. Mientras corre su algoritmo suele poner su cancion
+y no utiliza ninguna llamada bloqueante. Mientras corre su algoritmo suele poner su canci\'{o}n
 preferida y luego navegar por internet (estas tareas realizan 20 y 25 llamadas bloqueantes
-respectivamente con una duracion variable entre 2 y 4 ciclos).\\
-Escribir el lote de tareas que simule la situacion de Rolando. Ejecutar y graficar la simulacion
-usando el algoritmo FCFS para 1 y 2 nucleos con un cambio de contexto de 4 ciclos.\\
-Calcular la latencia de cada tarea en los dos graficos. Explicar que desventaja tendrıa Rolando
+respect\'{i}vamente con una duraci\'{o}n variable entre 2 y 4 ciclos).\\
+Escribir el lote de tareas que simule la situaci\'{o}n de Rolando. Ejecutar y graficar la simulaci\'{o}n
+usando el algoritmo FCFS para 1 y 2 n\'{u}cleos con un cambio de contexto de 4 ciclos.\\
+Calcular la latencia de cada tarea en los dos gr\'{a}ficos. Explicar que desventaja tendrıa Rolando
 si debe mantener este algoritmo de scheduling y solo tiene disponible una computadora con un
-nucleo (haga referencia a los graficos y a los calculos anteriores para justificar su explicacion).
-\item \textbf{Ejercicio 3}Programar un tipo de tarea TaskBatch que reciba dos parametros: total cpu y
+n\'{u}cleo (haga referencia a los gr\'{a}ficos y a los c\'{a}lculos anteriores para justificar su explicaci\'{o}n).
+\item \textbf{Ejercicio 3} Programar un tipo de tarea TaskBatch que reciba dos par\'{a}metros: total cpu y
 cant bloqueos. Una tarea de este tipo debera realizar cant bloqueos llamadas bloqueantes, en
-momentos elegidos pseudoaleatoriamente. En cada tal ocasion, la tarea debera permanecer
+momentos elegidos pseudoaleatoriamente. En cada tal ocasi\'{o}n, la tarea deber\'{a} permanecer
 bloqueada durante exactamente un (1) ciclo de reloj. \\
 El tiempo de CPU total que utilice una
-tarea TaskBatch debera ser de total cpu ciclos de reloj (incluyendo el tiempo utilizado para
-lanzar las llamadas bloqueantes; no ası el tiempo en que la tarea permanezca bloqueada).
-Explique la implementacion realizada y grafique un lote que utilice 3 tareas TaskBatch con
-parametros diferentes y que corra con el scheduler FCFS.
+tarea TaskBatch deber\'{a} ser de total cpu ciclos de reloj (incluyendo el tiempo utilizado para
+lanzar las llamadas bloqueantes; no as\'{i} el tiempo en que la tarea permanezca bloqueada).
+Explique la implementaci\'{o}n realizada y grafique un lote que utilice 3 tareas TaskBatch con
+par\'{a}metros diferentes y que corra con el scheduler FCFS.
 \end{itemize}
 
 \subsection{Resultados y Conclusiones}
@@ -41,7 +41,7 @@ el pid correspondiente y un entero ciclos que es el valor random obtenido entre 
 
 \end{center}
 
-\indent A continuacion, el codigo mencionado:
+\indent A continuaci\'{o}n, el c\'{o}digo mencionado:
 
 \begin{verbatim}
 
@@ -55,7 +55,7 @@ el pid correspondiente y un entero ciclos que es el valor random obtenido entre 
 
 \end{verbatim}
 
-\indent Como experimentacion utilizamos trabajamos con el siguiente lote:\\
+\indent Como experimentaci\'{o}n trabajamos con el siguiente lote:\\
 
 \begin{verbatim}
                               TaskConsola 5 3 7
@@ -63,7 +63,7 @@ el pid correspondiente y un entero ciclos que es el valor random obtenido entre 
                               TaskConsola 15 2 7
 \end{verbatim}
 
-De aqui, obtuvimos los siguientes resultados:\\
+De aqu\'{i}, obtuvimos los siguientes resultados:\\
 
 \vspace*{0.3cm} \vspace*{0.3cm}
   \begin{center}
@@ -106,12 +106,12 @@ A continuación, los respectivos gráficos de mediciones.
  \end{center}
   \vspace*{0.3cm}
 
-A su vez, se nos solicito el calculo de la Latencia para cada una de las tareas basandonos en la 
-experimentacion con uno y dos cores.\\
+A su vez, se nos solicit\'{o} el c\'{a}lculo de la Latencia para cada una de las tareas basandonos en la 
+experimentaci\'{o}n con uno y dos cores.\\
 
 \textbf{Latencia:} Tiempo que demora una tarea en ejecutarse desde que la misma esta en estado $Ready$.\\
 
-\indent Para el grafico uno, los valores obtenidos para cada tarea fueron los siguientes:\\
+\indent Para el gr\'{a}fico uno, los valores obtenidos para cada tarea fueron los siguientes:\\
 
 \begin{itemize}
  \item Tarea 1: 4
@@ -119,7 +119,7 @@ experimentacion con uno y dos cores.\\
  \item Tarea 3: 193
 \end{itemize}
 
-\indent Para el grafico dos, los valores obtenidos para cada tarea fueron los siguientes:\\
+\indent Para el gr\'{a}fico dos, los valores obtenidos para cada tarea fueron los siguientes:\\
 
 \begin{itemize}
  \item Tarea 1: 4

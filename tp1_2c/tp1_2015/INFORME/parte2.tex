@@ -3,38 +3,38 @@
 \begin{itemize}
  \item 
 \textbf{Ejercicio 4}  Completar la implementación del scheduler Round-Robin implementando los
-metodos de la clase SchedRR en los archivos sched rr.cpp y sched rr.h. La implementacion
-recibe como primer parametro la cantidad de nucleos y a continuacion los valores de sus
-respectivos quantums. Debe utilizar una unica cola global, permitiendo ası la migracion de
-procesos entre nucleos.
+metodos de la clase SchedRR en los archivos sched rr.cpp y sched rr.h. La implementaci\'{o}n
+recibe como primer par\'{a}metro la cantidad de n\'{u}cleos y a continuaci\'{o}n los valores de sus
+respectivos quantums. Debe utilizar una \'{u}nica cola global, permitiendo ası la migraci\'{o}n de
+procesos entre n\'{u}cleos.
 \item \textbf{Ejercicio 5} Disene un lote con 3 tareas de tipo TaskCPU de 50 ciclos y 2 de tipo TaskConsola
-con 5 llamadas bloqueantes de 3 ciclos de duracion cada una. Ejecutar y graficar la simulacion
+con 5 llamadas bloqueantes de 3 ciclos de duraci\'{o}n cada una. Ejecutar y graficar la simulaci\'{o}n
 utilizando el scheduler Round-Robin con quantum 2, 10 y 50.\\
-Con un cambio de contexto de 2 ciclos y un solo nucleo calcular la latencia, el waiting
-time y el tiempo total de ejecucion de las cinco tareas para cada quantum. 
-¿En cual es mejor cada uno? ¿Por que ocurre esto?
+Con un cambio de contexto de 2 ciclos y un solo n\'{u}cleo calcular la latencia, el waiting
+time y el tiempo total de ejecuci\'{o}n de las cinco tareas para cada quantum. 
+¿En cual es mejor cada uno? ¿Por qu\'{e} ocurre esto?
 \item \textbf{Ejercicio 6} Grafique el mismo lote de tareas del ejercicio anterior para el scheduler FCFS.
-Haciendo referencia a lo que se observa en los graficos de este ejercicio y el anterior, explique
+Haciendo referencia a lo que se observa en los gr\'{a}ficos de este ejercicio y el anterior, explique
 las diferencias entre un scheduler Round-Robin y un FCFS.
 \item \textbf{Ejercicio 7} El scheduler SchedMistery fue creado por docentes investigadores de nuestra
-materia y ha sido destacado en la ultima publicacion de ACM - SIGOPS, Operating Systems
+materia y ha sido destacado en la ultima publicaci\'{o}n de ACM - SIGOPS, Operating Systems
 Review. Desde entonces, numerosos investigadores de todo el mundo nos han contactado para
-pedirnos su codigo fuente. Sin embargo, su codigo no aparece en ninguno de los repositorios
-de la materia y nadie parece recordar quienes habıan estado detras de su implementacion.
-Se les pide experimentar con dicho scheduler (aprovechando que hemos conseguido el codi-
+pedirnos su c\'{o}digo fuente. Sin embargo, su c\'{o}digo no aparece en ninguno de los repositorios
+de la materia y nadie parece recordar quienes habıan estado detras de su implementaci\'{o}n.
+Se les pide experimentar con dicho scheduler (aprovechando que hemos conseguido el c\'{o}di
 go objeto) y replicar su funcionamiento en SchedNoMistery. Graficar como maximo tres lotes
-de tareas utilizados en los experiementos y explicar en cada uno por separado que caracterısti-
-cas de SchedMistery identificaron con ese lote. Nota: El scheduler funciona para un solo
-core y toma uno o mas argumentos numericos.
-\item \textbf{Ejercicio 8} Implemente un scheduler Round-Robin que no permita la migracion de procesos
-entre nucleos (SchedRR2). La asignación de CPU se debe realizar en el momento en que se produce la carga 
-de un proceso (load). El nucleo correspondiente a un nuevo proceso sera aquel
+de tareas utilizados en los experiementos y explicar en cada uno por separado que caracter\'{i}sticas
+de SchedMistery identificaron con ese lote. Nota: El scheduler funciona para un solo
+core y toma uno o mas argumentos num\'{e}ricos.
+\item \textbf{Ejercicio 8} Implemente un scheduler Round-Robin que no permita la migraci\'{o}n de procesos
+entre n\'{u}cleos (SchedRR2). La asignación de CPU se debe realizar en el momento en que se produce la carga 
+de un proceso (load). El n\'{u}cleo correspondiente a un nuevo proceso ser\'{} aquel
 con menor cantidad de procesos activos totales (RUNNING + BLOCKED + READY).Explique un escenario real 
-donde la migracion de nucleos sea beneficiosa y uno donde no (mencione
-especificamente que metricas de comparacion vistas en la materia mejorarıan en cada caso).
+donde la migraci\'{o}n de n\'{u}cleos sea beneficiosa y uno donde no (mencione
+espec\'{i}ficamente que m\'{e}tricas de comparaci\'{o}n vistas en la materia mejorarıan en cada caso).
 Disene un lote de tareas en nuestro simulador que represente a cada uno de esos escenarios
-y grafique su resultado para cada implementacion. Calcule y compare en cada grafico las
-metrica que menciono.
+y grafique su resultado para cada implementaci\'{o}n. Calcule y compare en cada gr\'{a}fico las
+m\'{e}tricas que menciono.
 
 \end{itemize}
 
@@ -71,6 +71,17 @@ señal de unblock, la tarea desalojada regresará al final de la cola global.
 
 \end{itemize}
 
+\begin{center}
+
+    
+	\includegraphics[width=450pt]{./Test/Ej4.png}
+	{$Lote 1$ - Scheduler RR - 1 core - 5 quantum}	
+ 
+\end{center}
+
+Se puede ver en el gr\'{a}fico que cada 5 Ticks de reloj se cambia de tareas de manera c\'{\i}clica para mantener 
+el fairness lo mas posible con todas las tareas. Salvo cuando una tarea se bloquea que esta es desalojada inmediatamente 
+para no desperdiciar tiempo de computo esperando a que esta de desocupe.
 
 \subsubsection[Resolución Ejercicio 5]{Ejercicio 5}
 

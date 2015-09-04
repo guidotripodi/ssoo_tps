@@ -56,12 +56,12 @@ cleanej3:
 	rm -f $(OBJS) $(MAIN) ./Ejercicio3/TaskBatch.png
 	rm -d -f ./Ejercicio3
 
-#ej4: $(ej)
-#	mkdir Ejercicio4
-#	./simusched ./Lotes/Ej4 1 1 1 SchedFCFS | ./graphsched.py >> ./Ejercicio4/fcfs1.png
+ej4: $(ej)
+	mkdir Ejercicio4
+	./simusched ./Lotes/Ej4 1 1 1 SchedRR 5 | ./graphsched.py >> ./Ejercicio4/RR.png
 
-#cleanej4:
-#	rm -f $(OBJS) $(MAIN) ./Ejercicio4/fcfs1.png
+cleanej4:
+	rm -f $(OBJS) $(MAIN) ./Ejercicio4/RR.png
 
 ej5: $(ej)
 	mkdir Ejercicio5
@@ -112,7 +112,7 @@ cleanTodosLosEjercicios:
 	rm -f ./Ejercicio2/fcfs1.png
 	rm -f ./Ejercicio2/fcfs2.png
 	rm -f ./Ejercicio3/TaskBatch.png
-#	rm -f ./Ejercicio4/fcfs1.png
+	rm -f ./Ejercicio4/RR.png
 	rm -f ./Ejercicio5/RR_Q2.png
 	rm -f ./Ejercicio5/RR_Q10.png
 	rm -f ./Ejercicio5/RR_Q50.png
@@ -127,7 +127,7 @@ cleanTodosLosEjercicios:
 	rm -d -f ./Ejercicio1
 	rm -d -f ./Ejercicio2
 	rm -d -f ./Ejercicio3
-#	rm -d -f ./Ejercicio4
+	rm -d -f ./Ejercicio4
 	rm -d -f ./Ejercicio5
 	rm -d -f ./Ejercicio6
 	rm -d -f ./Ejercicio7
