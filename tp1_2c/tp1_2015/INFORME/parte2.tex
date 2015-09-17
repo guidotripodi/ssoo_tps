@@ -53,10 +53,10 @@ Las mismas son las siguientes:\\
  \item Un vector denominado $cores$, este tiene en su elemento $i$ el pid correspondiente 
  al proceso que está corriendo en el core $i+1$. Inicializamos todos los elementos en -1, esto
 corresponde a la Idle Task, de esta forma reconocemos que no se cargaron procesos en los núcleos.
-\item Un vector $quantum$ guarda en la posicion $i$ el quantum que se dispuso a cada núcleo.
+\item Un vector $quantum$: el mismo guarda en la posici\'on $i$ el quantum que se dispuso a cada núcleo.
 \item Un vector $quantumActual$ aqu\'{\i} guardaremos la cantidad de ticks que le quedan al proceso
 desde que fue cargado en el core.
-\item Una lista de $bloqueados$ esta tendr\'{a} los procesos que se bloquearon cuando estaban corriendo.
+\item Una lista de $bloqueados$: esta tendr\'{a} los procesos que se bloquearon cuando estaban corriendo.
 \end{enumerate}
 
 Estas estructuras nos permiten determinar para cada tarea, cuándo, y cuánto 
@@ -75,7 +75,7 @@ señal de unblock, la tarea desalojada regresará al final de la cola global.
 
     
 	\includegraphics[width=450pt]{./Test/Ej4.png}
-	{$Lote 1$ - Scheduler RR - 1 core - 5 quantum}	
+	{$Gr$\'a$fico 4.1 - Lote 1$ - Scheduler RR - 1 core - 5 quantum}	
  
 \end{center}
 
@@ -117,7 +117,7 @@ Obteniendo los siguientes resultados:
 
     
 	\includegraphics[width=450pt]{./Test/ej5_2.png}
-	{$Lote 1$ - Scheduler RR - 1 core - 2 quantum}	
+	{$Gr$\'a$fico 5.1 Lote 1$ - Scheduler RR - 1 core - 2 quantum}	
  
 \end{center}
 
@@ -151,7 +151,7 @@ Obteniendo los siguientes resultados:
 
 \begin{center}
   	\includegraphics[width=450pt]{./Test/ej5_10.png}
-	  {$Lote 1$ - Scheduler RR - 1 core - 10 quantum}	
+	  {$Gr$\'a$fico 5.2 - Lote 1$ - Scheduler RR - 1 core - 10 quantum}	
 \end{center}
 
 \indent Latencia:\
@@ -184,7 +184,7 @@ Obteniendo los siguientes resultados:
 
 \begin{center}
   	\includegraphics[width=450pt]{./Test/ej5_50.png}
-	  {$Lote 1$ - Scheduler RR - 1 core - 50 quantum}	
+	  {$Gr$\'a$fico 5.3 - Lote 1$ - Scheduler RR - 1 core - 50 quantum}	
 \end{center}
 
 \indent Latencia:\
@@ -253,10 +253,10 @@ Obteniendo los siguientes resultados:
 
 \begin{center}
   	\includegraphics[width=450pt]{./Test/ej6.png}
-	  {$Lote 1$ - Scheduler FCFS - 1 core}	
+	  {$Gr$\'a$fico 6.1 - Lote 1$ - Scheduler FCFS - 1 core}	
 \end{center}
 
-\indent A modo de analisis, hemos obtenido las siguientes conclusiones:\\
+\indent A modo de an\'alisis, hemos obtenido las siguientes conclusiones:\\
 
 
 \begin{itemize}
@@ -292,7 +292,7 @@ TaskConsola 4 2 3
 Obteniendo lo siguiente:
 \begin{center}
     	\includegraphics[width=450pt]{./Test/ej7_1.png}
-	{$Lote 1$ - Sched Mistery - 1 core - Quantum = 6}	
+	{$Gr$\'a$fico 7.1 - Lote 1$ - Sched Mistery - 1 core - Quantum = 6}	
  \end{center}
  
 De aqu\'{\i}, pudimos abstraer que, una tarea al bloquearse es desalojada y cuando la misma se desbloquea, el scheduler, le da
@@ -310,7 +310,7 @@ Con el siguiente lote:\\
 Obteniendo lo siguiente:\\
 \begin{center}
     	\includegraphics[width=450pt]{./Test/ej7_3.png}
-	{$Lote 2$ - Sched Mistery - 1 core - Quantum = 5 3 2}	
+	{$Gr$\'a$afico 7.2 - Lote 2$ - Sched Mistery - 1 core - Quantum = 5 3 2}	
  \end{center}
  
 De aqu\'{\i}, pudimos observar, la existencia de una prioridad a tareas $mas$ $nuevas$, ya que al llegar la misma y estar ready, es
@@ -320,14 +320,14 @@ respetando el mismo quantum que el resto de las tareas.\\
 Adem\'{a}s, se puede observar distintos valores de quantums, inicialmente todos con 1, y luego, por cada vuelta c\'{\i}clica los mismos van cambiando dependiendo del valor recibido
 como par\'{a}metro.(En nuestro experimento, por ej, los valores fueron 5 3 y 2)\\
 
-\indent En conclusion:\\
+\indent En conclusi\'on:\\
 
 
 \begin{itemize}
  \item Se puede observar un caracter c\'{\i}clico con posibilidad de varios quantums distintos, los cuales van cambiando
  acorde a las vueltas c\'{\i}clicas que da el scheduler.
  \item Prioridad para tareas bloqueantes (al ser desbloqueada es la primera en cargar otorg\'{a}ndole quantum = 1)
- \item Prioridad para tareas mas recientes (al llegar la misma y estar ready esta pasa a ser la pr\'{o}xima en correr con un quantum igual
+ \item Prioridad para tareas m\'as recientes (al llegar la misma y estar ready esta pasa a ser la pr\'{o}xima en correr con un quantum igual
  a la sumatoria de los quantums ya transcurridos hasta el momento)
 \end{itemize}
 
@@ -341,14 +341,14 @@ Las mismas son las siguientes:\\
  fue desarrollada para que cuando se desaloje un proceso por finalizar su $quantum$ la misma pase al final de
  la cola y generando el ciclo acorde al comportamiento de este scheduler.
  \item Un vector denominado $quantum$, este tiene en su elemento $i$ el quantum correspondiente a
-a la ronda ciclica que se esta corriendo en el momento. Inicializamos todos los elementos con los valores que recibimos
+a la ronda c\'iclica que se esta corriendo en el momento. Inicializamos todos los elementos con los valores que recibimos
 como par\'ametro.
 \item Un cola nombrada como $desbloqueados$ y como el nombre lo indica, tendr\'a las tareas que se desbloquearon y estan
 listas para correr.
 \item Un map de pair\textless \ int, int\textgreater \ $pid_quantum$ aqui guardaremos en el primer elemento el pid y en el segundo el quantum con el que 
 iniciar\'a a correr, ya sea 1 o la sumatoria de quantums ya corridos hasta el momento que la tarea es cargada.
 desde que fue cargado en el core.
-\item Un map de pair\textless \ int, int\textgreater \ $pid_Tarde$ este nos indicara dependiendo el pid si la tarea fue cargada al iniciar el lote o si llego mas 
+\item Un map de pair\textless \ int, int\textgreater \ $pid_Tarde$ este nos indicar\'a dependiendo el pid si la tarea fue cargada al iniciar el lote o si llego mas 
 tarde
 \item Un map de pair\textless \ int, int\textgreater \ $pid_Bloqueado$ este map nos dir\'a si la tarea estuvo bloqueada o no.
 \item Un entero $pidInicial$ en esta variable guardaremos el pid de la primer tarea de nuestro orden ciclico, esto
@@ -361,7 +361,7 @@ y actualizemos el indice del vector $quantum$
  De esta manera, con estas estructuras nos permiten determinar para cada tarea, cuándo, y cuánto 
 de su quantum consumieron de forma que podamos desalojarla correctamente.\\
 
-Obteniendo las prioridades caracteristicas de dicho scheduler tanto para la tarea bloqueadas como para las que llegan "tarde".\\
+Obteniendo las prioridades caracter\'isticas de dicho scheduler tanto para la tarea bloqueadas como para las que llegan "tarde".\\
 Con nuestro map de $pid_Tarde$ y $pid_Bloqueado$ podremos reordenar nuestra cola $q$ con la cual realizamos la ejecuci\'on ciclica de nuestro
 sched logrando el orden deseado y particular.\\
 
@@ -369,7 +369,7 @@ sched logrando el orden deseado y particular.\\
 
 La idea principal de esta nueva versi\'{o}n de $Round-Robin$ se centraliza en que no permita migraci\'{o}n entre
 cores, esto se basa principalmente en utilizar una cola para cada núcleo por separado, y en cada
-cola respectiva se encolar\'{a}n las tareas que fueron asignadas inicialmente a cada nucleo.\\
+cola respectiva se encolar\'{a}n las tareas que fueron asignadas inicialmente a cada n\'ucleo.\\
 Para desarrollar este tipo de algoritmo, el cual denominaremos $RR2$, utilizamos estructuras
 puntuales, enunciadas a continuación:\\
 \begin{itemize}
@@ -399,9 +399,9 @@ las siguientes hipótesis:
 
 \begin{enumerate}
 \item Comportamiento menos eficiente en el RR2 con respecto al paralelismo, ya que al no permitir
-migración de nucleos este se pierde.
+migración de n\'ucleos este se pierde.
 \item Comportamiento más eficiente en el RR2 con lotes de tareas que se bloquean un gran n\'{u}mero
-de veces. Esto surge ya que el Round-Robin original, es mas proclive a realizar cambios de contexto con la posibilidad
+de veces. Esto surge ya que el Round-Robin original, es m\'as proclive a realizar cambios de contexto con la posibilidad
 de darse un cambio de core.
 \end{enumerate}
  
@@ -410,7 +410,7 @@ de darse un cambio de core.
  \textbf{Comportamiento menos eficiente en el RR2 con respecto al paralelismo, ya que al no permitir
 migración de núcleos este lo pierde}\\
 
-Un ejemplo de esto, en la vida real seria, estar corriendo testeos de software y al mismo tiempo analizando
+Un ejemplo de esto, en la vida real ser\'ia, estar corriendo testeos de software y al mismo tiempo analizando
 algoritmos de alta complejidad para demostraciones matem\'{a}ticas.\\
 
 Un ejemplo de los lotes utilizados que demuestra esto fue el siguiente:\\
@@ -427,12 +427,12 @@ Obteniendo los siguientes datos relevantes:\\
 
 \begin{center}
     	\includegraphics[width=450pt]{./EJ8_RR2/dif10corerr.png}
-	{$Lote 3$ - Round Robin - 2 core - Quantum = 5 - cambio de contexto = 1}	
+	{$Gr$\'a$fico 8.1 -Lote 3$ - Round Robin - 2 core - Quantum = 5 - cambio de contexto = 1}	
  \end{center}
  
  \begin{center}
     	\includegraphics[width=450pt]{./EJ8_RR2/dif10corerr2.png}
-	{$Lote 3$ - Round Robin 2 - 2 core - Quantum = 5 - cambio de contexto = 1}	
+	{$Gr$\'a$fico 8.2 - Lote 3$ - Round Robin 2 - 2 core - Quantum = 5 - cambio de contexto = 1}	
  \end{center}
  
  Se puede ver en estos diagramas como la implementación del Round Robin original trabaja
@@ -463,12 +463,12 @@ Para esto,un lotes de tareas que ejemplifica lo dicho puede ser el siguiente:\\
 
    \begin{center}
     	\includegraphics[width=450pt]{./EJ8_RR2/dif5corerr.png}
-	{$Lote 3$ - Round Robin - 2 core - Quantum = 3 - cambio de contexto = 1}	
+	{$Gr$\'a$fico 8.3 - Lote 3$ - Round Robin - 2 core - Quantum = 3 - cambio de contexto = 1}	
  \end{center}
  
  \begin{center}
     	\includegraphics[width=450pt]{./EJ8_RR2/dif5corerr2.png}
-	{$Lote 3$ - Round Robin 2 - 2 core - Quantum = 3 - cambio de contexto = 1}	
+	{$Gr$\'a$fico 8.4 - Lote 3$ - Round Robin 2 - 2 core - Quantum = 3 - cambio de contexto = 1}	
  \end{center}
 
  Se puede observar por los diagramas como el RR2 tiene una mejor performance en este estilo
