@@ -87,7 +87,7 @@ De aqu\'{i}, obtuvimos los siguientes resultados:\\
 \end{verbatim}
 
 \indent El mismo, presenta una tarea de uso intensivo $TaskCPU$ que dura 100 ticks, y otras dos interactivas, las cuales se
-bloquean 20 y 25 ticks respectivamente con una duración de entre 2 y 4 tanto para la primera como la segunda.\\
+bloquean 20 y 25 veces respectivamente con una duración de entre 2 y 4 tanto para la primera como la segunda.\\
 A continuación, los respectivos gráficos de mediciones.
 
 
@@ -106,7 +106,7 @@ A continuación, los respectivos gráficos de mediciones.
  \end{center}
   \vspace*{0.3cm}
 
-A su vez, se nos solicit\'{o} el c\'{a}lculo de la Latencia para cada una de las tareas basandonos en la 
+A su vez, se nos solicit\'{o} el c\'{a}lculo de la Latencia para cada una de las tareas bas\'{a}ndonos en la 
 experimentaci\'{o}n con uno y dos cores.\\
 
 \textbf{Latencia:} Tiempo que demora una tarea en ejecutarse desde que la misma esta en estado $Ready$.\\
@@ -114,22 +114,23 @@ experimentaci\'{o}n con uno y dos cores.\\
 \indent Para el gr\'{a}fico uno, los valores obtenidos para cada tarea fueron los siguientes:\\
 
 \begin{itemize}
- \item Tarea 1: 4
- \item Tarea 2: 109
- \item Tarea 3: 193
+ \item Tarea 0: 4
+ \item Tarea 1: 109
+ \item Tarea 2: 193
 \end{itemize}
 
 \indent Para el gr\'{a}fico dos, los valores obtenidos para cada tarea fueron los siguientes:\\
 
 \begin{itemize}
+ \item Tarea 0: 4
  \item Tarea 1: 4
- \item Tarea 2: 4
- \item Tarea 3: 88
+ \item Tarea 2: 88
 \end{itemize}
 
 \indent Se puede observar como aumenta el paralelismo a mayor cantidad de núcleos. 
-En este scheduler en particular, esto ayuda de gran manera al rendimiento del sistema, puesto que un núcleo podrá ejecutar otra tarea 
-recién cuando haya terminado la anterior. Las consecuencias de este comportamiento son visibles en los 2 graficos. Con un \'{u}nico core, 
+En este scheduler en particular, esto ayuda de gran manera al rendimiento del sistema. Si Rolando 
+continuara usando el scheduler FCFS no podr\'{\i}a ejecutar otra tarea hasta que terminara de correr 
+la anterior. Las consecuencias de este comportamiento son visibles en los 2 graficos. Con un \'{u}nico core, 
 solo se puede correr una tarea por vez, en este experimento comparado con usar 2 cores el tiempo se duplica.\\
 
 \subsubsection[Resolución Ejercicio 3]{Ejercicio 3}
@@ -143,13 +144,13 @@ explicaremos ciertos puntos de la misma.\\
                             vector<bool> uso = vector<bool>(total_cpu);
                             for(int i=0;i<(int)uso.size();i++) 
                                uso[i] = false;
-	                       for(int i=0;i<cant_bloqueos;i++) {
-                                   int j = rand()%(uso.size());
-                                   if(!uso[j])
-                                      uso[j] = true;
-                                   else
-                                      i--; 
-                                   }
+	                    for(int i=0;i<cant_bloqueos;i++) {
+			      int j = rand()%(uso.size());
+                              if(!uso[j])
+				uso[j] = true;
+			      else
+				i--; 
+                            }
                             for(int i=0;i<(int)uso.size();i++) {
                                 if( uso[i] )
                                     uso_IO(pid,1); 
@@ -159,8 +160,8 @@ explicaremos ciertos puntos de la misma.\\
                             }
  \end{verbatim}
 
- \indent Para este tipo de tarea, creamos un vector de tamaño igual a $total\_cpu$ el cual tendrá bool, ya sea true o false
- dependiendo del uso que se le de dentro de la tarea, ya sea uso\_IO o uso\_CPU. En caso de ser uso\_IO sera true, y sino false.\\
+ \indent Para este tipo de tarea, creamos un vector de tamaño igual a $total\_cpu$ el cual contiene valores booleanos, 
+ si el valor en el \'{\i}ndice del vector es true este correspondera a la funci\'{o}n uso\_IO, caso contrario uso\_CPU.\\
  Luego, utilizaremos un ciclo que irá desde 0 hasta el tamaño del vector y dependiendo el valor booleano, usará la funciones
  dadas por la catedra uso\_IO o uso\_CPU.\\
  
