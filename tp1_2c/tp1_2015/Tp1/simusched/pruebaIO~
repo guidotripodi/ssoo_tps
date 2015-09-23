@@ -1,0 +1,6 @@
+TaskCPU 40
+@0:
+TaskBatch 32 3
+TaskPrueba
+TaskAlterno 1 1 13 5
+

@@ -17,16 +17,11 @@ class SchedNoMistery : public SchedBase {
 
   private:
     int next(int cpu);
-    int contQuantumPasados;
     int quantumActual;
-    int pidInicial;
-    std::vector<int> quantum;
-    std::queue<int> q;
-    std::queue<int> desbloqueados;
+    std::vector<int> quantum; // el valor de cada quantum
+    std::vector<std::queue<int> > colasXQuantum; // la cola de tareas cada quantum
     std::map<int,int> pid_quantum;
-    std::map<int,int> pid_Tarde;
-    std::map<int,int> pid_Bloqueado;
-
+    bool colasVacias();
 
 };
 

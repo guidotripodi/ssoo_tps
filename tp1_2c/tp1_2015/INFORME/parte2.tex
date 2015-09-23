@@ -479,12 +479,11 @@ Para esto,un lotes de tareas que ejemplifica lo dicho puede ser el siguiente:\\
  este tipo de migración es notorio la superioridad en relación a nuestra conjetura.\\
  
  Las m\'{e}tricas que m\'{a}s tuvimos en cuenta a la hora de analizar en que casos tiene mejor performance 
- cada scheduler fueron waiting time y turnaround y throughput. En el primer caso se ve que el scheduler round-robin 2 
- al no migrar las tareas de n\'{u}cleo dado un instante de tiempo un n\'{u}cleo ya queda ocioso haciendo que el 
- otro n\'{u}cleo tenga que encargarse de todas las tareas restantes lo que aumenta considerablemente el 
- waiting time de cada tarea por consiguiente su turnaround y el througput del sistema.
- Lo que sucede en el 2do caso es que el tiempo que tarda un n\'{u}cleo en hacer un cambio de contexto es sumamente 
- negativo para el waiting time general del round-robin
+ cada scheduler fueron waiting time y turnaround. El turnaround ( tiempo de ejecuci\'{o}n es lo 
+ que mas tomamos en cuenta a la hora de analizar la performance de ambos schedulers, cuanto mas r\'{a}pido 
+ termine de ejecutar una tarea antes va a liberar al sistema para la siguiente tarea. Para analizar que t\'{a}n 
+ r\'{a}pido se ejecuta una tarea se analiza el waiting time de las tareas en cada caso, una tarea con menos waiting 
+ time tiene que esperar menos para volver a correr lo que va a reducir su tiempo de ejecuci\'{o}n.
  Podemos concluir luego de estas demostraciones que, el Round-Robin original es \'{a}mpliamente
  superior desde el punto de vista de la performance que se obtiene al trabajar con tareas
  que demanden mucho uso del CPU, mientras que el RR2 es \'{a}mpliamente mejor cuando se utilicen

@@ -369,7 +369,7 @@ sched logrando el orden deseado y particular.\\
 
 La idea principal de esta nueva versi\'{o}n de $Round-Robin$ se centraliza en que no permita migraci\'{o}n entre
 cores, esto se basa principalmente en utilizar una cola para cada núcleo por separado, y en cada
-cola respectiva se encolar\'{a}n las tareas que fueron asignadas inicialmente a cada nucleo.\\
+cola respectiva se encolar\'{a}n las tareas que fueron asignadas inicialmente a cada n\'ucleo.\\
 Para desarrollar este tipo de algoritmo, el cual denominaremos $RR2$, utilizamos estructuras
 puntuales, enunciadas a continuación:\\
 \begin{itemize}
@@ -399,9 +399,9 @@ las siguientes hipótesis:
 
 \begin{enumerate}
 \item Comportamiento menos eficiente en el RR2 con respecto al paralelismo, ya que al no permitir
-migración de nucleos este se pierde.
+migración de n\'ucleos este se pierde.
 \item Comportamiento más eficiente en el RR2 con lotes de tareas que se bloquean un gran n\'{u}mero
-de veces. Esto surge ya que el Round-Robin original, es mas proclive a realizar cambios de contexto con la posibilidad
+de veces. Esto surge ya que el Round-Robin original, es m\'as proclive a realizar cambios de contexto con la posibilidad
 de darse un cambio de core.
 \end{enumerate}
  
@@ -410,7 +410,7 @@ de darse un cambio de core.
  \textbf{Comportamiento menos eficiente en el RR2 con respecto al paralelismo, ya que al no permitir
 migración de núcleos este lo pierde}\\
 
-Un ejemplo de esto, en la vida real seria, estar corriendo testeos de software y al mismo tiempo analizando
+Un ejemplo de esto, en la vida real ser\'ia, estar corriendo testeos de software y al mismo tiempo analizando
 algoritmos de alta complejidad para demostraciones matem\'{a}ticas.\\
 
 Un ejemplo de los lotes utilizados que demuestra esto fue el siguiente:\\

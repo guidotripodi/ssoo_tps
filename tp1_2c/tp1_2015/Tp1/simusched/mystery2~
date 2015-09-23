@@ -1,0 +1,7 @@
+TaskCPU 30
+TaskCPU 25
+TaskCPU 20
+TaskCPU 40
+TaskCPU 40
+@80:
+TaskIO 20 15
