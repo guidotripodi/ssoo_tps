@@ -17,11 +17,11 @@ class SchedNoMistery : public SchedBase {
 
   private:
     int next(int cpu);
-    int quantumActual;
-    std::vector<int> quantum; // el valor de cada quantum
-    std::vector<std::queue<int> > colasXQuantum; // la cola de tareas cada quantum
-    std::map<int,int> pid_quantum;
-    bool colasVacias();
+    int quantumActual; // el quantum restante de la tarea actual
+    std::vector<int> quantum; // una lista con el valor de cada quantum
+    std::vector<std::queue<int> > colasXQuantum; // una lista con la cola de tareas cada quantum
+    std::map<int,int> pid_quantum; // un diccionario que me dice en que quantum de la lista esta cada tarea
+    bool colasVacias(); // funcion que me indica si no hay mas tareas en ninguna cola de quantums
 
 };
 

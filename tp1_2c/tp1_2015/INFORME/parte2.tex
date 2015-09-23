@@ -295,8 +295,29 @@ Obteniendo lo siguiente:
 	{$Gr$\'a$fico 7.1 - Lote 1$ - Sched Mistery - 1 core - Quantum = 6}	
  \end{center}
  
-De aqu\'{\i}, pudimos abstraer que, una tarea al bloquearse es desalojada y cuando la misma se desbloquea, el scheduler, le da
-una prioridad otorg\'{a}ndole quantum = 1 para que vuelva a correr y luego volver a encolarla en un orden cclico similar al de Round-Robin.\\
+De aqu\'{\i}, pudimos abstraer que, una tarea al bloquearse es desalojada y cuando la misma se desbloquea, el scheduler, le da 
+prioridad para que vuelva a correr.\\
+
+Con el segundo lote:\\
+
+\begin{verbatim}
+TaskCPU 20
+TaskConsola 20 4
+TaskAlterno 1 1 1 1 1 1 15 1 1 1 1
+\end{verbatim}
+
+Obteniendo lo siguiente:
+\begin{center}
+    	\includegraphics[width=450pt]{./Test/ej7_2.png}
+	{$Gr$\'a$fico 7.2 - Lote 1$ - Sched Mistery - 1 core - Quantum = 2 - 5 - 7}	
+ \end{center}
+
+Con este lote lo primero que se observa es que los par\'{a}metros pasados al scheduler van a ser una lista de quantums que 
+van a correr en orden cada tarea una \'{u}nica vez hasta el \'{u}timo donde siempre van a correr este. Adem\'{a}s esta lista siempre 
+tiene un primer quantum de valor 1.\\
+Tambi\'{e}n observamos que una tarea al desbloquearse vuelve a correr con el quantum anterior de la lista de los mismos. 
+Las tareas cuando se desbloquean se les d\'{a} ''prioridad'' porque la prioridad es dada por el quantum que esta antes en 
+la lista de quantums.\\
 
 Con el siguiente lote:\\
 
@@ -313,12 +334,8 @@ Obteniendo lo siguiente:\\
 	{$Gr$\'a$afico 7.2 - Lote 2$ - Sched Mistery - 1 core - Quantum = 5 3 2}	
  \end{center}
  
-De aqu\'{\i}, pudimos observar, la existencia de una prioridad a tareas $mas$ $nuevas$, ya que al llegar la misma y estar ready, es
-la proxima a correr por el scheduler, y con un quantum igual a la sumatoria de los quantum ya pasados hasta el momento de ser cargada.\\
-Se puede apreciar tambie\'{e}n un orden ciclico del mismo, y luego de dar esta prioridad mencionada por \'{u}nica vez, dicha tarea es encolada con un orden c\'{\i}clico
-respetando el mismo quantum que el resto de las tareas.\\
-Adem\'{a}s, se puede observar distintos valores de quantums, inicialmente todos con 1, y luego, por cada vuelta c\'{\i}clica los mismos van cambiando dependiendo del valor recibido
-como par\'{a}metro.(En nuestro experimento, por ej, los valores fueron 5 3 y 2)\\
+De aqu\'{\i}, pudimos observar, que si una tarea entra m\'{a}s tarde corre los quantums que ya pasaron de la lista. Esto da 
+una noci\'{o}n de prioridad haciendo que estas tareas corran varias veces seguidas antes de que vuelva a correr otra.\\
 
 \indent En conclusi\'on:\\
 
@@ -326,44 +343,46 @@ como par\'{a}metro.(En nuestro experimento, por ej, los valores fueron 5 3 y 2)\
 \begin{itemize}
  \item Se puede observar un caracter c\'{\i}clico con posibilidad de varios quantums distintos, los cuales van cambiando
  acorde a las vueltas c\'{\i}clicas que da el scheduler.
- \item Prioridad para tareas bloqueantes (al ser desbloqueada es la primera en cargar otorg\'{a}ndole quantum = 1)
- \item Prioridad para tareas m\'as recientes (al llegar la misma y estar ready esta pasa a ser la pr\'{o}xima en correr con un quantum igual
- a la sumatoria de los quantums ya transcurridos hasta el momento)
+ \item Prioridad para tareas bloqueantes (al ser desbloqueada corren un quantum previo que tiene mayor prioridad)
+ \item Prioridad para tareas m\'as recientes (Corren los quantums que ya pasaron de la lista hasta el quantum actual, esto 
+ provoca que corra varias veces antes que sigan corriendo las tareas que entraron antes)
 \end{itemize}
-
 
 Para desarrollar la implementación del scheduler $No$ $Mistery$ y que este funcione de una forma correcta
 utilizamos una serie de estructuras puntuales. \\
 Las mismas son las siguientes:\\
 \begin{enumerate}
- \item Una cola, la cual nombramos $q$, esta contiene los $PID$ de los procesos activos que no estan
- bloqueados y en el tope de la misma se encuentra el próximo proceso a correr. Esta cola,
- fue desarrollada para que cuando se desaloje un proceso por finalizar su $quantum$ la misma pase al final de
- la cola y generando el ciclo acorde al comportamiento de este scheduler.
- \item Un vector denominado $quantum$, este tiene en su elemento $i$ el quantum correspondiente a
-a la ronda c\'iclica que se esta corriendo en el momento. Inicializamos todos los elementos con los valores que recibimos
-como par\'ametro.
-\item Un cola nombrada como $desbloqueados$ y como el nombre lo indica, tendr\'a las tareas que se desbloquearon y estan
-listas para correr.
-\item Un map de pair\textless \ int, int\textgreater \ $pid_quantum$ aqui guardaremos en el primer elemento el pid y en el segundo el quantum con el que 
-iniciar\'a a correr, ya sea 1 o la sumatoria de quantums ya corridos hasta el momento que la tarea es cargada.
-desde que fue cargado en el core.
-\item Un map de pair\textless \ int, int\textgreater \ $pid_Tarde$ este nos indicar\'a dependiendo el pid si la tarea fue cargada al iniciar el lote o si llego mas 
-tarde
-\item Un map de pair\textless \ int, int\textgreater \ $pid_Bloqueado$ este map nos dir\'a si la tarea estuvo bloqueada o no.
-\item Un entero $pidInicial$ en esta variable guardaremos el pid de la primer tarea de nuestro orden ciclico, esto
-nos servira para que en cada rueda al finalizar y le vuelva a tocar a el pid inicial aumentemos el contador $contQuantumPasados$
-y actualizemos el indice del vector $quantum$
-\item Un entero $contQuantumPasados$ que como mencionamos anteriormente nos da la cantidad de vueltas completas que se dieron
-\item Un entero $quantumActual$ en el cual almacenaremos el valor de quantum que tiene en el momento la tarea que esta corriendo
+\item Un entero $quantumActual$ en el cual almacenaremos el valor de quantum que tiene en el momento la tarea que esta corriendo.
+\item Un vector de enteros llamado $quantum$, esta secuencia contiene en orden el valor de cada quantum pasado por par\'{a}metro.
+\item Vector de colas de enteros de nombre $colasXQuantum$. Cada indice de la secuencia es una cola perteneciente a los quantum 
+que se pasaron por par\'{a}metro. Estas colas tienen las tareas a ejecutar de cada quantum.
+\item Un diccionario $pid_quantum$ que dado el pid de una tarea me dice que quantum de la lista es el que tiene que correr.
+\item Una funci\'{o}n auxiliar llamada $colasVacias$ que devuelve un valor booleano si no hay mas tareas en ninguna cola de los 
+quantum.
 \end{enumerate}
 
- De esta manera, con estas estructuras nos permiten determinar para cada tarea, cuándo, y cuánto 
-de su quantum consumieron de forma que podamos desalojarla correctamente.\\
+Vamos a pasar a explicar por partes el c\'{o}digo de nuestro scheduler.\\
+Cuando inicializa lo primero que hacemos mediante un ciclo for es guardar los quantums pasados por par\'{a}metro dentro de la 
+secuencia $quantum$ y al mismo tiempo se van creando colas vacias en la secuencia $colasXQuantum$.\\
+Cuando una nueva tarea es cargada esta se encola en el primer quantum de la lista y se crea una asociaci\'{o}n de dicha tarea 
+con el numero del quantum de la lista en el diccionario $pid_quantum$.\\
+En el momento en que una tarea se desbloquea nos fijamos cual fue el \'{u}ltimo quantum que corrio de la lista y si este no es 
+el primero se la encola en la cola del quantum anterior, caso contrario se la encola en el mismo quantum que corrio la \'{u}ltima vez.
+Por \'{u}ltimo se actualiza en caso de ser necesario la cola actual en el diccionario $pid_quantum$.\\
+En cada tick de reloj nos fijamos si la tarea termina, se bloquea o corre normalmente. En caso de que termine o se bloquee usamos 
+la funci\'{o}n $next(int cpu)$ ( mas adelante explicaremos que hace esta funci\'{o}n) para saber cual es la pr\'{o}xima 
+tarea a correr. Si es un tick normal de reloj nos fijamos, si la tarea que esta corriendo es la IDLE primero verificamos si hay 
+alguna tarea encolada con la funci\'{o}n $colasVacias()$, en caso de haber al menos una devolvemos la pr\'{o}xima a ejecutar. Si 
+no hay tareas seguimos corriendo la IDLE. Si la tarea que se esta ejecutando no es la IDLE restamos en uno el quantum y preguntamos 
+si este llego a 0, en caso de no ser as\'{\i} se devuelve la misma tarea. Si este llego a 0 nos fijamos que quantum de la lista 
+termino de correr, en caso de que no sea el \'{u}ltimo, se actualiza el dato en el diccionario $pid_quantum$ con el siguiente y 
+se encola en la cola correspondiente a este quantum y devolvemos la pr\'{o}xima tarea a ejecutar.\\
+La funci\'{o}n $next(int cpu)$ busca de todas las colas de los quantums cual es la primera que no este vac\'{\i}a, se saca el 
+primer elemento de la cola y la funci\'{o}n lo devuelve. Adem\'{a}s guarda en la variable $quantumActual$ el quantum de la cola 
+donde extrajimos la tarea.\\
+Por \'{u}ltimo la funci\'{o}n $colasVacias()$ revisa todas las colas de los quantums y devuelve un valor booleano dependiendo si 
+estan todas vacias (devuelve 1) o si hay alguna que contenga al menos una tarea en cuyo caso devuelve 0.\\
 
-Obteniendo las prioridades caracter\'isticas de dicho scheduler tanto para la tarea bloqueadas como para las que llegan "tarde".\\
-Con nuestro map de $pid_Tarde$ y $pid_Bloqueado$ podremos reordenar nuestra cola $q$ con la cual realizamos la ejecuci\'on ciclica de nuestro
-sched logrando el orden deseado y particular.\\
 
 \subsubsection[Resolución Ejercicio 8]{Ejercicio 8}
 
