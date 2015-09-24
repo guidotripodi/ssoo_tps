@@ -103,7 +103,7 @@ int SchedNoMistery::next(int cpu){
 
 bool SchedNoMistery::colasVacias(){
 	for(int i = 0; i < quantum.size(); i++){
-		if(colasXQuantum[i].empty()){
+		if(!colasXQuantum[i].empty()){
 			return false;
 		}
 	}
