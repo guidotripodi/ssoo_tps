@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.31)  4 SEP 2015 18:10
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.31)  23 SEP 2015 20:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -528,42 +528,42 @@ Underfull \hbox (badness 10000) in paragraph at lines 122--123
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 130--134
+Underfull \hbox (badness 10000) in paragraph at lines 130--135
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 137--139
+Underfull \hbox (badness 10000) in paragraph at lines 138--140
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--166
+Underfull \hbox (badness 10000) in paragraph at lines 163--167
 
  []
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 167--168
+Underfull \hbox (badness 10000) in paragraph at lines 168--169
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 169--170
+Underfull \hbox (badness 10000) in paragraph at lines 170--171
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 177--178
+Underfull \hbox (badness 10000) in paragraph at lines 178--179
 
  []
 
 <./Test/ej3.png, id=37, 1030.85126pt x 157.58875pt>
 File: ./Test/ej3.png Graphic file (type png)
  <use ./Test/ej3.png>
-Package pdftex.def Info: ./Test/ej3.png used on input line 181.
+Package pdftex.def Info: ./Test/ej3.png used on input line 182.
 (pdftex.def)             Requested size: 515.42436pt x 78.79417pt.
 
-Overfull \hbox (62.45647pt too wide) in paragraph at lines 181--183
+Overfull \hbox (62.45647pt too wide) in paragraph at lines 182--184
  [] 
  []
 
@@ -669,121 +669,130 @@ Underfull \hbox (badness 10000) in paragraph at lines 301--302
 
  []
 
+<./Test/ej7_2.png, id=63, 1030.85126pt x 187.70125pt>
+File: ./Test/ej7_2.png Graphic file (type png)
+ <use ./Test/ej7_2.png>
+Package pdftex.def Info: ./Test/ej7_2.png used on input line 311.
+(pdftex.def)             Requested size: 450.0pt x 81.93579pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 310--311
+Underfull \hbox (badness 10000) in paragraph at lines 315--321
 
  []
 
-<./Test/ej7_3.png, id=63, 1030.85126pt x 157.58875pt>
+[13 <./Test/ej7_1.png (PNG copy)> <./Test/ej7_2.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 322--323
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 331--332
+
+ []
+
+<./Test/ej7_3.png, id=68, 1030.85126pt x 157.58875pt>
 File: ./Test/ej7_3.png Graphic file (type png)
  <use ./Test/ej7_3.png>
-Package pdftex.def Info: ./Test/ej7_3.png used on input line 312.
+Package pdftex.def Info: ./Test/ej7_3.png used on input line 333.
 (pdftex.def)             Requested size: 450.0pt x 68.791pt.
 
-[13 <./Test/ej7_1.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 316--322
+Underfull \hbox (badness 10000) in paragraph at lines 337--339
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 323--324
+Underfull \hbox (badness 10000) in paragraph at lines 340--341
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 335--338
+Underfull \hbox (badness 10000) in paragraph at lines 351--354
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 361--363
+Underfull \hbox (badness 10000) in paragraph at lines 364--385
 
  []
 
 [14 <./Test/ej7_3.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 364--367
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 370--375
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 408--409
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 411--412
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 413--415
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 416--417
+Underfull \hbox (badness 10000) in paragraph at lines 389--394
 
  []
 
 [15]
-Underfull \hbox (badness 10000) in paragraph at lines 426--427
+Underfull \hbox (badness 10000) in paragraph at lines 427--428
 
  []
 
-<./EJ8_RR2/dif10corerr.png, id=75, 1030.85126pt x 247.92625pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 430--431
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 432--434
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 435--436
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 445--446
+
+ []
+
+<./EJ8_RR2/dif10corerr.png, id=76, 1030.85126pt x 247.92625pt>
 File: ./EJ8_RR2/dif10corerr.png Graphic file (type png)
 
 <use ./EJ8_RR2/dif10corerr.png>
-Package pdftex.def Info: ./EJ8_RR2/dif10corerr.png used on input line 429.
+Package pdftex.def Info: ./EJ8_RR2/dif10corerr.png used on input line 448.
 (pdftex.def)             Requested size: 450.0pt x 108.22534pt.
 
-<./EJ8_RR2/dif10corerr2.png, id=76, 1030.85126pt x 247.92625pt>
+<./EJ8_RR2/dif10corerr2.png, id=77, 1030.85126pt x 247.92625pt>
 File: ./EJ8_RR2/dif10corerr2.png Graphic file (type png)
 
 <use ./EJ8_RR2/dif10corerr2.png>
-Package pdftex.def Info: ./EJ8_RR2/dif10corerr2.png used on input line 434.
+Package pdftex.def Info: ./EJ8_RR2/dif10corerr2.png used on input line 453.
 (pdftex.def)             Requested size: 450.0pt x 108.22534pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 438--443
+Underfull \hbox (badness 10000) in paragraph at lines 457--462
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 449--451
+Underfull \hbox (badness 10000) in paragraph at lines 468--470
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 452--453
+[16 <./EJ8_RR2/dif10corerr.png (PNG copy)> <./EJ8_RR2/dif10corerr2.png (PNG cop
+y)>]
+Underfull \hbox (badness 10000) in paragraph at lines 471--472
 
  []
 
-<./EJ8_RR2/dif5corerr.png, id=77, 1030.85126pt x 247.92625pt>
+<./EJ8_RR2/dif5corerr.png, id=81, 1030.85126pt x 247.92625pt>
 File: ./EJ8_RR2/dif5corerr.png Graphic file (type png)
 
 <use ./EJ8_RR2/dif5corerr.png>
-Package pdftex.def Info: ./EJ8_RR2/dif5corerr.png used on input line 465.
+Package pdftex.def Info: ./EJ8_RR2/dif5corerr.png used on input line 484.
 (pdftex.def)             Requested size: 450.0pt x 108.22534pt.
- [16 <./EJ8_RR2/dif10corerr.png (PNG copy)> <./EJ8_RR2/dif10corerr2.png (PNG co
-py)>]
-<./EJ8_RR2/dif5corerr2.png, id=81, 1030.85126pt x 247.92625pt>
+
+<./EJ8_RR2/dif5corerr2.png, id=82, 1030.85126pt x 247.92625pt>
 File: ./EJ8_RR2/dif5corerr2.png Graphic file (type png)
 
 <use ./EJ8_RR2/dif5corerr2.png>
-Package pdftex.def Info: ./EJ8_RR2/dif5corerr2.png used on input line 470.
+Package pdftex.def Info: ./EJ8_RR2/dif5corerr2.png used on input line 489.
 (pdftex.def)             Requested size: 450.0pt x 108.22534pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 474--480
+Underfull \hbox (badness 10000) in paragraph at lines 493--499
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 481--485
+Underfull \hbox (badness 10000) in paragraph at lines 500--510
 
  []
 
@@ -800,13 +809,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 17--20
 
 ) [18] AED: lastpage setting LastPage (./informe.aux) ) 
 Here is how much of TeX's memory you used:
- 2440 strings out of 495028
- 33833 string characters out of 6181497
- 101921 words of memory out of 5000000
- 5595 multiletter control sequences out of 15000+600000
+ 2445 strings out of 495028
+ 33925 string characters out of 6181497
+ 101923 words of memory out of 5000000
+ 5599 multiletter control sequences out of 15000+600000
  5978 words of font info for 22 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 37i,11n,43p,251b,293s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,11n,43p,251b,290s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts
@@ -818,10 +827,10 @@ mr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr
 /share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on informe.pdf (18 pages, 1081872 bytes).
+Output written on informe.pdf (18 pages, 1092530 bytes).
 PDF statistics:
- 125 PDF objects out of 1000 (max. 8388607)
+ 126 PDF objects out of 1000 (max. 8388607)
  75 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 86 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 91 words of extra memory for PDF output out of 10000 (max. 10000000)
 

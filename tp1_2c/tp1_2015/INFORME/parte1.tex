@@ -31,7 +31,7 @@ par\'{a}metros diferentes y que corra con el scheduler FCFS.
 
 \subsubsection[Resolución Ejercicio 1]{Ejercicio 1}
 
-\indent Dada la simpleza del código, optamos por mostrar nuestra implementación, en vez de comentarlo detalladamente.\\
+\indent Dada la simpleza del código, optamos por mostrar nuestra implementación, en vez de comentarlo\\ detalladamente.\\
 \indent Realizamos un ciclo de i \textless \ params[0], donde utilizamos la función dada por la catedra, uso\_IO a la cual le pasamos
 el pid correspondiente y un entero ciclos que es el valor random obtenido entre $bmin$ y $bmax$. Esa función uso\_IO simula una llamada bloqueante.
 \begin{center}
@@ -68,7 +68,7 @@ De aqu\'{i}, obtuvimos los siguientes resultados:\\
 \vspace*{0.3cm} \vspace*{0.3cm}
   \begin{center}
  \includegraphics[scale=0.5]{./Test/ej1.png}
- { $Grafico 1$ Scheduler FCFS - 1 core }
+ { $Gr$\'a$fico 1.1$ Scheduler FCFS - 1 core }
  \end{center}
   \vspace*{0.3cm}
 
@@ -87,14 +87,14 @@ De aqu\'{i}, obtuvimos los siguientes resultados:\\
 \end{verbatim}
 
 \indent El mismo, presenta una tarea de uso intensivo $TaskCPU$ que dura 100 ticks, y otras dos interactivas, las cuales se
-bloquean 20 y 25 ticks respectivamente con una duración de entre 2 y 4 tanto para la primera como la segunda.\\
+bloquean 20 y 25 veces respectivamente con una duración de entre 2 y 4 tanto para la primera como la segunda.\\
 A continuación, los respectivos gráficos de mediciones.
 
 
 \vspace*{0.3cm} \vspace*{0.3cm}
   \begin{center}
  \includegraphics[scale=0.5]{./Test/ej2_1.png}
- { $Grafico 1$ Scheduler FCFS - 1 core }
+ { $Gr$\'a$fico 2.1$ Scheduler FCFS - 1 core }
  \end{center}
   \vspace*{0.3cm}
  
@@ -102,11 +102,11 @@ A continuación, los respectivos gráficos de mediciones.
 \vspace*{0.3cm} \vspace*{0.3cm}
   \begin{center}
  \includegraphics[scale=0.5]{./Test/ej2_2.png}
- { $Grafico 2$ Scheduler FCFS - 2 core }
+ { $Gr$\'a$fico 2.2$ Scheduler FCFS - 2 core }
  \end{center}
   \vspace*{0.3cm}
 
-A su vez, se nos solicit\'{o} el c\'{a}lculo de la Latencia para cada una de las tareas basandonos en la 
+A su vez, se nos solicit\'{o} el c\'{a}lculo de la Latencia para cada una de las tareas bas\'{a}ndonos en la 
 experimentaci\'{o}n con uno y dos cores.\\
 
 \textbf{Latencia:} Tiempo que demora una tarea en ejecutarse desde que la misma esta en estado $Ready$.\\
@@ -114,22 +114,23 @@ experimentaci\'{o}n con uno y dos cores.\\
 \indent Para el gr\'{a}fico uno, los valores obtenidos para cada tarea fueron los siguientes:\\
 
 \begin{itemize}
- \item Tarea 1: 4
- \item Tarea 2: 109
- \item Tarea 3: 193
+ \item Tarea 0: 4
+ \item Tarea 1: 109
+ \item Tarea 2: 193
 \end{itemize}
 
 \indent Para el gr\'{a}fico dos, los valores obtenidos para cada tarea fueron los siguientes:\\
 
 \begin{itemize}
+ \item Tarea 0: 4
  \item Tarea 1: 4
- \item Tarea 2: 4
- \item Tarea 3: 88
+ \item Tarea 2: 88
 \end{itemize}
 
 \indent Se puede observar como aumenta el paralelismo a mayor cantidad de núcleos. 
-En este scheduler en particular, esto ayuda de gran manera al rendimiento del sistema, puesto que un núcleo podrá ejecutar otra tarea 
-recién cuando haya terminado la anterior. Las consecuencias de este comportamiento son visibles en los 2 graficos. Con un \'{u}nico core, 
+En este scheduler en particular, esto ayuda de gran manera al rendimiento del sistema. Si Rolando 
+continuara usando el scheduler FCFS no podr\'{\i}a ejecutar otra tarea hasta que terminara de correr 
+la anterior. Las consecuencias de este comportamiento son visibles en los 2 graficos. Con un \'{u}nico core, 
 solo se puede correr una tarea por vez, en este experimento comparado con usar 2 cores el tiempo se duplica.\\
 
 \subsubsection[Resolución Ejercicio 3]{Ejercicio 3}
@@ -143,24 +144,24 @@ explicaremos ciertos puntos de la misma.\\
                             vector<bool> uso = vector<bool>(total_cpu);
                             for(int i=0;i<(int)uso.size();i++) 
                                uso[i] = false;
-	                       for(int i=0;i<cant_bloqueos;i++) {
-                                   int j = rand()%(uso.size());
-                                   if(!uso[j])
-                                      uso[j] = true;
-                                   else
-                                      i--; 
-                                   }
-                            for(int i=0;i<(int)uso.size();i++) {
-                                if( uso[i] )
-                                    uso_IO(pid,1); 
-                                else
-                                    uso_CPU(pid, 1); 
+                               for(int i=0;i<cant_bloqueos;i++) {
+                                  int j = rand()%(uso.size());
+                                  if(!uso[j])
+                                     uso[j] = true;
+                                  else
+                                     i--; 
                                }
-                            }
+                               for(int i=0;i<(int)uso.size();i++) {
+                                  if( uso[i] )
+                                     uso_IO(pid,1); 
+                                  else
+                                     uso_CPU(pid, 1); 
+                               }
+                       }
  \end{verbatim}
 
- \indent Para este tipo de tarea, creamos un vector de tamaño igual a $total\_cpu$ el cual tendrá bool, ya sea true o false
- dependiendo del uso que se le de dentro de la tarea, ya sea uso\_IO o uso\_CPU. En caso de ser uso\_IO sera true, y sino false.\\
+ \indent Para este tipo de tarea, creamos un vector de tamaño igual a $total\_cpu$ el cual contiene valores booleanos, 
+ si el valor en el \'{\i}ndice del vector es true este corresponder\'a a la funci\'{o}n uso\_IO, caso contrario uso\_CPU.\\
  Luego, utilizaremos un ciclo que irá desde 0 hasta el tamaño del vector y dependiendo el valor booleano, usará la funciones
  dadas por la catedra uso\_IO o uso\_CPU.\\
  
@@ -179,7 +180,7 @@ explicaremos ciertos puntos de la misma.\\
  \vspace*{0.3cm} \vspace*{0.3cm}
   \begin{center}
  \includegraphics[scale=0.5]{./Test/ej3.png}
- { $Grafico 1$ Scheduler FCFS - 1 core }
+ { $Gr$\'a$fico 3.1$ Scheduler FCFS - 1 core }
  \end{center}
   \vspace*{0.3cm}
  

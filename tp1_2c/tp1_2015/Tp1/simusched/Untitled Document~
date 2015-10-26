@@ -1,0 +1,29 @@
+5 3 4  
+6 5 4  
+
+Se bloquea en el bloque i
+Cuando vuelve del block se encola primero. Si en el tiempo que estuvo bloqueado no se perdio ningun quantum de la lista:
+	Corre el quantum (i-1)+i.
+
+Si perdio alguno corre:
+	Corre el quantum (i-1)+i+(i+1+...+(i+j)) dependiendo de cuantos quantum perdio.
+
+Si se vuelve a bloquear antes de que termine el quantum correra (i-2)+(i-1)+i o (i-2)+(i-1)+i+(i+1+...+(i+j)).
+Y asi sucesivamente ...+(i-2) si vuelve a bloquearse.
+
+
+-----------------------------------------------------
+
+Me bloqueo en el quantum i de la lista, cuando me desbloquee me encolo primero y cuando me toque corro (i-1)+..+(l-1) siendo l el 
+quantum actual de la lista.
+Si antes de terminar el quantum me bloqueo al desbloquarme corro (i-2)+(i-1)+..+(l-1)
+
+
+
+
+
+
+
+
+
+
