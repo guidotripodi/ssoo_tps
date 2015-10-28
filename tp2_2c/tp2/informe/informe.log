@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.12.30)  26 OCT 2015 18:40
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.31)  28 OCT 2015 20:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **informe.tex
 (./informe.tex
 LaTeX2e <2011/06/27>
-Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
@@ -537,6 +537,33 @@ Underfull \hbox (badness 10000) in paragraph at lines 124--105
 LaTeX Warning: Reference `LastPage' on page 4 undefined on input line 105.
 
 [4] (./parte2.tex
+Underfull \hbox (badness 10000) in paragraph at lines 17--21
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--46
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--55
+
+ []
+
+
+LaTeX Warning: Reference `LastPage' on page 5 undefined on input line 69.
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 71--74
+
+ []
+
+)
+
+LaTeX Warning: Reference `LastPage' on page 6 undefined on input line 110.
+
+[6] (./parte3.tex
 Underfull \hbox (badness 10000) in paragraph at lines 15--18
 
  []
@@ -578,9 +605,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 65--67
  []
 
 
-LaTeX Warning: Reference `LastPage' on page 5 undefined on input line 67.
+LaTeX Warning: Reference `LastPage' on page 7 undefined on input line 67.
 
-[5]
+[7]
 Underfull \hbox (badness 10000) in paragraph at lines 75--77
 
  []
@@ -592,25 +619,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 78--79
 
 )
 
-LaTeX Warning: Reference `LastPage' on page 6 undefined on input line 110.
+LaTeX Warning: Reference `LastPage' on page 8 undefined on input line 115.
 
-[6]
+[8]
 
-LaTeX Warning: Reference `LastPage' on page 7 undefined on input line 124.
+LaTeX Warning: Reference `LastPage' on page 9 undefined on input line 129.
 
-[7] (./informe.aux)
+[9] (./informe.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 2331 strings out of 495031
- 31840 string characters out of 6181530
- 99440 words of memory out of 5000000
- 5509 multiletter control sequences out of 15000+600000
+ 2334 strings out of 495028
+ 31868 string characters out of 6181497
+ 99696 words of memory out of 5000000
+ 5512 multiletter control sequences out of 15000+600000
  5978 words of font info for 22 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 37i,10n,43p,233b,334s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,10n,43p,233b,336s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
@@ -622,10 +649,10 @@ ublic/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmsl10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 tt10.pfb>
-Output written on informe.pdf (7 pages, 921828 bytes).
+Output written on informe.pdf (9 pages, 928717 bytes).
 PDF statistics:
- 76 PDF objects out of 1000 (max. 8388607)
- 52 compressed objects within 1 object stream
+ 82 PDF objects out of 1000 (max. 8388607)
+ 56 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
