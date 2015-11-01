@@ -82,4 +82,26 @@ para_variable.wunlock();
 \end{verbatim}
 
 La funci\'{o}n "soy\_escritor" es casi igual al de la otra funci\'{o}n salvo porque lo primero que hace al hacer el lock es 
-incrementar en 1 el valor de la variable.
+incrementar en 1 el valor de la variable. \\
+
+\subsubsection{Conclusiones}
+
+Con el c\'{o}digo que implementamos nos aseguramos que no pueda haber deadlock ni inanici\'{o}n. Vamos a pasar a explicar que 
+soluci\'{o}n encontramos para cada uno. \\
+
+\begin{itemize}
+ \item Deadlock: Sabemos que para que haya deadlock hay 4 cosas fundamentales que tienen que cumplirse y a\'{u}n as\'{\i} no 
+ siempre hay. Se observa en el c\'{o}digo explicado mas arriba que solo se usa "RWLock para\_variable" para proteger la secci\'{o}n 
+ cr\'{\i}tica del c\'{o}digo por lo que no hay "Hold and wait" evitando as\'{\i} posible deadlock.\\
+ Ahora vamos a ver que nuestro c\'{o}digo implementado para Read-Write Lock tampoco puede sufrir Deadlock. Igual que en el caso 
+ anterior el c\'{o}digo implementado no puede sufrir de "Hold and wait". La \'{u}nica funci\'{o}n que pareciera poder sufrir de 
+ esto es "wlock". Esta hace lock de "pthread\_mutex\_t turnstyle" y luego hace lock de "pthread\_mutex\_lock(\&readers\_mutex)". Si se 
+ da el caso de que puede hacer lock de ambos en el paso siguiente hace unlock de "readers\_mutex" que luego combinado y usado 
+ correctamente con la funci\'{o}n "wulock" se libera el otro mutex (turnstile) evitando el riesgo de "Hold and wait". \\
+ En el otro caso que se puede dar, "wlock" se queda esperando el mutex "readers\_mutex". Si vemos cuales son las funciones que 
+ usan el mutex "readers\_mutex" vemos que estas una vez tomado el mutex pueden correr su c\'{o}digo sin problemas finalizando 
+ y liberando dicho mutex. Esto permite que "wlock" pueda mas adelante seguir con su ejecuci\'{o}n sin problemas. Luego de 
+ analizar ambos casos y sus posibles desenlaces podemos concluir que no hay riesgo de Deadlock usando Read-Write Lock. Luego de 
+ analizar ambas implementaciones podemos confirma que nuestro c\'{o}digo esta libre de Deadlock.
+ \item Como vimos en el punto 1 nuestro c\'{o}digo esta libre de inanici\'{o}n.
+ \end{itemize}
