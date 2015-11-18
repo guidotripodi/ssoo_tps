@@ -10,7 +10,7 @@
 
 \subsubsection[Resolución Ejercicio 1]{Ejercicio 1}
 
-\indent Nuestra implementación del Read-Write Lock se baso en el pseudocodigo implementado en el libro $The$ $Little$ $Book$ $of$ $Semaphores$
+\indent Nuestra implementación del Read-Write Lock se bas\'{o} en el pseudoc\'{o}digo implementado en el libro $The$ $Little$ $Book$ $of$ $Semaphores$
 al resolver la inanición producida en el problema de $Readers-writers$.\\
 
 Se utilizaron 3 Semaphores, los cuales son:\\
@@ -22,7 +22,7 @@ Se utilizaron 3 Semaphores, los cuales son:\\
 
 Y ademas, un entero denominado $readers$\\
 
-Comenzando por la implementación de los lectores, el pseudocodigo del libro mencionado es el siguiente:\\
+Comenzando por la implementación de los lectores, el pseudoc\'{o}odigo del libro mencionado es el siguiente:\\
 
 \begin{verbatim}
             turnstile.wait()
@@ -49,10 +49,10 @@ De aquí nuestro código implementado fue el siguiente:\\
             pthread_mutex_unlock(&readers_mutex);
 \end{verbatim}
 
-Como se puede observar en el codigo del lock del read, el lector realiza un lock (wait) y unlock (signal) del Semaphores $turnstile$
+Como se puede observar en el c\'{o}digo del lock del read, el lector realiza un lock (wait) y unlock (signal) del Semaphores $turnstile$
 para tener su turno y que ningún otro lo saque.\\
-Por consiguiente, se realiza el lock del mutex que se encuentra vinculado al entero $readers$, ya que este será
-aumentará su cantidad en 1 para que de esta manera nadie pueda modificarlo, y luego es liberado dicho mutex ($readers\_mutex$).\\
+Por consiguiente, se realiza el lock del mutex que se encuentra vinculado al entero $readers$, ya que este
+aumentará su cantidad en 1 para que, de esta manera nadie pueda modificarlo, y luego es liberado dicho mutex ($readers\_mutex$).\\
 
 Luego, nuestro $READ$ $UNLOCK$ fue el siguiente:\\
 
@@ -71,11 +71,11 @@ Luego, nuestro $READ$ $UNLOCK$ fue el siguiente:\\
 \end{verbatim}
 
 En esta implementación, primero se realiza un lock del Semaphore vinculado al entero $readers$ ya que este disminuirá en 1.\\
-Luego, se realiza una consulta chequeando el valor del entero, si este es 0 se le dara un signal al Semaphore $room\_empty$
-para notificarle al escritor que ya no queda ningun lector y puede proceder a escribir.\\
+Luego, se realiza una consulta chequeando el valor del entero, si este es 0 se le dara un signal a la variable de condici\'{o}n
+$room\_empty$ para notificarle al escritor que ya no queda ning\'{u}n lector y puede proceder a escribir.\\
 Por último, se libera el mutex $readers\_mutex$.\\
 
-Continuando con el escritor, el pseudocodigo fue el siguiente:\\
+Continuando con el escritor, el pseudoc\'{o}digo fue el siguiente:\\
 
 \begin{verbatim}
 
@@ -122,5 +122,5 @@ Luego, la implementación del unlock fue:\\
 Para la implementación del unlock del writer solo se libera el Semaphore $turnstile$.\\
 
 De esta manera, con dicha implementación, siempre que llegue un escritor el mismo tendrá su turno sin producirse inanición.
-Ya que, en caso de haber lectores y llegar un escritor, estos terminaran de leer y en caso 
+Ya que, en caso de haber lectores y llegar un escritor, estos terminar\'{a}n de leer y en caso 
 de llegar nuevos lectores deberán esperar a que el escritor finalice su ejecución.\\

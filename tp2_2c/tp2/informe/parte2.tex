@@ -41,8 +41,9 @@ for (i = 0; i < NUM_THREADS; ++i){
 
 Este ciclo es el encargado de crear todos los threads, si el valor de i es impar se crea un thread que va a correr la funci\'{o}n 
 "soy\_escritor", si es par ejecuta "soy\_lector". \\
-Para crear cada thread hay se le pasa un thread, a partir de donde va a correr( en este caso una de las 2 funciones ya mencionadas) 
-y una posici\'{o}n del array distinta a cada uno para poder identificarlos.\\
+Para crear cada thread se le pasa a la funci\'{o}n un thread dentro del array "threads" y la funci\'{o}n a partir de donde va 
+a correr( en este caso una de las 2 funciones ya mencionadas) y una posici\'{o}n del array "array" distinta a cada uno para 
+poder identificarlos.\\
 
 \begin{verbatim}
 for (int j = 0; j < NUM_THREADS; ++j){
@@ -100,8 +101,8 @@ soluci\'{o}n encontramos para cada uno. \\
  correctamente con la funci\'{o}n "wulock" se libera el otro mutex (turnstile) evitando el riesgo de "Hold and wait". \\
  En el otro caso que se puede dar, "wlock" se queda esperando el mutex "readers\_mutex". Si vemos cuales son las funciones que 
  usan el mutex "readers\_mutex" vemos que estas una vez tomado el mutex pueden correr su c\'{o}digo sin problemas finalizando 
- y liberando dicho mutex. Esto permite que "wlock" pueda mas adelante seguir con su ejecuci\'{o}n sin problemas. Luego de 
+ y liberando dicho mutex. Esto permite que "wlock" pueda m\'{a}s adelante seguir con su ejecuci\'{o}n sin problemas. Luego de 
  analizar ambos casos y sus posibles desenlaces podemos concluir que no hay riesgo de Deadlock usando Read-Write Lock. Luego de 
- analizar ambas implementaciones podemos confirma que nuestro c\'{o}digo esta libre de Deadlock.
+ analizar ambas implementaciones podemos confirmar que nuestro c\'{o}digo est\'{a} libre de Deadlock.
  \item Como vimos en el punto 1 nuestro c\'{o}digo esta libre de inanici\'{o}n.
  \end{itemize}
