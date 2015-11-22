@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.31)  1 NOV 2015 17:45
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.31)  22 NOV 2015 13:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -542,30 +542,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 17--21
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 42--46
+Underfull \hbox (badness 10000) in paragraph at lines 42--47
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 54--55
+Underfull \hbox (badness 10000) in paragraph at lines 55--56
 
  []
 
 
-LaTeX Warning: Reference `LastPage' on page 5 undefined on input line 69.
+LaTeX Warning: Reference `LastPage' on page 5 undefined on input line 70.
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 71--74
+Underfull \hbox (badness 10000) in paragraph at lines 72--75
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 84--86
+Underfull \hbox (badness 10000) in paragraph at lines 85--87
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 89--91
+Underfull \hbox (badness 10000) in paragraph at lines 90--92
 
  []
 
@@ -641,10 +641,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 2334 strings out of 495028
- 31868 string characters out of 6181497
+ 2335 strings out of 495028
+ 31876 string characters out of 6181497
  99696 words of memory out of 5000000
- 5512 multiletter control sequences out of 15000+600000
+ 5513 multiletter control sequences out of 15000+600000
  5978 words of font info for 22 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  37i,10n,43p,233b,336s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -659,7 +659,7 @@ ublic/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmsl10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 tt10.pfb>
-Output written on informe.pdf (9 pages, 930709 bytes).
+Output written on informe.pdf (9 pages, 930804 bytes).
 PDF statistics:
  82 PDF objects out of 1000 (max. 8388607)
  56 compressed objects within 1 object stream

@@ -203,7 +203,6 @@ void *atendedor_de_jugador(void *socket_param) {
             terminar_servidor_de_jugador(socket_fd, palabra_actual);
         }
     }
-    pthread_exit(NULL);
     return NULL;
 }
 
